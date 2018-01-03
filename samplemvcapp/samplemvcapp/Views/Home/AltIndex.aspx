@@ -1,5 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Login.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.LoginModel>" %>
-
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Login.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.LoginModel>" %>
+<asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    Log in
+</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="login-box">
@@ -10,6 +12,8 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <% using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) { %>
+            <%: Html.AntiForgeryToken() %>
+            <%: Html.ValidationSummary(true) %>
             <div class="form-group has-feedback">
                 <%: Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder="UserName" })%>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
