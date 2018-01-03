@@ -69,6 +69,88 @@
         </div>
         <!-- /.col -->
       </div>
+
+        <!-- Row#2 -->
+        <div class="row">
+            <div class="col-md-8">
+            <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Time to Resolve the Cases vs Target</h3>
+
+                <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-wrench"></i></button>
+                    <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                    </p>
+
+                    <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                    </div>
+                    <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+            <div class="col-md-4">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+              <h3 class="box-title">Pending Cases</h3>
+
+              <div class="box-tools pull-right">
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieChart" height="150"></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> Cancelled</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Completed</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> Backlogged</li>
+                    <li><i class="fa fa-circle-o text-gray"></i> Deferred</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row 
+                </div>
+            </div>
+        <!-- /.col -->
+        </div>
+        <!-- Row#2 -->
     </section>
 </asp:Content>
 

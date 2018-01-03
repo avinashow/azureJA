@@ -7,14 +7,13 @@ using System.Web.Mvc;
 namespace samplemvcapp.Controllers
 {
     public class HomeController : Controller
-    {
-        [Authorize]
+    {        
         public ActionResult AltIndex()
         {
             return View();
         }
         
-        [CustomAuthorize(Roles="admin")]
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.currentPage = "home";
