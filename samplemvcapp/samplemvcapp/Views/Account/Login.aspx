@@ -22,7 +22,7 @@
                                     <%: Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder="UserName" })%>
                                     <%: Html.ValidationMessageFor(m => m.UserName) %>
                                 </li>
-                                <li class="fomr-group">
+                                <li class="form-group">
                                     <%: Html.LabelFor(m => m.Password) %>
                                     <%: Html.PasswordFor(m => m.Password,  new { @class = "form-control", @PlaceHolder = "Password" }) %>
                                     <%: Html.ValidationMessageFor(m => m.Password) %>

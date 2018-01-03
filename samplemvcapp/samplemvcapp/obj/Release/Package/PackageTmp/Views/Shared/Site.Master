@@ -7,7 +7,7 @@
         <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <%: Styles.Render("~/Content/css") %>
-        <link rel="stylesheet" href="../../Content/bootstrap.css" />
+        <link rel="stylesheet" href="../../Content/bootstrap.min.css" />
         <%: Scripts.Render("~/bundles/modernizr") %>
         <style>
             hr {
@@ -97,14 +97,10 @@
         <%: Scripts.Render("~/bundles/jquery") %>
         <%: Scripts.Render("~/bundles/jqueryui") %>
         <script src="../../Scripts/jquery.tmpl.js"> </script>
-        <script src="../../Scripts/bootstrap.js"></script>
+        <script src="../../Scripts/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
         <link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
         <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css" />
-        <script src="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.js"></script>
-        <link rel="stylesheet" href="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.css" />
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script>
             var page = "<%: ViewBag.currentPage%>";
