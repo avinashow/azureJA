@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="login-box">
       <div class="login-logo">
-        <a href=""><img src="http://www.justicealign.com/images/logo.png" /><br />Work Bench</a>
+        <a href=""><img width="400px" src="http://www.justicealign.com/images/logo.png" /></a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
