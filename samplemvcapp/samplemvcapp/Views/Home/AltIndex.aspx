@@ -1,62 +1,78 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Login.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.LoginModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log in
+    Home Page
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href=""><img width="400px" src="http://www.justicealign.com/images/logo.png" /></a>
-      </div>
-      <!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <% using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) { %>
-            <%: Html.AntiForgeryToken() %>
-            <%: Html.ValidationSummary(true) %>
-            <div class="form-group has-feedback">
-                <%: Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder="UserName" })%>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                <%: Html.ValidationMessageFor(m => m.UserName) %>                
+    <section class="content-header">
+      <h1>
+        Analytics Dashboard
+      </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Case Assigned to Disposal Ratio</span>
+              <span class="info-box-number">53<small>%</small></span>
             </div>
-            <div class="form-group has-feedback">
-                <%: Html.TextBoxFor(m => m.Password, new { @class = "form-control", @PlaceHolder="Password" })%>
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <%: Html.ValidationMessageFor(m => m.Password) %>                
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <%: Html.CheckBoxFor(m => m.RememberMe) %>
-                        <%: Html.LabelFor(m => m.RememberMe) %>
-                    </div>
-                </div>
-                 <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        <% } %>
-        <div class="social-auth-links text-center">
-          <!-- social netwrok logins -->
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
         </div>
-        <!-- /.social-auth-links -->
-        <%: Html.ActionLink("Register", "Register", new { @class = "text-center" })%>  if you don't have an account.
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Pending Order Sheets</span>
+              <span class="info-box-number">30<small>%</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Pending Cases</span>
+              <span class="info-box-number">30<small>%</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">New Members</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
       </div>
-      <!-- /.login-box-body -->
-    </div>
+    </section>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
-     <script>
-         $(function () {
-             $('input').iCheck({
-                 checkboxClass: 'icheckbox_square-blue',
-                 radioClass: 'iradio_square-blue',
-                 increaseArea: '20%' // optional
-             });
-         });
-     </script>
+
 </asp:Content>
 

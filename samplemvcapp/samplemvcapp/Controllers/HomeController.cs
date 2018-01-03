@@ -8,13 +8,13 @@ namespace samplemvcapp.Controllers
 {
     public class HomeController : Controller
     {
-
+        [Authorize]
         public ActionResult AltIndex()
         {
             return View();
         }
         
-        [Authorize]
+        [CustomAuthorize(Roles="admin")]
         public ActionResult Index()
         {
             ViewBag.currentPage = "home";

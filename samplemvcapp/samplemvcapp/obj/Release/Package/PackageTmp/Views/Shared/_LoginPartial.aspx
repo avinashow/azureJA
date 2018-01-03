@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
 <% if (Request.IsAuthenticated) { %>  
-
+    
     <% using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class="navbar-right" })) { %>
  
         <%: Html.AntiForgeryToken() %>
