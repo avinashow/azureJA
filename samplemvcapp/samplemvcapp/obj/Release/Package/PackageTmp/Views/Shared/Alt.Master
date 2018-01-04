@@ -53,54 +53,7 @@
             <span class="sr-only">Toggle navigation</span>
           </a>
           <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <!-- User Account: style can be found in dropdown.less -->
-              
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="fa fa-user-circle"></span>
-                  <span class="hidden-xs">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <span class="fa fa-user-circle" style="color:white;font-size:50px;"></span>
-
-                    <p>
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="row">
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Followers</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Sales</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Friends</a>
-                      </div>
-                    </div>
-                    <!-- /.row -->
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <!-- Control Sidebar Toggle Button -->
-              <!--<li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>-->
-            </ul>
+            <%: Html.Partial("_LoginPartial") %>
           </div>
         </nav>
     </header>
@@ -126,7 +79,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/CaseDetails">
                 <i class="fa fa-files-o"></i>
                 <span>Cases</span>
               </a>
@@ -149,8 +102,7 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
     <!-- content -->
-</div>
-<asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />   
+</div> 
 <!-- jQuery 3 -->
 <script src="../../Scripts/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -174,5 +126,10 @@
 <script src="../../Scripts/demo.js"></script>
 <!-- iCheck -->
 <script src="../../Scripts/icheck.min.js"></script>
+<script src="../../Scripts/jquery.tmpl.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
+<script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
+<asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />  
 </body>
 </html>

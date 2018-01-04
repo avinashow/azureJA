@@ -199,9 +199,6 @@
 
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
-</asp:Content>
-
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>

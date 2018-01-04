@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     CaseDetails
@@ -34,7 +34,6 @@
     <div class="row">
         <div class="col-md-4" style="border-radius:10px;padding:20px;background-color:white">
             <div id="calendar">
-
             </div>
         </div>
         <div class="col-md-7">
@@ -93,10 +92,6 @@
         </div>
     </div>
 
-</asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
-    
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
