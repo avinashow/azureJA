@@ -99,7 +99,9 @@
       </aside>
     <!-- content -->
     <div class="content-wrapper">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        <section class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </section>
     </div>
     <!-- content -->
 </div> 
@@ -127,9 +129,11 @@
 <!-- iCheck -->
 <script src="../../Scripts/icheck.min.js"></script>
 <script src="../../Scripts/jquery.tmpl.js"> </script>
+<script src="../../Scripts/morris.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
 <link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
 <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />  
 </body>
 </html>

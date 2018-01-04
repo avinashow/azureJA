@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     CaseDetails
@@ -256,9 +256,9 @@
             for (var i = 0; i < keys.length; i++) {
                 var idarr = keys[i].split("T");
                 var d = {
-                    date: idarr[0],
-                    badge: true,
-                    title: "No Of cases #" + casesByDate[keys[i]].length,
+                    "date" : idarr[0],
+                    "disabled" : true,
+                    "title": casesByDate[keys[i]].length
                 };
                 arr.push(d);
             }

@@ -1,55 +1,111 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.CaseDetailsModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/site.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.CaseDetailsModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	CaseDetails
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<div class="row" style="display:flex;justify-content:center;background-color:white;border-bottom:0.5px solid #DCDCDC;border-top-left-radius:10px;border-top-right-radius:10px">
-		<div class="col-md-4" style="text-align:center">
-			<h2>Case Details</h2>
-		</div>	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-solid">
+				<div class="box-header with-border">
+				  <h2 class="box-title" style="text-align:center"><strong>Case <%: Model.caseid %></strong></h2>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+				  <div class="box-group" id="accordion">
+					<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+					<div class="panel box box-primary">
+					  <div class="box-header with-border">
+						<h4 class="box-title">
+						  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							Case Details
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseOne" class="panel-collapse collapse in">
+						<div class="box-body">
+						  <div class="row">
+							  <div class="col-md-4">
+								  <dl class="dl-horizontal">
+									<dt>Case#:</dt>
+									<dd><%: Model.caseid %></dd>
+									<dt>District Ct. File #:</dt>
+									<dd></dd>
+									<dt>Case Name:</dt>
+									<dd><%: Model.casename %></dd>
+									<dt>Case Type:</dt>
+									<dd>Civil</dd>
+									<dt>Prosecutor: </dt>
+									<dd>Frank Kratovil</dd>
+									<dt>Created By:</dt>
+									<dd>JUD1</dd>
+								  </dl>
+							  </div>
+							  <div class="col-md-4">
+								  <dl class="dl-horizontal">
+									<dt>Classification:</dt>
+									<dd><%: Model.classification %></dd>
+									<dt>Case Charge:</dt>
+									<dd>Felony</dd>
+									<dt>Status/Penal Code:</dt>
+									<dd>1735A</dd>
+									<dt>Reference#:</dt>
+									<dd>1-188499951</dd>
+									<dt>Status:</dt>
+									<dd>Scheduled</dd>
+									<dt>Disposition:</dt>
+									<dd></dd>
+									<dt>Assigned To:</dt>
+									<dd>JSPREG</dd>
+								  </dl>
+							  </div>
+							  <div class="col-md-4">
+								  <dl class="dl-horizontal">
+									<dt>Received By:</dt>
+									<dd>Court Clerk</dd>
+									<dt>Received Date:</dt>
+									<dd><%: Model.casereceiveddate %></dd>
+									<dt>Received From:</dt>
+									<dd>Judicial Department</dd>
+									<dt>Police Division:</dt>
+									<dd>South Block</dd>
+									<dt>Stage:</dt>
+									<dd>Country Court</dd>
+									<dt>Courthouse:</dt>
+									<dd>A24</dd>
+								  </dl>
+							  </div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					<div class="panel box box-primary">
+					  <div class="box-header with-border">
+						<h4 class="box-title">
+						  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							Summary
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseTwo" class="panel-collapse collapse">
+						<div class="box-body">
+						  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+						  wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+						  eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+						  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+						  nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+						  farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+						  labore sustainable VHS.
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+		</div>
 	</div>
-	<div class="row" style="background-color:white;padding-bottom:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px"> 
-		<div class="col-sm-3 col-sm-offset-1" style="display:flex;justify-content:center">
-			<div class="col-padding">
-				<table>
-					<tr><td>Case #</td><td><%: Model.caseid %></td></tr>
-					<tr><td>District Ct. File # </td><td></td></tr>
-					<tr><td>Case Name</td><td><%: Model.casename %></td></tr>
-					<tr><td>Case Type</td><td>Civil</td></tr>
-					<tr><td>Prosecutor </td><td>Frank Kratovil</td></tr>
-					<tr><td>Created By</td><td>JUD1</td></tr>
-				</table>
-			</div>
-		</div>
-		<div class="col-sm-3" style="display:flex;justify-content:center">
-			<div class="col-padding">
-				<table>
-					<tr><td>Classification</td><td><%: Model.classification %></td></tr>
-					<tr><td>Case Charge</td><td>Felony</td></tr>
-					<tr><td>Status/ Penal Code</td><td>1735A</td></tr>
-					<tr><td>Reference # </td><td>1-188499951</td></tr>
-					<tr><td>Status </td><td>Scheduled</td></tr>
-					<tr><td>Disposition</td><td></td></tr>
-					<tr><td>Assigned To</td><td>JSPREG</td></tr>
-				</table>
-			</div>
-		</div>
-		<div class="col-sm-3" style="display:flex;justify-content:center">
-			<div class="col-padding">
-				<table>
-					<tr><td>Received By</td><td>Court Clerk</td></tr>
-					<tr><td>Received Date</td><td><%: Model.casereceiveddate %></td></tr>
-					<tr><td>Received From</td><td>Judicial Department</td></tr>
-					<tr><td>Police Division </td><td>South Block</td></tr>
-					<tr><td>Stage </td><td>Country Court</td></tr>
-					<tr><td>Courthouse</td><td>A24</td></tr>
-				</table>
-			</div>
-		</div>
-	</div>
-	<br />
 	<div class="row icons-buttons" style="display:flex;justify-content:center">
 		<div class="col" style="display:flex;background-color:white;border-radius:10px;">
 			<div class="icon-button active" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="0"><i class="material-icons" style="font-size:48px">people_outline</i></div>
@@ -69,7 +125,7 @@
 										<ul class="list-group list-group-body" style="">
 											<li class="list-group-item">
 												<div class="row">
-													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = Model.caseid }, new { @class = "classname" })%></div>
+													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = 123 }, new { @class = "classname" })%></div>
 													<div class="col-xs-4" style="">
 														<table>
 															<tbody>
@@ -105,7 +161,7 @@
 											</li>
 											<li class="list-group-item">
 												<div class="row">
-													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = Model.caseid }, new { @class = "classname1" })%></div>
+													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = 123 }, new { @class = "classname1" })%></div>
 													<div class="col-xs-4" style="">
 														<table>
 															<tbody>
@@ -157,35 +213,35 @@
 						</div>
 					</div>
 					<div class="item">
-						<blockquote>
-							<div class="row">
-								<div class="col-sm-8 col-sm-offset-2" style="padding:30px;background-color:white;border-radius:10px">
-									<button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-										View OrderSheet
-									</button>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2" style="padding:30px;background-color:white;border-radius:10px">
+								<button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
+									View OrderSheet
+								</button>
 
-									<!-- Modal -->
-									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-										<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="myModalLabel">Order Sheet</h4>
-											</div>
-											<div class="modal-body">
-											    <iframe src="../../Content/files/OrderSheet.pdf" style="width:500px;height:500px;" frameborder="0"></iframe>
-											</div>
-											<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary">Save changes</button>
-											</div>
-										</div>
-										</div>
+								<!-- Modal -->
+								<div class="modal fade" id="modal-default">
+								  <div class="modal-dialog">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										  <span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title">Default Modal</h4>
+									  </div>
+									  <div class="modal-body">
+										<iframe src="../../Content/files/OrderSheet.pdf" style="width:500px;height:500px;" frameborder="0"></iframe>
+									  </div>
+									  <div class="modal-footer">
+										<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Save changes</button>
+									  </div>
 									</div>
-									
-								</div>
+									<!-- /.modal-content -->
+								  </div>
+								  <!-- /.modal-dialog -->
+								</div>									
 							</div>
-						</blockquote>
+						</div>
 					</div>
 				</div>
 				<!-- Carousel Buttons Next/Prev
@@ -202,22 +258,22 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
-		$('div[data-toggle="tooltip"]').tooltip({
-			animated: 'fade',
-			placement: 'bottom',
-		});
-		
-		$(".icon-button").on("click",function () {
-			var arr = { 0: "people", 1: "folder" };
-			var sarr = { 0: "people_outline", 1: "folder_open" };
-			var that = $(this);
-			$(".icons-buttons").find(".icon-button").each(function () {
-				$(this).find("i").text(arr[$(this).attr("data-slide-to")]);
-				$(this).removeClass("active");
-			});
-			$(this).addClass("active");
+	    $('div[data-toggle="tooltip"]').tooltip({
+	        animated: 'fade',
+	        placement: 'bottom',
+	    });
 
-			$(this).find("i").text(sarr[$(this).attr("data-slide-to")]);
-		});
+	    $(".icon-button").on("click", function () {
+	        var arr = { 0: "people", 1: "folder" };
+	        var sarr = { 0: "people_outline", 1: "folder_open" };
+	        var that = $(this);
+	        $(".icons-buttons").find(".icon-button").each(function () {
+	            $(this).find("i").text(arr[$(this).attr("data-slide-to")]);
+	            $(this).removeClass("active");
+	        });
+	        $(this).addClass("active");
+
+	        $(this).find("i").text(sarr[$(this).attr("data-slide-to")]);
+	    });
 	</script>
 </asp:Content>
