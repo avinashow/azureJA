@@ -1,0 +1,5 @@
+[
+{"name":"stephanie Anderson","partytype":"petitioner","gender":"female","ssn":"998-95-4624","status":"verified","nationality":"USA","noofcases":"01","caseid":"345"},
+{"name":"Martin Hall","partytype":"respondent","gender":"male","ssn":"998-95-5491","status":"verified","nationality":"USA","noofcases":"05","caseid":"234"},
+{"name":"Lewis Smith","partytype":"petitioner attorney","gender":"male","ssn":"998-43-6666","status":"verified","nationality":"USA","noofcases":"16","caseid":"123"}
+]

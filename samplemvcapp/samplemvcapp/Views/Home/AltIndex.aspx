@@ -1,279 +1,193 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.CaseDetailsModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	CaseDetails
+<asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
+	
+	Home Page - My ASP.NET MVC Application
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-solid">
-				<div class="box-header with-border">
-				  <h2 class="box-title" style="text-align:center"><strong>Case <%: Model.caseid %></strong></h2>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-				  <div class="box-group" id="accordion">
-					<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-					<div class="panel box box-primary">
-					  <div class="box-header with-border">
-						<h4 class="box-title">
-						  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-							Case Details
-						  </a>
-						</h4>
-					  </div>
-					  <div id="collapseOne" class="panel-collapse collapse in">
-						<div class="box-body">
-						  <div class="row">
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Case#:</dt>
-									<dd><%: Model.caseid %></dd>
-									<dt>District Ct. File #:</dt>
-									<dd></dd>
-									<dt>Case Name:</dt>
-									<dd><%: Model.casename %></dd>
-									<dt>Case Type:</dt>
-									<dd>Civil</dd>
-									<dt>Prosecutor: </dt>
-									<dd>Frank Kratovil</dd>
-									<dt>Created By:</dt>
-									<dd>JUD1</dd>
-								  </dl>
-							  </div>
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Classification:</dt>
-									<dd><%: Model.classification %></dd>
-									<dt>Case Charge:</dt>
-									<dd>Felony</dd>
-									<dt>Status/Penal Code:</dt>
-									<dd>1735A</dd>
-									<dt>Reference#:</dt>
-									<dd>1-188499951</dd>
-									<dt>Status:</dt>
-									<dd>Scheduled</dd>
-									<dt>Disposition:</dt>
-									<dd></dd>
-									<dt>Assigned To:</dt>
-									<dd>JSPREG</dd>
-								  </dl>
-							  </div>
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Received By:</dt>
-									<dd>Court Clerk</dd>
-									<dt>Received Date:</dt>
-									<dd><%: Model.casereceiveddate %></dd>
-									<dt>Received From:</dt>
-									<dd>Judicial Department</dd>
-									<dt>Police Division:</dt>
-									<dd>South Block</dd>
-									<dt>Stage:</dt>
-									<dd>Country Court</dd>
-									<dt>Courthouse:</dt>
-									<dd>A24</dd>
-								  </dl>
-							  </div>
-						  </div>
-						</div>
-					  </div>
-					</div>
-					<div class="panel box box-primary">
-					  <div class="box-header with-border">
-						<h4 class="box-title">
-						  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-							Summary
-						  </a>
-						</h4>
-					  </div>
-					  <div id="collapseTwo" class="panel-collapse collapse">
-						<div class="box-body">
-						  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-						  wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-						  eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-						  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-						  nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-						  farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-						  labore sustainable VHS.
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-				<!-- /.box-body -->
-			  </div>
-		</div>
-	</div>
-	<div class="row icons-buttons" style="display:flex;justify-content:center">
-		<div class="col" style="display:flex;background-color:white;border-radius:10px;">
-			<div class="icon-button active" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="0"><i class="material-icons" style="font-size:48px">people_outline</i></div>
-			<div class="icon-button" data-toggle="tooltip" title="attachments" data-target="#quote-carousel" data-slide-to="1"><i class="material-icons" style="font-size:48px">folder</i></div>
-			<div class="icon-button" data-toggle="tooltip" title="timeline" onclick="window.location.replace('/CaseDetails/Timeline/<%: ViewBag.caseid %>')"><img class="img-responsive" width="50px" height="50px" src="../../Images/timeline.png" /></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12" data-wow-delay="0.2s">
-			<div class="carousel slide" data-ride="carousel" id="quote-carousel" data-interval="false">
-				<div class="carousel-inner text-center">
-					<div class="item active">
-						<div class="row">
-							<div class="col-md-9 col-md-offset-2">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<ul class="list-group list-group-body" style="">
-											<li class="list-group-item">
-												<div class="row">
-													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = 123 }, new { @class = "classname" })%></div>
-													<div class="col-xs-4" style="">
-														<table>
-															<tbody>
-																<tr>
-																	<td>Name: </td><td>Stephanie</td>
-																</tr>
-																<tr>
-																	<td>Party Type: </td><td>Petitioner</td>
-																</tr>
-																<tr>
-																	<td></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="col-xs-4" style="">
-														<table>
-															<tr>
-																<td>Mobile: </td><td>+1(786)-376-7045</td>
-															</tr>
-															<tr>
-																<td>Home: </td><td>Unavailable</td>
-															</tr>
-															<tr>
-																<td>Gender: </td><td>Female</td>
-															</tr>
-															<tr>
-																<td>Nationality: </td><td>Unavailable</td>
-															</tr>
-														</table>
-													</div>
-												</div>
-											</li>
-											<li class="list-group-item">
-												<div class="row">
-													<div class="col-xs-3 text-left" style=" "><%= Html.ActionLink("Button Name", "CaseDetail", "CaseDetails", new { id = 123 }, new { @class = "classname1" })%></div>
-													<div class="col-xs-4" style="">
-														<table>
-															<tbody>
-																<tr>
-																	<td>Name: </td><td>Stephanie</td>
-																</tr>
-																<tr>
-																	<td>Party Type: </td><td>Petitioner</td>
-																</tr>
-																<tr>
-																	<td></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="col-xs-4" style="">
-														<table>
-															<tr>
-																<td>Mobile: </td><td>+1(786)-376-7045</td>
-															</tr>
-															<tr>
-																<td>Home: </td><td>Unavailable</td>
-															</tr>
-															<tr>
-																<td>Gender: </td><td>Female</td>
-															</tr>
-															<tr>
-																<td>Nationality: </td><td>Unavailable</td>
-															</tr>
-														</table>
-													</div>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="panel-footer" style="line-height: 34px; height: 54px;">
-										<div class="row" style="display:flex;">
-										  <div class="col col-xs-2">Page 1 of 1
-										  </div>
-										  <div class="col col-xs-8 col-md-push-2">
-											  <ul class="pagination hidden-xs pull-right" style="margin:0;">
-												  <li class="active"><a href="#">1</a></li>
-												</ul>
-										  </div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-sm-8 col-sm-offset-2" style="padding:30px;background-color:white;border-radius:10px">
-								<button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
-									View OrderSheet
-								</button>
+<asp:Content ID="indexFeatured" ContentPlaceHolderID="FeaturedContent" runat="server">
+</asp:Content>
 
-								<!-- Modal -->
-								<div class="modal fade" id="modal-default">
-								  <div class="modal-dialog">
-									<div class="modal-content">
-									  <div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										  <span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title">Default Modal</h4>
-									  </div>
-									  <div class="modal-body">
-										<iframe src="../../Content/files/OrderSheet.pdf" style="width:500px;height:500px;" frameborder="0"></iframe>
-									  </div>
-									  <div class="modal-footer">
-										<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save changes</button>
-									  </div>
-									</div>
-									<!-- /.modal-content -->
-								  </div>
-								  <!-- /.modal-dialog -->
-								</div>									
-							</div>
-						</div>
-					</div>
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
+				  <input type="text" class="knob test" data-readonly="true" value="53%" data-width="100" data-height="100"
+						 data-fgColor="green">
+				  <div class="knob-label"><strong>Case Assigned to Disposal Ratio</strong></div>
 				</div>
-				<!-- Carousel Buttons Next/Prev
-				<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><span class="glyphicon glyphicon-chevron-left"></span></a>
-				<a data-slide="next" href="#quote-carousel" class="right carousel-control"><span class="glyphicon glyphicon-chevron-right"></span></a>-->
+				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
+				  <input type="text" class="knob" data-readonly="true" value="30" data-width="100" data-height="100"
+						 data-fgColor="orange">
+				  <div class="knob-label"><Strong>Pending Order Sheets</Strong></div>
+				</div>
+				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
+				  <input type="text" class="knob" data-readonly="true" value="30" data-width="100" data-height="100"
+						 data-fgColor="red">
+				  <div class="knob-label"><Strong>Pending Cases</Strong></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col" style="background-color:white;border-radius:20px;padding:20px;text-align:justify">
+					<div style="text-align:center">
+						<h2>Time to Resolve the cases vs Target</h2>
+					</div>
+					<hr style="width:100%;background:none;height:0;border:1px solid lightgray;"/>
+					<canvas id="bar-chart" width="100%" height="50px"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="col text-center" style="margin:10px;border-radius:20px;padding:30px;background-color:white">
+				<div id="pieChart" style="height: 360px; width: 100%;">
+
+				</div>
+				<div id="js-legend" class="chart-legend"></div>
 			</div>
 		</div>
 	</div>
-	
-
-
+</div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
+	<script src="../../Scripts/morris.min.js"></script>
+
 	<script>
-		$('div[data-toggle="tooltip"]').tooltip({
-			animated: 'fade',
-			placement: 'bottom',
-		});
+	    $(document).ready(function () {
+	        var pieChartValues = [{
+	            y: 39.16,
+	            exploded: true,
+	            legendText: "Backlogged",
+	            indexLabel: "Backlogged",
+	            color: "#1f77b4"
+	        }, {
+	            y: 21.8,
+	            legendText: "Completed",
+	            indexLabel: "Completed",
+	            exploded: true,
+	            color: "#ff7f0e"
+	        }, {
+	            y: 21.45,
+	            legendText: "Deferred",
+	            indexLabel: "Deferred",
+	            exploded: true,
+	            color: " #ffbb78"
+	        }, {
+	            y: 5.56,
+	            legendText: "Cancelled",
+	            indexLabel: "Cancelled",
+	            exploded: true,
+	            color: "#d62728"
+	        }];
+	        renderPieChart(pieChartValues);
 
-		$(".icon-button").on("click", function () {
-			var arr = { 0: "people", 1: "folder" };
-			var sarr = { 0: "people_outline", 1: "folder_open" };
-			var that = $(this);
-			$(".icons-buttons").find(".icon-button").each(function () {
-				$(this).find("i").text(arr[$(this).attr("data-slide-to")]);
-				$(this).removeClass("active");
-			});
-			$(this).addClass("active");
+	        function renderPieChart(values) {
 
-			$(this).find("i").text(sarr[$(this).attr("data-slide-to")]);
-		});
+	            var chart = new CanvasJS.Chart("pieChart", {
+	                backgroundColor: "white",
+	                colorSet: "colorSet2",
+
+	                title: {
+	                    text: "Pending Cases",
+	                    fontFamily: "Verdana",
+	                    fontSize: 25,
+	                    fontWeight: "normal",
+	                },
+	                animationEnabled: true,
+	                data: [{
+	                    indexLabelFontSize: 15,
+	                    indexLabelFontFamily: "Monospace",
+	                    indexLabelFontColor: "darkgrey",
+	                    indexLabelLineColor: "darkgrey",
+	                    indexLabelPlacement: "outside",
+	                    type: "doughnut",
+	                    showInLegend: true,
+	                    toolTipContent: "<strong>#percent%</strong>",
+	                    dataPoints: values
+	                }]
+	            });
+	            chart.render();
+	        }
+
+	        //display knobs
+	        $('.knob').knob();
+
+	        //Bar chart 
+	        // Return with commas in between
+	        var numberWithCommas = function (x) {
+	            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	        };
+
+	        var dataPack1 = [21000, 22000, 26000, 35000];
+	        var dataPack2 = [1000, 1200, 1300, 1400];
+	        var dates = ["Mar 2016", "May 2016", "Jul 2016", "Sep 2016"];
+
+	        // Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
+
+	        var bar_ctx = document.getElementById('bar-chart');
+	        var bar_chart = new Chart(bar_ctx, {
+	            type: 'bar',
+	            data: {
+	                labels: dates,
+	                datasets: [
+					{
+					    label: 'Actual',
+					    data: dataPack1,
+					    backgroundColor: "rgba(55, 160, 225, 0.7)",
+					    hoverBackgroundColor: "rgba(55, 160, 225, 0.7)",
+					    hoverBorderWidth: 2,
+					    hoverBorderColor: 'lightgrey'
+					},
+					{
+					    label: 'Target',
+					    data: dataPack2,
+					    backgroundColor: "rgba(225, 58, 55, 0.7)",
+					    hoverBackgroundColor: "rgba(225, 58, 55, 0.7)",
+					    hoverBorderWidth: 2,
+					    hoverBorderColor: 'lightgrey'
+					},
+	                ]
+	            },
+	            options: {
+	                animation: {
+	                    duration: 10,
+	                },
+	                responsive: true,
+	                tooltips: {
+	                    mode: 'label',
+	                    callbacks: {
+	                        label: function (tooltipItem, data) {
+	                            return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
+	                        }
+	                    }
+	                },
+	                scales: {
+	                    xAxes: [{
+	                        stacked: true,
+	                        ticks: {
+	                            autoSkip: true,
+	                            autoSkipPadding: 20,
+	                        },
+	                        //gridLines: { display: false },
+	                    }],
+	                    yAxes: [{
+	                        stacked: true,
+	                        ticks: {
+	                            callback: function (value) { return numberWithCommas(value); },
+	                        },
+	                    }],
+	                }, // scales
+	                legend: { display: true }
+	            } // options
+	        }
+			);
+
+	    });
+
 	</script>
+	  
 </asp:Content>

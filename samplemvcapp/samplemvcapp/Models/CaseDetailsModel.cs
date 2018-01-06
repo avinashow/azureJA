@@ -29,6 +29,7 @@ namespace samplemvcapp.Models
         public String stage { get; set; }
         public String courthouse { get; set; }
         public String category { get; set; }
+        public List<ContactModel> contact { get; set; }
 
 
         public static List<CaseDetailsModel> GetCases()

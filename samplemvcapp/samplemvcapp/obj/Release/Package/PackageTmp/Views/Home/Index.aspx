@@ -5,9 +5,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <section class="content-header">
-      <h1>
-        Analytics Dashboard
-      </h1>
     </section>
 
     <section class="content">
@@ -41,10 +38,9 @@
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div>
+        </div>        
         <!-- /.col -->
       </div>
-
         <!-- Row#2 -->
       <div class="row">
             <div class="col-md-8">
@@ -302,6 +298,55 @@
     <script>
         $(document).ready(function () {
             $('.knob').knob();
+            var pieChartValues = [{
+                y: 39.16,
+                exploded: true,
+                indexLabel: "Criminal Proceedings",
+                color: "#1f77b4"
+            }, {
+                y: 21.8,
+                indexLabel: "Average Hearing for category",
+                exploded: true,
+                color: "#ff7f0e"
+            }, {
+                y: 21.45,
+                indexLabel: "SLA disposal",
+                exploded: true,
+                color: " #ffbb78"
+            }, {
+                y: 5.56,
+                indexLabel: "Current Conducting Hearings",
+                exploded: true,
+                color: "#d62728"
+            }];
+            renderPieChart(pieChartValues);
+            function renderPieChart(values) {
+
+                var chart = new CanvasJS.Chart("donutChart", {
+                    backgroundColor: "white",
+                    colorSet: "colorSet2",
+
+                    title: {
+                        text: "Case Category",
+                        fontFamily: "Verdana",
+                        fontSize: 25,
+                        fontWeight: "normal",
+                    },
+                    animationEnabled: true,
+                    data: [{
+                        indexLabelFontSize: 15,
+                        indexLabelFontFamily: "Monospace",
+                        indexLabelFontColor: "darkgrey",
+                        indexLabelLineColor: "darkgrey",
+                        indexLabelPlacement: "outside",
+                        type: "doughnut",
+                        showInLegend: false,
+                        toolTipContent: "<strong>#percent%</strong>",
+                        dataPoints: values
+                    }]
+                });
+                chart.render();
+            }
         })
         
     </script>

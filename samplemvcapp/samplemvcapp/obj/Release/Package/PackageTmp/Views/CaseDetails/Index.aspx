@@ -33,21 +33,63 @@
     </style>
     <div class="row">
         <div class="col-md-4" style="border-radius:10px;padding:20px;background-color:white">
-            <div id="calendar">
+            <!--<div id="calendar">
+            </div>-->
+            <div class="box box-solid bg-green-gradient">
+            <div class="box-header">
+              <i class="fa fa-calendar"></i>
+
+              <h3 class="box-title">Calendar</h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <!-- button with a dropdown -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bars"></i></button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#">Add new event</a></li>
+                    <li><a href="#">Clear events</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">View calendar</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+              <!-- /. tools -->
             </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <!--The calendar -->
+              <div id="calendar" style="width: 100%"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
         </div>
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Case Search" id="search" />
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <a id="clearSearch" class="btn btn-default" href=""><i class="glyphicon glyphicon-pencil" style="color:red"></i>&nbsp;Clear Search</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" id="selectbtn" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Category
+                                </button>
+                                <ul class="dropdown-menu" id="conmenu">
+                                    <li><a class="dropdown-item" href="">Reschedule</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="">Pending</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -76,17 +118,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <label for="btn-group">Change Category</label><br />
-                    <div class="btn-group">
-                      <button type="button" id="selectbtn" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select Option
-                      </button>
-                      <ul class="dropdown-menu" id="conmenu">
-                          <li><a class="dropdown-item" href="">Reschedule</a></li>
-                          <li class="divider"></li>
-                          <li><a class="dropdown-item" href="">Pending</a></li>
-                      </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -100,7 +132,7 @@
             <li id="${$value.caseid}" class="list-group-item clearfix" >
                 <div class="row">
                     <div class="col-sm-2">
-                        <span class="glyphicon glyphicon-book" style="font-size:70px;"></span>
+                        <span class="glyphicon glyphicon-folder-open" style="font-size:70px;"></span>
                     </div>
                     <div class="col-sm-6">
                         <h4><a class="list-group-item-heading" href="/CaseDetails/CaseDetail/${$value.caseid}">Case#:${$value.caseid}</a></h4>
@@ -166,8 +198,8 @@
         }
 
         function clearAllSelection(date) {
-            $(".dow-clickable").each(function () { $(this).css("background-color", ""); });
-            date.css("background-color", "black");
+            $(".dow-clickable").each(function () { $(this).children().css("background-color", ""); });
+            date.children().css("background-color", "black");
         }
 
         function updateCasesListView(cases, parent) {
@@ -192,7 +224,7 @@
         function getAllCases() {
             var allCases = [];
             <%
-            foreach (var item in ViewBag.calendardates)
+        foreach (var item in ViewBag.calendardates)
             {%>
                 <%
                 for (var i = 0; i < item.Value.Count; i++)

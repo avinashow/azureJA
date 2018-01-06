@@ -1,139 +1,116 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../Content/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../Content/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../Content/ionicons.min.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../../Content/jquery-jvectormap.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../Content/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../Content/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../Content/blue.css">
+<html lang="en">
+    <head id="Head1" runat="server">
+        <meta charset="utf-8" />
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%: Styles.Render("~/Content/css") %>
+        <link rel="stylesheet" href="../../Content/bootstrap.css" />
+        <%: Scripts.Render("~/bundles/modernizr") %>
+        <style>
+            hr {
+              height: .25rem;
+              width: 30%;
+              margin:0;
+              background: tomato;
+              border: none;
+              transition: .3s ease-in-out;
+            }
+            .one:hover ~ hr
+            {
+                margin-left:10%;
+            }
+            .home
+            {
+                margin-left:10%;
+            }
+            .two:hover ~ hr {
+              margin-left: 25%;
+            }
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+            /*.two
+            {
+                margin-left:25%;
+            }*/
 
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-    <!--- Header with navigation button ---->
-    <header class="main-header">
-        <!-- Logo -->
-        <a href="index2.html" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>J</b>A</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Justice Align</b></span>
-        </a>
-        
-        <nav class="navbar navbar-static-top">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <div class="navbar-custom-menu">
-            <%: Html.Partial("_LoginPartial") %>
-          </div>
-        </nav>
-    </header>
-    <!--sidebar-->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <span class="glyphicon glyphicon-user" style="color:white"></span>
+            .four:hover ~ hr
+            {
+                margin-left:60%;
+            }
+
+            .three:hover ~ hr {
+              margin-left: 50%;
+            }
+            .case
+            {
+                margin-left:60%;
+            }
+
+
+        </style>
+    </head>
+    <body>
+            
+        <div class="navbar navbar-default" style="margin-bottom:0px;">
+            <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting"><img style="width:150px; height:25px;" src="http://www.justicealign.com/images/logo.png"></a>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <% if (Request.IsAuthenticated && Roles.IsUserInRole("admin"))
+                       {
+                    %>
+                        <ul class="nav navbar-nav">
+                            <li class="one"><%: Html.ActionLink("Home", "Index", "Home")%></li>
+                            <li class="four"><%: Html.ActionLink("Cases", "Index", "CaseDetails")%></li>
+                            <hr id="line"/>
+                        </ul>
+                    <% }%>
+                    <%: Html.Partial("_LoginPartial") %>
+                </div>
             </div>
-            <div class="pull-left info">
-              <p>Alexander Pierce</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+        <div id="body">
+            <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
+            <!--<section class="content-wrapper main-content clear-fix" style="">-->
+            <div class="container" style="padding:20px">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
-          </div>
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="active">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Analytics</span>
-              </a>
-            </li>
-            <li>
-              <a href="/CaseDetails">
-                <i class="fa fa-files-o"></i>
-                <span>Cases</span>
-              </a>
-            </li>
-            <li>
-              <a href="pages/calendar.html">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <span class="pull-right-container">
-                  <small class="label pull-right bg-red">3</small>
-                  <small class="label pull-right bg-blue">17</small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-    <!-- content -->
-    <div class="content-wrapper">
-        <section class="content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-        </section>
-    </div>
-    <!-- content -->
-</div> 
-<!-- jQuery 3 -->
-<script src="../../Scripts/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../Scripts/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="../../Scripts/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../Scripts/adminlte.min.js"></script>
-<!-- Sparkline -->
-<script src="../../Scripts/jquery.sparkline.min.js"></script>
-<!-- jvectormap  -->
-<script src="../../Scripts/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../../Scripts/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll -->
-<script src="../../Scripts/jquery.slimscroll.min.js"></script>
-<!-- ChartJS -->
-<script src="../../Scripts/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../../Scripts/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../Scripts/demo.js"></script>
-<!-- iCheck -->
-<script src="../../Scripts/icheck.min.js"></script>
-<script src="../../Scripts/jquery.tmpl.js"> </script>
-<script src="../../Scripts/morris.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
-<link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
-<script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />  
-</body>
+                
+            <!--</section>-->
+        </div>
+        <footer style="height:20px">
+            <div class="content-wrapper">
+                <div style="text-align:center">
+                    <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        <%: Scripts.Render("~/bundles/jquery") %>
+        <%: Scripts.Render("~/bundles/jqueryui") %>
+        <script src="../../Scripts/jquery.tmpl.js"> </script>
+        <script src="../../Scripts/bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
+        <link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
+        <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css" />
+        <script src="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.js"></script>
+        <link rel="stylesheet" href="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.css" />
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script>
+            var page = "<%: ViewBag.currentPage%>";
+            var hr = $("#line");
+            hr.toggleClass(page);
+        </script>
+        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+    </body>
 </html>

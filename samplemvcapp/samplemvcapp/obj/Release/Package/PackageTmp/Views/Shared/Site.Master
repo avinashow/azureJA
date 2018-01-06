@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="../../Content/_all-skins.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="../../Content/blue.css">
+  <link rel="stylesheet" href="../../Content/daterangepicker.css" />
+  <link rel="stylesheet" href="../../Content/bootstrap-datepicker.min.css" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,7 +100,7 @@
         <!-- /.sidebar -->
       </aside>
     <!-- content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="padding:20px;background-image:url(http://cdn.cnn.com/cnnnext/dam/assets/160216120505-the-courtroom-of-the-supreme-court-showing-justice-antonin-scalias-bench-chair-and-the-bench-draped-in-black-full-169.jpeg);background-position:center;background-size:cover;background-attachment:fixed">
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
     <!-- content -->
@@ -118,6 +120,10 @@
 <script src="../../Scripts/jquery-jvectormap-world-mill-en.js"></script>
 <!-- SlimScroll -->
 <script src="../../Scripts/jquery.slimscroll.min.js"></script>
+<!--- date calendar -->
+<script src="../../Scripts/moment.min.js"></script>
+<script src="../../Scripts/daterangepicker.js"></script>
+<script src="../../Scripts/bootstrap-datepicker.min.js"></script>
 <!-- ChartJS -->
 <script src="../../Scripts/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -128,8 +134,7 @@
 <script src="../../Scripts/icheck.min.js"></script>
 <script src="../../Scripts/jquery.tmpl.js"> </script>
 <script src="../../Scripts/morris.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
-<link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
+<link rel="stylesheet" href="../../Content/zabuto_calendar.min.css" />
 <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />  

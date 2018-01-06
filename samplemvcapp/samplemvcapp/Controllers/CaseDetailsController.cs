@@ -21,13 +21,11 @@ namespace samplemvcapp.Controllers
             var cases = CaseDetailsModel.GetCases();
             if (cases != null)
             {
-                ViewBag.calendardates = CaseDetailsController.getCalendarDates(cases);
-                ViewBag.categoryCases = CaseDetailsController.getCasesByCategory(cases);
+                ViewBag.calendardates = getCalendarDates(cases);
             }
             else
             {
                 ViewBag.calendardates = new Dictionary<String,List<Dictionary<String,String>>>();
-                ViewBag.categoryCases = new Dictionary<String, List<Dictionary<String, String>>>();
             }
             return View(cases);
         }
@@ -58,23 +56,6 @@ namespace samplemvcapp.Controllers
             System.IO.File.WriteAllText(ClientFile, JsonConvert.SerializeObject(model));
             resp.Add("message","success");
             return JsonConvert.SerializeObject(resp);
-        }
-
-        private static Dictionary<String, List<Dictionary<String, String>>> getCasesByCategory(List<CaseDetailsModel> cases)
-        {
-            Dictionary<String, List<Dictionary<String, String>>> result = new Dictionary<string, List<Dictionary<String, String>>>();
-
-            List<Dictionary<String, String>> list;
-
-            foreach (CaseDetailsModel c in cases)
-            {
-                var ket = c.category;
-                list = (result.ContainsKey(ket)) ? result[ket] : new List<Dictionary<String, String>>();
-                list.Add(CaseDetailsController.getListJson(c));
-                result[ket] = list;
-            }
-
-            return result;
         }
 
         private static Dictionary<String, String> getListJson(CaseDetailsModel c)

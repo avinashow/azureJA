@@ -7,9 +7,11 @@ using System.Web.Mvc;
 namespace samplemvcapp.Controllers
 {
     public class HomeController : Controller
-    {        
+    {
+        [Authorize]
         public ActionResult AltIndex()
         {
+            ViewBag.currentPage = "home";
             return View();
         }
         
