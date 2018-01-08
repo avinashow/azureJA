@@ -75,12 +75,12 @@
           </div>
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="active">
+            <li class="active" id="home">
               <a href="/Home">
                 <i class="fa fa-dashboard"></i> <span>Analytics</span>
               </a>
             </li>
-            <li>
+            <li id="case">
               <a href="/CaseDetails">
                 <i class="fa fa-files-o"></i>
                 <span>Cases</span>
@@ -137,6 +137,14 @@
 <link rel="stylesheet" href="../../Content/zabuto_calendar.min.css" />
 <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />  
+<script>
+    var page = "<%: ViewBag.currentPage%>";
+    $(".sidebar-menu li").each(function () {
+        $(this).removeClass("active");
+    });;
+    $("#" + page).addClass("active");
+</script>
+<asp:Contentplaceholder ID="ScriptsSection" runat="server">  
+</asp:Contentplaceholder>
 </body>
 </html>
