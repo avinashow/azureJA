@@ -5,188 +5,171 @@
 	Home Page - My ASP.NET MVC Application
 </asp:Content>
 
-<asp:Content ID="indexFeatured" ContentPlaceHolderID="FeaturedContent" runat="server">
+<asp:Content ID="indexFeatured" ContentPlaceHolderID="HeadContent" runat="server">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="../../Content/fullcalendar.min.css" />
+	<style>
+		@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
+		@import "http://fonts.googleapis.com/css?family=Roboto:400,500";
+
+		.box > .icon { 
+		text-align: center; position: relative;4
+		}
+		.box > .icon > .image { 
+		position: relative;color:white;font-size:20px; z-index: 2; margin: auto; width: 300px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 20px; background: #63B76C; vertical-align: middle; 
+		}
+		.box > .icon:hover > .image {
+		background: #333;
+		}
+		.box > .icon > .image > i { 
+		font-size: 36px !important; color: #fff !important; 
+		}
+		.box > .icon:hover > .image > i { 
+		color: white !important; 
+		}
+		.box > .icon > .info { 
+		margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; 
+		}
+		.box > .icon:hover > .info { 
+		background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; 
+		}
+		.box > .icon > .info > h3.title { 
+		font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; 
+		}
+		.box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
+		.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #222; }
+		.box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
+		.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #63B76C; }
+		.box .space { height: 30px; }
+	</style>
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-<div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
-				  <input type="text" class="knob test" data-readonly="true" value="53%" data-width="100" data-height="100"
-						 data-fgColor="green">
-				  <div class="knob-label"><strong>Case Assigned to Disposal Ratio</strong></div>
-				</div>
-				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
-				  <input type="text" class="knob" data-readonly="true" value="30" data-width="100" data-height="100"
-						 data-fgColor="orange">
-				  <div class="knob-label"><Strong>Pending Order Sheets</Strong></div>
-				</div>
-				<div class="col-md-3 text-center" style="margin:10px;border-radius:20px;padding:10px;background-color:white">
-				  <input type="text" class="knob" data-readonly="true" value="30" data-width="100" data-height="100"
-						 data-fgColor="red">
-				  <div class="knob-label"><Strong>Pending Cases</Strong></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col" style="background-color:white;border-radius:20px;padding:20px;text-align:justify">
-					<div style="text-align:center">
-						<h2>Time to Resolve the cases vs Target</h2>
-					</div>
-					<hr style="width:100%;background:none;height:0;border:1px solid lightgray;"/>
-					<canvas id="bar-chart" width="100%" height="50px"></canvas>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-5">
-			<div class="col text-center" style="margin:10px;border-radius:20px;padding:30px;background-color:white">
-				<div id="pieChart" style="height: 360px; width: 100%;">
+		<div class="col-md-5" style="padding:20px;border-radius:20px">
+			
+			<div id='calendar' style="background-color:#5cb85c;border-radius:20px"></div>
+			<div id='datepicker'></div>
 
+			<div class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Create new event</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="title">Event title</label>
+									<input type="text" name="title" id="title" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="starts-at">Starts at</label>
+									<input type="text" name="starts_at" id="starts-at" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="ends-at">Ends at</label>
+									<input type="text" name="ends_at" id="ends-at" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+
+		<div class="col-md-6">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-desktop"></i><span style="padding-left:10px"></span></div>
+					<div class="info">
+						<h3 class="title">Desktop Friendly</h3>
+						<p>
+							Soo much content, soo little time. Omg. Dude this is a lot of content!
+						</p>
+						<div class="more">
+							<a href="#" title="Title Link">
+								Link here <i class="fa fa-angle-double-right"></i>
+							</a>
+						</div>
+					</div>
 				</div>
-				<div id="js-legend" class="chart-legend"></div>
+				<div class="space"></div>
 			</div>
 		</div>
 	</div>
-</div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
-	<script src="../../Scripts/morris.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
+	<script src="../../Scripts/fullcalendar.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
 	<script>
-	    $(document).ready(function () {
-	        var pieChartValues = [{
-	            y: 39.16,
-	            exploded: true,
-	            legendText: "Backlogged",
-	            indexLabel: "Backlogged",
-	            color: "#1f77b4"
-	        }, {
-	            y: 21.8,
-	            legendText: "Completed",
-	            indexLabel: "Completed",
-	            exploded: true,
-	            color: "#ff7f0e"
-	        }, {
-	            y: 21.45,
-	            legendText: "Deferred",
-	            indexLabel: "Deferred",
-	            exploded: true,
-	            color: " #ffbb78"
-	        }, {
-	            y: 5.56,
-	            legendText: "Cancelled",
-	            indexLabel: "Cancelled",
-	            exploded: true,
-	            color: "#d62728"
-	        }];
-	        renderPieChart(pieChartValues);
+		$(document).ready(function () {
+			$('#calendar').fullCalendar({
+				header: {
+					left: '',
+					center: 'prev title, next',
+					right: ''
+				},
+				navLinks: true, // can click day/week names to navigate views
+				selectable: true,
+				selectHelper: true,
+				select: function (start, end) {
+					// Display the modal.
+					// You could fill in the start and end fields based on the parameters
+					$('.modal').modal('show');
 
-	        function renderPieChart(values) {
+				},
+				eventClick: function (event, element) {
+					// Display the modal and set the values to the event values.
+					$('.modal').modal('show');
+					$('.modal').find('#title').val(event.title);
+					$('.modal').find('#starts-at').val(event.start);
+					$('.modal').find('#ends-at').val(event.end);
 
-	            var chart = new CanvasJS.Chart("pieChart", {
-	                backgroundColor: "white",
-	                colorSet: "colorSet2",
+				},
+				editable: true,
+				eventLimit: true // allow "more" link when too many events
 
-	                title: {
-	                    text: "Pending Cases",
-	                    fontFamily: "Verdana",
-	                    fontSize: 25,
-	                    fontWeight: "normal",
-	                },
-	                animationEnabled: true,
-	                data: [{
-	                    indexLabelFontSize: 15,
-	                    indexLabelFontFamily: "Monospace",
-	                    indexLabelFontColor: "darkgrey",
-	                    indexLabelLineColor: "darkgrey",
-	                    indexLabelPlacement: "outside",
-	                    type: "doughnut",
-	                    showInLegend: true,
-	                    toolTipContent: "<strong>#percent%</strong>",
-	                    dataPoints: values
-	                }]
-	            });
-	            chart.render();
-	        }
+			});
 
-	        //display knobs
-	        $('.knob').knob();
+			// Bind the dates to datetimepicker.
+			// You should pass the options you need
+			$("#starts-at, #ends-at").datetimepicker();
 
-	        //Bar chart 
-	        // Return with commas in between
-	        var numberWithCommas = function (x) {
-	            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	        };
+			// Whenever the user clicks on the "save" button om the dialog
+			$('#save-event').on('click', function () {
+				var title = $('#title').val();
+				if (title) {
+					var eventData = {
+						title: title,
+						start: $('#starts-at').val(),
+						end: $('#ends-at').val()
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
 
-	        var dataPack1 = [21000, 22000, 26000, 35000];
-	        var dataPack2 = [1000, 1200, 1300, 1400];
-	        var dates = ["Mar 2016", "May 2016", "Jul 2016", "Sep 2016"];
+				// Clear modal inputs
+				$('.modal').find('input').val('');
 
-	        // Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
-
-	        var bar_ctx = document.getElementById('bar-chart');
-	        var bar_chart = new Chart(bar_ctx, {
-	            type: 'bar',
-	            data: {
-	                labels: dates,
-	                datasets: [
-					{
-					    label: 'Actual',
-					    data: dataPack1,
-					    backgroundColor: "rgba(55, 160, 225, 0.7)",
-					    hoverBackgroundColor: "rgba(55, 160, 225, 0.7)",
-					    hoverBorderWidth: 2,
-					    hoverBorderColor: 'lightgrey'
-					},
-					{
-					    label: 'Target',
-					    data: dataPack2,
-					    backgroundColor: "rgba(225, 58, 55, 0.7)",
-					    hoverBackgroundColor: "rgba(225, 58, 55, 0.7)",
-					    hoverBorderWidth: 2,
-					    hoverBorderColor: 'lightgrey'
-					},
-	                ]
-	            },
-	            options: {
-	                animation: {
-	                    duration: 10,
-	                },
-	                responsive: true,
-	                tooltips: {
-	                    mode: 'label',
-	                    callbacks: {
-	                        label: function (tooltipItem, data) {
-	                            return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
-	                        }
-	                    }
-	                },
-	                scales: {
-	                    xAxes: [{
-	                        stacked: true,
-	                        ticks: {
-	                            autoSkip: true,
-	                            autoSkipPadding: 20,
-	                        },
-	                        //gridLines: { display: false },
-	                    }],
-	                    yAxes: [{
-	                        stacked: true,
-	                        ticks: {
-	                            callback: function (value) { return numberWithCommas(value); },
-	                        },
-	                    }],
-	                }, // scales
-	                legend: { display: true }
-	            } // options
-	        }
-			);
-
-	    });
+				// hide modal
+				$('.modal').modal('hide');
+			});
+		});
 
 	</script>
 	  

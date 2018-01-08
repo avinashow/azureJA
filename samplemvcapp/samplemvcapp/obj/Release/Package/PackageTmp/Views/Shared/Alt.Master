@@ -6,50 +6,7 @@
         <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
         <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <%: Styles.Render("~/Content/css") %>
-        <link rel="stylesheet" href="../../Content/bootstrap.css" />
-        <%: Scripts.Render("~/bundles/modernizr") %>
-        <style>
-            hr {
-              height: .25rem;
-              width: 30%;
-              margin:0;
-              background: tomato;
-              border: none;
-              transition: .3s ease-in-out;
-            }
-            .one:hover ~ hr
-            {
-                margin-left:10%;
-            }
-            .home
-            {
-                margin-left:10%;
-            }
-            .two:hover ~ hr {
-              margin-left: 25%;
-            }
-
-            /*.two
-            {
-                margin-left:25%;
-            }*/
-
-            .four:hover ~ hr
-            {
-                margin-left:60%;
-            }
-
-            .three:hover ~ hr {
-              margin-left: 50%;
-            }
-            .case
-            {
-                margin-left:60%;
-            }
-
-
-        </style>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
     </head>
     <body>
             
@@ -80,9 +37,7 @@
         <div id="body">
             <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
             <!--<section class="content-wrapper main-content clear-fix" style="">-->
-            <div class="container" style="padding:20px">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </div>
                 
             <!--</section>-->
         </div>
@@ -94,22 +49,9 @@
             </div>
         </footer>
 
-        <%: Scripts.Render("~/bundles/jquery") %>
-        <%: Scripts.Render("~/bundles/jqueryui") %>
-        <script src="../../Scripts/jquery.tmpl.js"> </script>
-        <script src="../../Scripts/bootstrap.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
-        <link rel="stylesheet" href="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.css" />
-        <script src="https://rawgit.com/zabuto/calendar/master/zabuto_calendar.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css" />
-        <script src="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.js"></script>
-        <link rel="stylesheet" href="https://dryan.tsheets-dev.com/include/fullcalendar/scheduler.css" />
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        
         <script>
             var page = "<%: ViewBag.currentPage%>";
-            var hr = $("#line");
-            hr.toggleClass(page);
         </script>
         <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
     </body>
