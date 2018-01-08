@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
 	
@@ -14,34 +14,27 @@
 		@import "http://fonts.googleapis.com/css?family=Roboto:400,500";
 
 		.box > .icon { 
-		text-align: center; position: relative;4
+		text-align: center; position: relative;
 		}
 		.box > .icon > .image { 
 		position: relative;color:white;font-size:20px; z-index: 2; margin: auto; width: 300px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 20px; background: #63B76C; vertical-align: middle; 
 		}
-		.box > .icon:hover > .image {
-		background: #333;
-		}
+		
 		.box > .icon > .image > i { 
 		font-size: 36px !important; color: #fff !important; 
 		}
-		.box > .icon:hover > .image > i { 
-		color: white !important; 
-		}
 		.box > .icon > .info { 
 		margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; 
-		}
-		.box > .icon:hover > .info { 
-		background: rgba(0, 0, 0, 0.04); border-color: #e0e0e0; color: white; 
 		}
 		.box > .icon > .info > h3.title { 
 		font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; 
 		}
 		.box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
-		.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #222; }
 		.box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
-		.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #63B76C; }
 		.box .space { height: 30px; }
+		.list-cust > li.list-group-item > .row > .col-sm-6 {
+			text-align:justify;
+		}
 	</style>
 </asp:Content>
 
@@ -91,16 +84,25 @@
 		<div class="col-md-6">
 			<div class="box">							
 				<div class="icon">
-					<div class="image"><i class="fa fa-desktop"></i><span style="padding-left:10px"></span></div>
+					<div class="image"><i class="fa fa-calendar"></i><span class="date" style="padding-left:10px"></span></div>
 					<div class="info">
-						<h3 class="title">Desktop Friendly</h3>
-						<p>
-							Soo much content, soo little time. Omg. Dude this is a lot of content!
-						</p>
-						<div class="more">
-							<a href="#" title="Title Link">
-								Link here <i class="fa fa-angle-double-right"></i>
-							</a>
+						<ul class="nav nav-tabs" role="tablist" style="margin-top:20px">
+							<li role="presentation" class="active">
+								<a href="#content" id="All" aria-controls="all" role="tab" data-toggle="tab">All</a>     
+							</li>
+							<li role="presentation">
+								<a href="#content" id="Pending" aria-controls="pending" role="tab" data-toggle="tab">Pending <span id="pending" class="badge" style="background-color:#0069d9"></span></a>
+							</li>
+							<li role="presentation">
+								<a href="#content" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge" style="background-color:#0069d9"></span></a>     
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="content">
+								<ul class="list-group list-cust" style="margin:20px;overflow:auto;">  
+									
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -112,65 +114,88 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="../../Scripts/jquery.tmpl.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
 	<script src="../../Scripts/fullcalendar.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
+	 <script type="text/x-jquery-tmpl" id="caseListTemplate">
+			{{each cases}}
+			<li id="${$value.caseid}" class="list-group-item clearfix" >
+				<div class="row">
+					<div class="col-sm-2">
+						<span class="glyphicon glyphicon-folder-open" style="font-size:70px;"></span>
+					</div>
+					<div class="col-sm-6">
+						<h4><a class="list-group-item-heading" href="/CaseDetails/CaseDetail/${$value.caseid}">Case#:${$value.caseid}</a></h4>
+						<p class="list-group-item-text">
+							Case Received Date: ${$value.casereceiveddate}
+						</p>
+						<p class="list-group-item-text">
+							Category: ${$value.category}
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<span id="select" style="font-size:20px;" class="glyphicon"></span>
+					</div>
+					<div class="col-sm-1">
+						<span id="${$index+1}" style="font-size:20px;" data-toggle="dropdown" class="glyphicon glyphicon-option-horizontal dropdown-toggle"></span>
+						<ul class="dropdown-menu" id="conmenu">
+							<li><a class="dropdown-item" href="">Reschedule</a></li>
+							<li class="divider"></li>
+							<li><a class="dropdown-item" href="">Pending</a></li>
+						</ul>
+					</div>
+				</div>
+			</li> 
+			{{/each}}
+	</script> 
 	<script>
-		$(document).ready(function () {
-			$('#calendar').fullCalendar({
-				header: {
-					left: '',
-					center: 'prev title, next',
-					right: ''
-				},
-				navLinks: true, // can click day/week names to navigate views
-				selectable: true,
-				selectHelper: true,
-				select: function (start, end) {
-					// Display the modal.
-					// You could fill in the start and end fields based on the parameters
-					$('.modal').modal('show');
+		function getAllCases() {
+			var allCases = [];
+			<%
+				foreach (var item in ViewBag.calendardates)
+					{%>
+						<%
+						for (var i = 0; i < item.Value.Count; i++)
+						{%>
 
-				},
-				eventClick: function (event, element) {
-					// Display the modal and set the values to the event values.
-					$('.modal').modal('show');
-					$('.modal').find('#title').val(event.title);
-					$('.modal').find('#starts-at').val(event.start);
-					$('.modal').find('#ends-at').val(event.end);
+			var d = {};
+							<% foreach(var subitem in item.Value[i]) {%>
+			d["<%:subitem.Key%>"] = "<%: subitem.Value %>";
+								<%}%>
+			allCases.push(d);
+			<%}
+						%>
+					<%}
+					%>
+			return allCases;
+		}
 
-				},
-				editable: true,
-				eventLimit: true // allow "more" link when too many events
-
-			});
-
-			// Bind the dates to datetimepicker.
-			// You should pass the options you need
-			$("#starts-at, #ends-at").datetimepicker();
-
-			// Whenever the user clicks on the "save" button om the dialog
-			$('#save-event').on('click', function () {
-				var title = $('#title').val();
-				if (title) {
-					var eventData = {
-						title: title,
-						start: $('#starts-at').val(),
-						end: $('#ends-at').val()
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+		function postData(selectedMenu) {
+			var caseData;
+			var data = {};
+			for (var i = 0; i < allCases.length; i++) {
+				if (selectedIds.indexOf(allCases[i].caseid) >= 0) {
+					allCases[i].category = selectedMenu.trim();
 				}
-				$('#calendar').fullCalendar('unselect');
-
-				// Clear modal inputs
-				$('.modal').find('input').val('');
-
-				// hide modal
-				$('.modal').modal('hide');
+			}
+			$.ajax({
+				url: "<%: Url.Action("UpdateCategory","CaseDetails") %>",
+				type: 'POST',
+				data: JSON.stringify(allCases),
+				contentType: 'application/json; charset=utf-8',
+				success: function (response) {
+					selectedIds = [];
+					updateTabCounts();
+				},
+				error: function (jqXHR, exception) {
+					alert('Error message.');
+				}
 			});
-		});
-
+			updateCasesListView(getCasesForSelectedDate(), "ul.list-group");
+		}
 	</script>
+	<script src="../../Scripts/CaseList.js"></script>
 	  
 </asp:Content>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using samplemvcapp.Models;
 
 namespace samplemvcapp.Controllers
 {
@@ -12,7 +13,16 @@ namespace samplemvcapp.Controllers
         public ActionResult AltIndex()
         {
             ViewBag.currentPage = "home";
-            return View();
+            var cases = CaseDetailsModel.GetCases();
+            if (cases != null)
+            {
+                ViewBag.calendardates = CaseDetailsController.getCalendarDates(cases);
+            }
+            else
+            {
+                ViewBag.calendardates = new Dictionary<String, List<Dictionary<String, String>>>();
+            }
+            return View(cases);
         }
         
         [Authorize]

@@ -30,7 +30,7 @@ namespace samplemvcapp.Controllers
             return View(cases);
         }
 
-        private static Dictionary<String, List<Dictionary<String,String>>> getCalendarDates(List<CaseDetailsModel> cases)
+        public static Dictionary<String, List<Dictionary<String,String>>> getCalendarDates(List<CaseDetailsModel> cases)
         { 
             Dictionary<String, List<Dictionary<String,String>>> result = new Dictionary<string, List<Dictionary<String,String>>>();
 

@@ -308,6 +308,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\CaseList.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\dashboard2.js" />
     <Content Include="Scripts\daterangepicker.js" />
