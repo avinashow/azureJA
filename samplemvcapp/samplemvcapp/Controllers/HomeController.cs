@@ -45,7 +45,7 @@ namespace samplemvcapp.Controllers
 
         public ActionResult Unauthorized()
         {
-            //ViewBag.currentPage = "two";
+            ViewBag.currentPage = "two";
             ViewBag.Message = "You are Unauthorized to access the page";
 
             return View();

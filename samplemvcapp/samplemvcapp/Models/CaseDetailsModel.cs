@@ -14,7 +14,7 @@ namespace samplemvcapp.Models
     {
 
         public static string CaseFile = HttpContext.Current.Server.MapPath("~/Content/Clients.json");
-        private static string connstr = "Server=tcp:justicealigndbserver.database.windows.net,1433;Initial Catalog=justicealigndb;Persist Security Info=False;User ID=adminJA;Password=@vinasH90;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private static string connstr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public String caseid { get; set; }
         public String casereceiveddate { get; set; }
         public string summary { get; set; }
