@@ -50,10 +50,11 @@ namespace samplemvcapp.Controllers
         [HttpPost]
         public String UpdateCategory(List<CaseDetailsModel> model)
         {
-            var ClientFile = CaseDetailsModel.CaseFile;
-            System.IO.File.WriteAllText(ClientFile, string.Empty);
+            CaseDetailsModel.UpdateCase(model);
+            /*var ClientFile = CaseDetailsModel.CaseFile;
+            System.IO.File.WriteAllText(ClientFile, string.Empty);*/
             Dictionary<String,String> resp = new Dictionary<string,string>();
-            System.IO.File.WriteAllText(ClientFile, JsonConvert.SerializeObject(model));
+           /* System.IO.File.WriteAllText(ClientFile, JsonConvert.SerializeObject(model));*/
             resp.Add("message","success");
             return JsonConvert.SerializeObject(resp);
         }
@@ -64,8 +65,10 @@ namespace samplemvcapp.Controllers
             dict["casename"] = c.casename;
             dict["caseid"] = c.caseid;
             dict["casereceiveddate"] = c.casereceiveddate;
-            dict["classification"] = c.classification;
+            dict["classification"] = c.casetype;
             dict["category"] = c.category;
+            dict["summary"] = c.summary;
+            dict["subject"] = c.subject;
             return dict;
         }
 
@@ -88,98 +91,16 @@ namespace samplemvcapp.Controllers
         {
             ViewBag.currentPage = "case";
             ViewBag.submitted = false;
-            if (HttpContext.Request.RequestType == "POST")
-            {
-                ViewBag.submitted = true;
-                var caseid = Request.Form["caseid"];
-                var casename = Request.Form["casename"];
-                var classification = Request.Form["classification"];
-                var date = Request.Form["casereceiveddate"];
+            return View();
+        }
 
-                CaseDetailsModel casemodel = new CaseDetailsModel();
-
-                casemodel.caseid = caseid;
-                casemodel.casename = casename;
-                casemodel.classification = classification;
-                casemodel.casereceiveddate = date;
-                casemodel.category = "Reschedule";
-
-
-                var ClientFile = CaseDetailsModel.CaseFile;
-
-                var ClientData = System.IO.File.ReadAllText(ClientFile);
-                List<CaseDetailsModel> ClientList = new List<CaseDetailsModel>();
-                ClientList = JsonConvert.DeserializeObject<List<CaseDetailsModel>>(ClientData);
-
-                if (ClientList == null)
-                {
-                    ClientList = new List<CaseDetailsModel>();
-                }
-                ClientList.Add(casemodel);
-
-                // Now save the list on the disk
-                System.IO.File.WriteAllText(ClientFile, JsonConvert.SerializeObject(ClientList));
-
-                // Denote that the client was created
-                bool created = true;
-
-                /*if (ModelState.IsValid)
-                {
-                    var insertQuery = "INSERT INTO cases (caseid, casename) " +
-                    "VALUES (@0, @1)";
-                    db.Execute(insertQuery, caseid, casename);
-                    // Display the page that lists products.
-                    //Response.Redirect("~/Home/CaseDetails");
-                }*/
-                // Create a new case for these details.
-                /*CaseDetails case = new CaseDetails()
-                {
-                    caseid = model.caseid, 
-                    casereceiveddate = model.casereceiveddate,
-                    petitioner = model.petitioner,
-                    respondent = model.petitioner,
-                    classification = model.classification,
-                    casecharge = model.casecharge,
-                    casename = model.casename,
-                    casetype = model.casetype,
-                    prosecutor = model.prosecutor,
-                    judge = model.judge,
-                    penalcode = model.penalcode,
-                    status = model.status,
-                    assignedto = model.assignedto,
-                    receivedfrom = model.receivedfrom,
-                    stage = model.stage,
-                    courthouse = model.courthouse
-                };
-
-                // Save the client in the ClientList
-                var CaseFile = case.CaseFile;
-                var ClientData = System.IO.File.ReadAllText(ClientFile);
-                List<Client> ClientList = new List<Client>();
-                ClientList = JsonConvert.DeserializeObject<List<Client>>(ClientData);
-
-                if (ClientList == null)
-                {
-                    ClientList = new List<Client>();
-                }
-                ClientList.Add(client);
-
-                // Now save the list on the disk
-                System.IO.File.WriteAllText(ClientFile, JsonConvert.SerializeObject(ClientList));
-
-                // Denote that the client was created
-                created = true;
-
-                if (created)
-                {
-                    ViewBag.Message = "Client was created successfully.";
-                }
-                else
-                {
-                    ViewBag.Message = "There was an error while creating the client.";
-                }*/
-                ViewBag.Message = "Case Created Successfully at " + Request.Form["casereceiveddate"];
-            }
+        [HttpPost]
+        public ActionResult Create(CaseDetailsModel casedetail)
+        {
+            CaseDetailsModel.CreateCase(casedetail);
+            ViewBag.currentPage = "case";
+            ViewBag.submitted = true;
+            ViewBag.Message = "Case Created Successfully ";
             return View();
         }
 

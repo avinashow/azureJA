@@ -1,439 +1,195 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>"  %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    CaseDetails
+<asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
+	
+	Home Page - My ASP.NET MVC Application
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        span.badge.badge-event
-        {
-            background-color: red!important;
-        }
-        td.event > div.day
-        {
-            background-color:none;
-        }
-        .selectedTab
-        {
-            background-color:#0069d9;
-            color:white;
-        }
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+	<div class="row">
+		<div class="col-md-4" style="padding:20px;border-radius:20px">
+			
+			<div id='calendar' style="background-color:#5cb85c;border-radius:20px"></div>
+			<div id='datepicker'></div>
 
-        .selectedList
-        {
-            background-color:#0069d9;
-            color:white;
-        }
+			<div class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Create new event</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="title">Event title</label>
+									<input type="text" name="title" id="title" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="starts-at">Starts at</label>
+									<input type="text" name="starts_at" id="starts-at" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="ends-at">Ends at</label>
+									<input type="text" name="ends_at" id="ends-at" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
 
-        .list-group-item:hover {
-            cursor:pointer;
-            background-color:#DCDCDC;
-        }
-    </style>
-    <div class="row">
-        <div class="col-md-4" style="border-radius:10px;padding:20px;background-color:white">
-            <!--<div id="calendar">
-            </div>-->
-            <div class="box box-solid bg-green-gradient">
-            <div class="box-header">
-              <i class="fa fa-calendar"></i>
-
-              <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-        </div>
-        <div class="col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Case Search" id="search" />
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <a id="clearSearch" class="btn btn-default" href=""><i class="glyphicon glyphicon-pencil" style="color:red"></i>&nbsp;Clear Search</a>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" id="selectbtn" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Category
-                                </button>
-                                <ul class="dropdown-menu" id="conmenu">
-                                    <li><a class="dropdown-item" href="">Reschedule</a></li>
-                                    <li class="divider"></li>
-                                    <li><a class="dropdown-item" href="">Pending</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#content" id="All" aria-controls="all" role="tab" data-toggle="tab">All</a>     
-                        </li>
-                        <li role="presentation">
-                            <a href="#content" id="Pending" aria-controls="pending" role="tab" data-toggle="tab">Pending <span id="pending" class="badge" style="background-color:#0069d9"></span></a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#content" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge" style="background-color:#0069d9"></span></a>     
-                        </li>
-                     </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="content">
-                            <div id="dateSelected" class="pull-left">
-
-                            </div><br />
-                            <ul class="list-group list-cust" style="overflow:auto;">  
-                                    
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
+		<div class="col-md-8">
+			<div class="box box-success">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-calendar"></i><span class="date" style="padding-left:10px"></span></div>
+					<div class="info">
+						<div class="row" style="display:flex;padding:20px">
+							<div class="col-md-9">
+								<input type="text" placeholder="Search" class="form-control" />
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-default" type="button" id="clearSearch">
+									<i class="fa fa-pencil" style="color:red;margin-right:5px"></i>Clear
+								</button>
+								
+							</div>
+							<div class="col-md-3">
+								<button class="btn btn-danger dropdown-toggle" style="display:none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Select Category
+								</button>
+								<ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+									<li><a class="dropdown-item" href="#">Reschedule</a></li>
+									<li><a class="dropdown-item" href="#">Pending</a></li>
+								</ul>
+							</div>
+						</div>
+						<ul class="nav nav-tabs" role="tablist" style="margin-top:20px">
+							<li role="presentation" class="active">
+								<a href="#content" id="All" aria-controls="all" role="tab" data-toggle="tab">All</a>     
+							</li>
+							<li role="presentation">
+								<a href="#content" id="Pending" aria-controls="pending" role="tab" data-toggle="tab">Pending <span id="pending" class="badge" style="background-color:#0069d9"></span></a>
+							</li>
+							<li role="presentation">
+								<a href="#content" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge" style="background-color:#0069d9"></span></a>     
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="content">
+								<ul class="list-group list-cust" style="margin:20px;overflow:auto;">  
+									
+								</ul>
+								<ul class="pagination">
+						
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="space">
+				</div>
+			</div>
+		</div>
+	</div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
-    <script type="text/x-jquery-tmpl" id="caseListTemplate">
-            {{each cases}}
-            <li id="${$value.caseid}" class="list-group-item clearfix" >
-                <div class="row">
-                    <div class="col-sm-2">
-                        <span class="glyphicon glyphicon-folder-open" style="font-size:70px;"></span>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4><a class="list-group-item-heading" href="/CaseDetails/CaseDetail/${$value.caseid}">Case#:${$value.caseid}</a></h4>
-                        <p class="list-group-item-text">
-                            Case Received Date: ${$value.casereceiveddate}
-                        </p>
-                        <p class="list-group-item-text">
-                            Category: ${$value.category}
-                        </p>
-                    </div>
-                    <div class="col-sm-1">
-                        <span id="select" style="font-size:20px;" class="glyphicon"></span>
-                    </div>
-                    <div class="col-sm-1">
-                        <span id="${$index+1}" style="font-size:20px;" data-toggle="popover" title="Category" class="glyphicon glyphicon-cog"></span>
-                    </div>
-                </div>
-            </li> 
-            {{/each}}
-    </script>  
-    <script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.0/pagination.min.js"></script>
+	<script type="text/x-jquery-tmpl" id="pagination">
+		{{each pages}}
+			<li><a href="#">${$index+1}</a></li>
+		{{/each}}
+	</script>
 
-        var allCases;
-        var selectedDate = null;
+	 <script type="text/x-jquery-tmpl" id="caseListTemplate">
+			{{each cases}}
+			<li id="${$value.caseid}" class="list-group-item clearfix" >
+				<div class="row">
+					<div class="col-sm-2">
+						<span class="glyphicon glyphicon-folder-open" style="font-size:70px;"></span>
+					</div>
+					<div class="col-sm-7" style="text-align:left">
+						<h4><a class="list-group-item-heading" href="/CaseDetails/CaseDetail/${$value.caseid}">Case#:${$value.caseid}</a></h4>
+						<p class="list-group-item-text">
+							<strong>Type: </strong> ${$value.classification}
+						</p>
+						<p class="list-group-item-text">
+							<strong>Subject: </strong> ${$value.subject}
+						</p>
+						<p class="list-group-item-text" style="text-align:justify">
+							<strong>Summary: </strong> ${$value.summary}
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<span id="select" style="font-size:20px;" class="glyphicon"></span>
+					</div>
+					<div class="col-sm-1">
+						<span id="${$index+1}" style="font-size:20px;" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="glyphicon glyphicon-option-horizontal dropdown-toggle"></span>
+						<ul class="dropdown-menu" id="conmenu">
+							<li><a class="dropdown-item" href="">Reschedule</a></li>
+							<li><a class="dropdown-item" href="">Pending</a></li>
+						</ul>
+					</div>
+				</div>
+			</li> 
+			{{/each}}
+	</script> 
+	<script>
+		function getAllCases() {
+			var allCases = [];
+			<%
+				foreach (var item in ViewBag.calendardates)
+					{%>
+						<%
+						for (var i = 0; i < item.Value.Count; i++)
+						{%>
 
-        function myNavFunction(id) {
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-        }
+					var d = {};
+							<% foreach(var subitem in item.Value[i]) {%>
+						d["<%:subitem.Key%>"] = "<%: subitem.Value %>".replace(":","");
+								<%}%>
+					allCases.push(d);
+					<%}
+						%>
+					<%}
+					%>
+			return allCases;
+		}
 
-        function initSearch() {
-            //Function for searching the displayed cases using text inside the case div
-            $("#search").on("keyup", function () {
-                var filter = $(this).val();
-                var count = 0;
-                $("ul.list-group li").each(function () {
-
-                    // If the list item does not contain the text phrase fade it out
-                    if ($(this).find("td").text().search(new RegExp(filter, "i")) < 0) {
-                        $(this).fadeOut();
-
-                        // Show the list item if the phrase matches and increase the count by 1
-                    } else {
-                        $(this).show();
-                        count++;
-                    }
-                });
-            });
-        }
-        
-        function redisplay(id) {
-            
-            var parent = "ul.list-group";
-            $("#dateSelected").html("<strong>Date: " + id + "</strong>");
-            var casesByDate = getCasesByDate();
-            if (casesByDate.hasOwnProperty(id)) {
-                updateCasesListView(casesByDate[id], parent);
-            } else {
-                $("ul.list-group").html("<li style='text-align:center'><h3>No Cases</h3></li>");
-                $("span#pending").text("");
-                $("span#reschedule").text("");
-            }
-        }
-
-        function clearAllSelection(date) {
-            $(".dow-clickable").each(function () { $(this).children().css("background-color", ""); });
-            date.children().css("background-color", "black");
-        }
-
-        function updateCasesListView(cases, parent) {
-            var casesByCategory = getCasesByCategory();
-            $("span#pending").text("");
-            $("span#reschedule").text("");
-
-            for (var category in casesByCategory) {
-                var categoryId = category.toLowerCase();
-                if (categoryId == 'pending' || categoryId == 'reschedule') {
-                    $("span#" + categoryId).text(casesByCategory[category].length);
-                }
-            }
-
-            $("ul.list-group").empty();
-            var casesJson = {};
-            casesJson["cases"] = cases;
-            $("#caseListTemplate").tmpl(casesJson).appendTo(parent);
-            initMultiSelect();
-        }
-        
-        function getAllCases() {
-            var allCases = [];
-            <%
-        foreach (var item in ViewBag.calendardates)
-            {%>
-                <%
-                for (var i = 0; i < item.Value.Count; i++)
-                {%>
-                        
-                    var d = {};
-                    <% foreach(var subitem in item.Value[i]) {%>                        
-                        d["<%:subitem.Key%>"] = "<%: subitem.Value %>";
-                    <%}%>
-                    allCases.push(d);
-                <%}
-                %>
-            <%}
-            %>
-            return allCases;
-        }
-
-        //Fetching the cases by date data
-        function getCasesByDate() {
-            var casesByDate = {};
-            for (var i = 0; i < allCases.length; i++) {
-                var caseData = allCases[i];
-                var caseDate = caseData["casereceiveddate"].split("T")[0];
-                if (casesByDate[caseDate] == null) {
-                    casesByDate[caseDate] = [];
-                }
-                casesByDate[caseDate].push(caseData);
-            }
-            return casesByDate;
-        }
-
-        //fetching the cases by category
-        function getCasesByCategory() {
-            var casesByCategory = {};
-            var allCasesForSelectedDate = getCasesForSelectedDate();
-            casesByCategory["All"] = allCasesForSelectedDate;
-            for (var i = 0; i < allCasesForSelectedDate.length; i++) {
-                var caseData = allCasesForSelectedDate[i];
-                if (casesByCategory[caseData["category"]] == null) {
-                    casesByCategory[caseData["category"]] = [];
-                }
-                casesByCategory[caseData["category"]].push(caseData);
-            }
-            return casesByCategory;
-        }
-
-        //fetching cases by selectedate
-        function getCasesForSelectedDate() {
-            if (selectedDate == null) {
-                return allCases;
-            }
-            //TODO
-            //filter cases by selected date
-            return getCasesByDate()[selectedDate];
-        }
-        
-        // get the cases on particualr day on calendar
-        function getEvents(casesByDate) {
-            var keys = Object.keys(casesByDate);
-            var arr = [];
-            for (var i = 0; i < keys.length; i++) {
-                var idarr = keys[i].split("T");
-                var d = {
-                    "date" : idarr[0],
-                    "disabled" : true,
-                    "title": casesByDate[keys[i]].length
-                };
-                arr.push(d);
-            }
-            return arr;
-        }
-
-        //initialising the calendar
-        function initCalendar(casesByDate) {
-            var calendardict = {
-                cell_border: true,
-                today: true,
-                show_days: false,
-                weekstartson: 0,
-                show_days: true,
-                action: function () {
-                    selectedDate = $("#" + this.id).data("date");
-                    clearAllSelection($("#" + this.id));
-                    
-                    return redisplay(selectedDate);
-                },
-                action_nav: function () {
-                    return myNavFunction(this.id);
-                },
-                data: [],
-                modal: true,
-
-                legend: [
-                    { type: "text", label: "Cases", badge: "00" }
-                ]
-            };
-
-            calendardict.data = getEvents(casesByDate);
-            $("#calendar").zabuto_calendar(calendardict);            
-        }
-
-        //initialising the tabclick
-        function initTabClick() {
-            $("li a[role='tab']").click(function () {
-                var casesByCategory = getCasesByCategory();
-                $("ul.list-group").empty();
-                if (casesByCategory.hasOwnProperty($(this).attr("id"))) {
-                    updateCasesListView(casesByCategory[$(this).attr("id")], "ul.list-group");
-                } else if($(this).attr("id") == "All") {
-                    updateCasesListView(allCases, "ul.list-group");
-                }
-                
-            });
-        }
-
-        var selectedIds = [];
-
-        function initMultiSelect() {
-            $(".list-group-item").on("click", function () {
-
-                if (selectedIds.indexOf($(this).attr("id")) < 0) {
-                    selectedIds.push($(this).attr("id"));
-                    //$(this).addClass("selectedList");
-                    $(this).find("span#select").addClass("glyphicon-ok");
-                } else {
-                    var index = selectedIds.indexOf($(this).attr("id"));
-                    selectedIds.splice(index, 1);
-                    $(this).find("span#select").removeClass("glyphicon-ok");
-                    //$(this).removeClass("selectedList");
-                }
-                consoleLog("Selected Cases" + selectedIds);
-                if (selectedIds.length == 0) {
-                    $("#selectbtn").prop("disabled", true);
-                } else {
-                    $("#selectbtn").prop("disabled", false);
-                }
-            });
-        }
-
-        function consoleLog(msg) {
-            if (console) {
-                console.log(msg);
-            }
-        }
-
-        function intiClearSelectionDate() {
-            $("#clearSearch").on("click", function () {
-                updateCasesListView(allCases, "ul.list-group");
-            });
-        }
-
-        function initPopover() {
-            console.log("popover initiated");
-            $('span[data-toggle="popover"]').popover({
-                trigger: "manual",
-                html: true,
-                content: function () {
-                    return $(".dropdown-menu").html();
-                }
-            });
-        }
-
-        (function () {
-            allCases = getAllCases();
-            var casesByDate = getCasesByDate();
-            var casesByCategory = getCasesByCategory();
-            initCalendar(casesByDate);
-            updateCasesListView(allCases, "ul.list-group");
-            initSearch();
-            intiClearSelectionDate();
-            initTabClick();
-            updateTabCounts();
-            initPopover();
-        })();
-
-        function updateTabCounts() {
-            //TODO
-            //get categories count
-            var casesByCategory = getCasesByCategory();
-        }
-
-        function postData(selectedMenu) {
-            var caseData;
-            var data = {};
-            for (var i = 0; i < allCases.length; i++) {
-                if (selectedIds.indexOf(allCases[i].caseid) >= 0) {
-                    allCases[i].category = selectedMenu.trim();
-                }
-            }
-            $.ajax({
-                url: "<%: Url.Action("UpdateCategory","CaseDetails") %>",
-                type: 'POST',
-                data: JSON.stringify(allCases),
-                contentType: 'application/json; charset=utf-8',
-                success: function (response) {
-                    selectedIds = [];
-                    updateTabCounts();
-                },
-                error: function (jqXHR, exception) {
-                    alert('Error message.');
-                }
-            });
-            updateCasesListView(getCasesForSelectedDate(), "ul.list-group");
-        }
-
-        $("#conmenu a").click(function () {
-            postData($(this).text());
-            return false;
-        });
-
-    </script>
+		function postData(selectedMenu, e) {
+			var caseData;
+			var data = {};
+			for (var i = 0; i < allCases.length; i++) {
+				if (selectedIds.indexOf(allCases[i].caseid) >= 0) {
+					allCases[i].category = selectedMenu.trim();
+				}
+			}
+			$.ajax({
+				url: "<%: Url.Action("UpdateCategory","CaseDetails") %>",
+				type: 'POST',
+				data: JSON.stringify(allCases),
+				contentType: 'application/json; charset=utf-8',
+				success: function (response) {
+					selectedIds = [];
+					updateTabCounts();
+				},
+				error: function (jqXHR, exception) {
+					alert('Error message.');
+				}
+			});
+			updateCasesListView(getCasesForSelectedDate(), "ul.list-group");
+		}
+	</script>
+	<script src="../../Scripts/CaseList.js"></script>
+	  
 </asp:Content>

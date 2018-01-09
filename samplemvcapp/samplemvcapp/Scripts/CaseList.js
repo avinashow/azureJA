@@ -7,11 +7,9 @@ function initSearch() {
 		var filter = $(this).val();
 		var count = 0;
 		$("ul.list-group li").each(function () {
-
 			// If the list item does not contain the text phrase fade it out
 			if ($(this).find("td").text().search(new RegExp(filter, "i")) < 0) {
 				$(this).fadeOut();
-
 				// Show the list item if the phrase matches and increase the count by 1
 			} else {
 				$(this).show();
@@ -40,18 +38,20 @@ function clearAllSelection(date) {
 	date.children().css("background-color", "black");
 }
 
+function updatePagination() {
+
+}
+
 function updateCasesListView(cases, parent) {
 	var casesByCategory = getCasesByCategory();
 	$("span#pending").text("");
 	$("span#reschedule").text("");
-
 	for (var category in casesByCategory) {
 		var categoryId = category.toLowerCase();
 		if (categoryId == 'pending' || categoryId == 'reschedule') {
 			$("span#" + categoryId).text(casesByCategory[category].length);
 		}
 	}
-
 	$("ul.list-group").empty();
 	var casesJson = {};
 	casesJson["cases"] = cases;
@@ -118,13 +118,13 @@ function initCalendar(casesByDate) {
 			header: {
 				left: '',
 				center: 'prev title, next',
-				right: ''
+				right: 'month'
 			},
 			navLinks: true, // can click day/week names to navigate views
 			selectable: true,
 			selectHelper: true,
 			dayClick: function (date) {
-			    selectedDate = date.format();
+				selectedDate = date.format();
 				$(".date").text(date.format());
 				redisplay(date.format());
 			},
@@ -136,10 +136,10 @@ function initCalendar(casesByDate) {
 			},
 			eventClick: function (event, element) {
 				// Display the modal and set the values to the event values.
-				$('.modal').modal('show');
+				/*$('.modal').modal('show');
 				$('.modal').find('#title').val(event.title);
 				$('.modal').find('#starts-at').val(event.start);
-				$('.modal').find('#ends-at').val(event.end);
+				$('.modal').find('#ends-at').val(event.end);*/
 
 			},
 			editable: true,
@@ -215,10 +215,10 @@ function initMultiSelect() {
 			//$(this).removeClass("selectedList");
 		}
 		consoleLog("Selected Cases" + selectedIds);
-		if (selectedIds.length == 0) {
-			$("#selectbtn").prop("disabled", true);
+		if (selectedIds.length <= 1) {
+			$("#dropdownMenuButton").css("display", "none");
 		} else {
-			$("#selectbtn").prop("disabled", false);
+			$("#dropdownMenuButton").css("display", "block");
 		}
 	});
 }
@@ -231,17 +231,26 @@ function consoleLog(msg) {
 
 function intiClearSelectionDate() {
 	$("#clearSearch").on("click", function () {
+		selectedDate = null;
+		$(".date").text("");
 		updateCasesListView(allCases, "ul.list-group");
 	});
 }
 
 function initPopover() {
 	console.log("popover initiated");
-	$('span[data-toggle="popover"]').popover({
+	$('[data-toggle="popover"]').popover({
 		html: true,
 		content: function () {
-			return $(".popover-content").html();
+			return $("#con").html();
 		}
+	});
+}
+
+function initPagination() {
+	var monkeyList = new List('tab-pane', {
+		page: 2,
+		pagination: true
 	});
 }
 
@@ -253,6 +262,7 @@ function initPopover() {
 	updateCasesListView(allCases, "ul.list-group");
 	renderCalendarEvents(allCases);
 	initSearch();
+	initPagination();
 	intiClearSelectionDate();
 	initTabClick();
 	updateTabCounts();
@@ -265,7 +275,14 @@ function updateTabCounts() {
 	var casesByCategory = getCasesByCategory();
 }
 
-$("#conmenu a").click(function () {
-	postData($(this).text());
+$("ul#conmenu > li > a").on("click", function () {
+	alert($(this).text());
+	postData($(this).text(), e);
+	return false;
+});
+
+$("#dropdownMenu a").click(function (e) {
+	alert($(this).text());
+	postData($(this).text(),e);
 	return false;
 });

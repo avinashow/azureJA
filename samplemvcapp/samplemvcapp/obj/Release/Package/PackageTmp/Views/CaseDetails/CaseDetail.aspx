@@ -5,6 +5,23 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<div class="modal fade" tabindex="-1" id="modal-default" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h2 class="modal-title" style="text-align:center">Order Sheet</h2>
+				</div>
+				<div class="modal-body">
+					<iframe src="https://docs.google.com/viewer?url=http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf&embedded=true" style="width:500px;height:500px;" frameborder="0"></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="box box-solid">
@@ -45,7 +62,7 @@
 							  <div class="col-md-4">
 								  <dl class="dl-horizontal">
 									<dt>Classification:</dt>
-									<dd><%: Model.classification %></dd>
+									<dd><%: Model.casetype %></dd>
 									<dt>Case Charge:</dt>
 									<dd>Felony</dd>
 									<dt>Status/Penal Code:</dt>
@@ -160,29 +177,8 @@
 										<button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
 											View OrderSheet
 										</button>
-										<div class="modal fade" id="modal-default">
-										  <div class="modal-dialog">
-											<div class="modal-content">
-											  <div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												  <span aria-hidden="true">&times;</span></button>
-												<h4 class="modal-title">Default Modal</h4>
-											  </div>
-											  <div class="modal-body">
-												<iframe src="https://docs.google.com/viewer?url=http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf&embedded=true" style="width:500px;height:500px;" frameborder="0"></iframe>
-											  </div>
-											  <div class="modal-footer">
-												<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Save changes</button>
-											  </div>
-											</div>
-										  </div>
-										</div>
 									</div>
-								</div>
-								
-
-																	
+								</div>									
 							</div>
 						</div>
 					</div>
@@ -191,7 +187,7 @@
 							<div class="col-md-11 col-md-offset-1" style="background-color:white">
 								<div class="box box-primary">
 									<div class="box-body" style="text-align:justify;font-size:17px">
-										Martin Hall, 29 years old, baby-sat for Stephanie Anderson’s 7 years-old daughter, Amy Anderson. Martin had recorded one sexual act of Amy Anderson with his cell phone while babysitting her. Stephanie’s Attorney , Lewis Smith is filing a case against Martin Hall in the Court and want him to be charged with the Sexual Exploitation of a Minor Kidnapping
+										<%: Model.summary %>
 									</div>
 								</div>
 							</div>

@@ -5,39 +5,6 @@
 	Home Page - My ASP.NET MVC Application
 </asp:Content>
 
-<asp:Content ID="indexFeatured" ContentPlaceHolderID="HeadContent" runat="server">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css" />
-	<link rel="stylesheet" href="../../Content/fullcalendar.min.css" />
-	<style>
-		@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
-		@import "http://fonts.googleapis.com/css?family=Roboto:400,500";
-
-		.box > .icon { 
-		text-align: center; position: relative;
-		}
-		.box > .icon > .image { 
-		position: relative;color:white;font-size:20px; z-index: 2; margin: auto; width: 300px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 20px; background: #63B76C; vertical-align: middle; 
-		}
-		
-		.box > .icon > .image > i { 
-		font-size: 36px !important; color: #fff !important; 
-		}
-		.box > .icon > .info { 
-		margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; 
-		}
-		.box > .icon > .info > h3.title { 
-		font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; 
-		}
-		.box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
-		.box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
-		.box .space { height: 30px; }
-		.list-cust > li.list-group-item > .row > .col-sm-6 {
-			text-align:justify;
-		}
-	</style>
-</asp:Content>
-
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="row">
 		<div class="col-md-5" style="padding:20px;border-radius:20px">
@@ -81,11 +48,31 @@
 			</div><!-- /.modal -->
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<div class="box">							
 				<div class="icon">
 					<div class="image"><i class="fa fa-calendar"></i><span class="date" style="padding-left:10px"></span></div>
 					<div class="info">
+						<div class="row" style="display:flex;padding:20px">
+							<div class="col-md-9">
+								<input type="text" placeholder="Search" class="form-control" />
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-default" type="button" id="clearSearch">
+									<i class="fa fa-pencil" style="color:red;margin-right:5px"></i>Clear
+								</button>
+								
+							</div>
+							<div class="col-md-3">
+								<button class="btn btn-danger dropdown-toggle" style="display:none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Select Category
+								</button>
+								<ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
+									<li><a class="dropdown-item" href="#">Reschedule</a></li>
+									<li><a class="dropdown-item" href="#">Pending</a></li>
+								</ul>
+							</div>
+						</div>
 						<ul class="nav nav-tabs" role="tablist" style="margin-top:20px">
 							<li role="presentation" class="active">
 								<a href="#content" id="All" aria-controls="all" role="tab" data-toggle="tab">All</a>     
@@ -113,12 +100,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script src="../../Scripts/jquery.tmpl.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
-	<script src="../../Scripts/fullcalendar.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
+
 	 <script type="text/x-jquery-tmpl" id="caseListTemplate">
 			{{each cases}}
 			<li id="${$value.caseid}" class="list-group-item clearfix" >
@@ -139,10 +121,9 @@
 						<span id="select" style="font-size:20px;" class="glyphicon"></span>
 					</div>
 					<div class="col-sm-1">
-						<span id="${$index+1}" style="font-size:20px;" data-toggle="dropdown" class="glyphicon glyphicon-option-horizontal dropdown-toggle"></span>
+						<span id="${$index+1}" style="font-size:20px;" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="glyphicon glyphicon-option-horizontal dropdown-toggle"></span>
 						<ul class="dropdown-menu" id="conmenu">
 							<li><a class="dropdown-item" href="">Reschedule</a></li>
-							<li class="divider"></li>
 							<li><a class="dropdown-item" href="">Pending</a></li>
 						</ul>
 					</div>

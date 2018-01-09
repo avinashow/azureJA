@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace samplemvcapp.Models
 {
@@ -12,14 +14,19 @@ namespace samplemvcapp.Models
     {
 
         public static string CaseFile = HttpContext.Current.Server.MapPath("~/Content/Clients.json");
+        private static string connstr = "Server=tcp:justicealigndbserver.database.windows.net,1433;Initial Catalog=justicealigndb;Persist Security Info=False;User ID=adminJA;Password=@vinasH90;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public String caseid { get; set; }
         public String casereceiveddate { get; set; }
-        public int petitioner { get; set; }
-        public int respondent { get; set; }
+        public string summary { get; set; }
+        public string subject { get; set; }
         public String classification { get; set; }
-        public String casecharge { get; set; }
         public String casename { get; set; }
         public String casetype { get; set; }
+        public String category { get; set; }
+        public int id { get; set; }
+        /*public int petitioner { get; set; }
+        public int respondent { get; set; }
+        public String casecharge { get; set; }
         public int prosecutor { get; set; }
         public int judge { get; set; }
         public String penalcode { get; set; }
@@ -29,74 +36,132 @@ namespace samplemvcapp.Models
         public String stage { get; set; }
         public String courthouse { get; set; }
         public String category { get; set; }
-        public List<ContactModel> contact { get; set; }
+        public List<ContactModel> contact { get; set; }*/
 
+        public static void CreateCase(CaseDetailsModel casedetail)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connstr))
+                {
+                    string query = "INSERT INTO [dbo].[Case] (caseid,casereceiveddate, category, summary, subject, casetype, casename) VALUES(@caseid, @casereceiveddate, @category, @summary, @subject, @casetype, @casename)";
+                    using (SqlCommand cmd = new SqlCommand(query))
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@caseid", casedetail.caseid);
+                        cmd.Parameters.AddWithValue("@casename", casedetail.casename.Trim());
+                        cmd.Parameters.AddWithValue("@casereceiveddate", casedetail.casereceiveddate.Trim());
+                        cmd.Parameters.AddWithValue("@summary", casedetail.summary.Trim());
+                        cmd.Parameters.AddWithValue("@subject", casedetail.subject.Trim());
+                        cmd.Parameters.AddWithValue("@category", "Reschedule");
+                        cmd.Parameters.AddWithValue("@casetype", casedetail.casetype.Trim());
+                        casedetail.id = Convert.ToInt32(cmd.ExecuteScalar());
+                        con.Close();
+                    }
+                }
+            } catch(Exception ex) {   
+            }
+        }
 
         public static List<CaseDetailsModel> GetCases()
         {
-            List<CaseDetailsModel> clients = new List<CaseDetailsModel>();
-            if (File.Exists(CaseFile))
+            CaseDetailsModel caseDetail;
+            List<CaseDetailsModel> caseList = new List<CaseDetailsModel>();
+            try
             {
-                // File exists..
-                string content = File.ReadAllText(CaseFile);
-
-                // Deserialize the objects 
-                clients = JsonConvert.DeserializeObject<List<CaseDetailsModel>>(content);
-
-                // Returns the clients, either empty list or containing the Client(s).
-                return clients;
+                using (SqlConnection con = new SqlConnection(connstr))
+                {
+                    string query = "Select * from [dbo].[Case]";
+                    using (SqlCommand cmd = new SqlCommand(query))
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        SqlDataReader rd = cmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                                caseDetail = new CaseDetailsModel();
+                                caseDetail.caseid =Convert.ToString(rd.GetSqlValue(0));
+                                caseDetail.casereceiveddate = Convert.ToString(rd.GetSqlValue(1));
+                                caseDetail.casename = Convert.ToString(rd.GetSqlValue(5)).Trim();
+                                caseDetail.subject = Convert.ToString(rd.GetSqlValue(3)).Trim();
+                                caseDetail.summary = Convert.ToString(rd.GetSqlValue(2)).Trim();
+                                caseDetail.category = Convert.ToString(rd.GetSqlValue(7));
+                                caseDetail.casetype = Convert.ToString(rd.GetSqlValue(4)).Trim();
+                                caseList.Add(caseDetail);
+                        }
+                        con.Close();
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Create the file 
-                File.Create(CaseFile).Close();
-                // Write data to it; [] means an array, 
-                // List<Client> would throw error if [] is not wrapping text
-                File.WriteAllText(CaseFile, "[]");
-
-                // Re run the function
-                GetCases();
             }
-
-            return clients;
+            return caseList;
         }
 
         public static CaseDetailsModel GetCase(String id)
         {
-            CaseDetailsModel client = new CaseDetailsModel();
-            if (File.Exists(CaseFile))
+            CaseDetailsModel caseDetail = new CaseDetailsModel();
+            try
             {
-                // File exists..
-                string content = File.ReadAllText(CaseFile);
-
-                // Deserialize the objects 
-                List<CaseDetailsModel> clients = JsonConvert.DeserializeObject<List<CaseDetailsModel>>(content);
-
-                foreach(CaseDetailsModel c in clients)
+                using (SqlConnection con = new SqlConnection(connstr))
                 {
-                    if (c.caseid == id)
+                    string query = "Select * from [dbo].[Case] where caseid = " + id;
+                    using (SqlCommand cmd = new SqlCommand(query))
                     {
-                        client = c;
-                        break;
+                        cmd.Connection = con;
+                        con.Open();
+                        SqlDataReader rd = cmd.ExecuteReader();
+                        while (rd.Read())
+                        {
+                            caseDetail.caseid = Convert.ToString(rd.GetSqlValue(0));
+                            caseDetail.casereceiveddate = Convert.ToString(rd.GetSqlValue(1));
+                            caseDetail.casename = Convert.ToString(rd.GetSqlValue(5));
+                            caseDetail.subject = Convert.ToString(rd.GetSqlValue(3)).Trim();
+                            caseDetail.summary = Convert.ToString(rd.GetSqlValue(2)).Trim();
+                            caseDetail.category = Convert.ToString(rd.GetSqlValue(7));
+                            caseDetail.casetype = Convert.ToString(rd.GetSqlValue(4));
+                        }
+                        con.Close();
                     }
                 }
-
-                // Returns the clients, either empty list or containing the Client(s).
-                return client;
             }
-            else
+            catch (Exception ex)
             {
-                // Create the file 
-                File.Create(CaseFile).Close();
-                // Write data to it; [] means an array, 
-                // List<Client> would throw error if [] is not wrapping text
-                File.WriteAllText(CaseFile, "[]");
 
-                // Re run the function
-                GetCases();
             }
+            return caseDetail;
+        }
 
-            return client;
+        public static void UpdateCase(List<CaseDetailsModel> caseModel) {
+            for (var i = 0; i < caseModel.Count(); i++)
+            {
+                update(caseModel[i]);
+            }
+        }
+
+        private static void update(CaseDetailsModel casedetail)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connstr))
+                {
+                    string query = "Update [dbo].[Case] set  category = @category where caseid = @caseid";
+                    using (SqlCommand cmd = new SqlCommand(query))
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@caseid", casedetail.caseid);
+                        cmd.Parameters.AddWithValue("@category", casedetail.category.Trim());
+                        cmd.ExecuteScalar();
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

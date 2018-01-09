@@ -6,6 +6,9 @@
 div#calendar * {
     color:white;
 }
+.fc-day-header {
+    background-color:#5cb85c;
+}
 .fc-day-top {
     text-align:right;
 }

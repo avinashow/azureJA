@@ -22,8 +22,15 @@
                             <input type="text" class="form-control" style="border:none;" name="casename" placeholder="Case Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="classification" style="border:none;" placeholder="Classification"></input>
+                            <input type="text" class="form-control" name="casetype" style="border:none;" placeholder="Classification"></input>
                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" style="border:none;" placeholder="Subject"></input>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="summary" style="border:none;" placeholder="Summary"></textarea>
+                        </div>
+
                         <div class="form-group">
                             <label for="casereceiveddate">Select Recieved Date</label>
                             <input type="datetime-local" class="form-control" name="casereceiveddate" style="border:none;"></input>
@@ -45,9 +52,6 @@
     </div>
     
 
-</asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">

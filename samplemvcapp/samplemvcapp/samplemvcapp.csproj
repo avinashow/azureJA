@@ -301,6 +301,7 @@
     <Content Include="Images\07nlook4.jpg" />
     <Content Include="Images\blue.png" />
     <Content Include="Images\Defendant.png" />
+    <Content Include="Images\supreme.jpg" />
     <Content Include="Images\timeline.png" />
     <Content Include="Images\user2-160x160.jpg" />
     <Content Include="Scripts\adminlte.min.js" />
