@@ -209,6 +209,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fullcalendar.min.css" />
+    <Content Include="Content\grayscale.min.css" />
     <Content Include="Content\ionicons.min.css" />
     <Content Include="Content\jquery-jvectormap.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -265,6 +266,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\worldmap\jqvmap.css" />
     <Content Include="Content\zabuto_calendar.min.css" />
     <Content Include="Content\_all-skins.min.css" />
     <Content Include="favicon.ico" />
@@ -301,11 +303,13 @@
     <Content Include="Images\07nlook4.jpg" />
     <Content Include="Images\blue.png" />
     <Content Include="Images\Defendant.png" />
+    <Content Include="Images\intro-bg.jpg" />
     <Content Include="Images\supreme.jpg" />
     <Content Include="Images\timeline.png" />
     <Content Include="Images\user2-160x160.jpg" />
     <Content Include="Scripts\adminlte.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -316,10 +320,12 @@
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\grayscale.min.js" />
     <Content Include="Scripts\icheck.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-jvectormap-1.2.2.min.js" />
@@ -341,6 +347,9 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\morris.min.js" />
+    <Content Include="Scripts\worldmap\jquery.vmap.js" />
+    <Content Include="Scripts\worldmap\jquery.vmap.sampledata.js" />
+    <Content Include="Scripts\worldmap\jquery.vmap.world.js" />
     <Content Include="Views\CaseDetails\CaseDetail.aspx" />
     <Content Include="Views\CaseDetails\Create.aspx" />
     <Content Include="Views\CaseDetails\Index.aspx" />

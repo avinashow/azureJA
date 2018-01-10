@@ -9,20 +9,9 @@ namespace samplemvcapp.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public ActionResult AltIndex()
         {
-            ViewBag.currentPage = "home";
-            var cases = CaseDetailsModel.GetCases();
-            if (cases != null)
-            {
-                ViewBag.calendardates = CaseDetailsController.getCalendarDates(cases);
-            }
-            else
-            {
-                ViewBag.calendardates = new Dictionary<String, List<Dictionary<String, String>>>();
-            }
-            return View(cases);
+            return View();
         }
         
         [Authorize]

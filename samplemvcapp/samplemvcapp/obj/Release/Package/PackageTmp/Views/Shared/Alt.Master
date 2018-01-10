@@ -7,175 +7,98 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <!--<link rel="stylesheet" href="../../Content/bootstrap.min.css">-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../Content/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../Content/ionicons.min.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../../Content/jquery-jvectormap.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../Content/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-	   folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../Content/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../Content/blue.css">
-  <link rel="stylesheet" href="../../Content/daterangepicker.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css" />
-  <!--<link rel="stylesheet" href="../../Content/bootstrap-datepicker.min.css" />-->
-  <link rel="stylesheet" href="../../Content/fullcalendar.min.css" />
-  <style>
-		@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
-		@import "http://fonts.googleapis.com/css?family=Roboto:400,500";
-
-		.box > .icon { 
-		text-align: center; position: relative;
-		}
-		.box > .icon > .image { 
-		position: relative;color:white;font-size:20px; z-index: 2; margin: auto; width: 300px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 20px; background: #63B76C; vertical-align: middle; 
-		}
-		
-		.box > .icon > .image > i { 
-		font-size: 36px !important; color: #fff !important; 
-		}
-		.box > .icon > .info { 
-		margin-top: -24px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; 
-		}
-		.box > .icon > .info > h3.title { 
-		font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; 
-		}
-		.box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 20px;}
-		.box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
-		.box .space { height: 30px; }
-		.list-cust > li.list-group-item > .row > .col-sm-6 {
-			text-align:justify;
-		}
-	</style>
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
+  <link rel="stylesheet" href="../../Content/font-awesome.min.css" />
+  <style>              
+    nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+    nav.navbar-findcond a { color: #007bff; }
+    nav.navbar-findcond ul.navbar-nav a { color: #007bff; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+    nav.navbar-findcond ul.navbar-nav a:hover,
+    nav.navbar-findcond ul.navbar-nav a:visited,
+    nav.navbar-findcond ul.navbar-nav a:focus,
+    nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
+    nav.navbar-findcond ul.navbar-nav a:hover { border-color: #007bff; }
+    nav.navbar-findcond li.divider { background: #ccc; }
+    nav.navbar-findcond button.navbar-toggle { background: #f14444; border-radius: 2px; }
+    nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
+    nav.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+    nav.navbar-findcond ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+    nav.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
+    nav.navbar-findcond ul.dropdown-menu > li > a:hover { background: #007bff; color: #fff; }
+    nav.navbar-findcond span.badge { background: #007bff; font-weight: normal; font-size: 11px; margin: 0 4px; }
+    nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }      
+    .cover-card {
+	    background: silver;
+	    padding: 0px;
+	    margin: 20px 0px 5px 0px;
+	    height:200px;
+        border-radius:10px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .cover-card:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+      @media screen and (max-device-width: 768px)
+      {
+          h2 {
+              font-size: 1.3em;
+          }
+          h3
+          {
+              font-size: 1.2em;
+          }
+          .glyphicon {
+              font-size:1.1em;
+          }
+      }
+  </style>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-	<!--- Header with navigation button ---->
-	<header class="main-header">
-		<!-- Logo -->
-		<a href="index2.html" class="logo">
-		  <!-- mini logo for sidebar mini 50x50 pixels -->
-		  <span class="logo-mini"><b>J</b>A</span>
-		  <!-- logo for regular state and mobile devices -->
-		  <span class="logo-lg"><b>Justice Align</b></span>
-		</a>
-		
-		<nav class="navbar navbar-static-top">
-		  <!-- Sidebar toggle button-->
-		  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-			<span class="sr-only">Toggle navigation</span>
-		  </a>
-		  <div class="navbar-custom-menu">
-			<%: Html.Partial("_LoginPartial") %>
-		  </div>
-		</nav>
-	</header>
-	<!--sidebar-->
-	<aside class="main-sidebar">
-		<!-- sidebar: style can be found in sidebar.less -->
-		<section class="sidebar">
-		  <!-- Sidebar user panel -->
-		  <div class="user-panel">
-			<div class="pull-left image">
-			  <span class="glyphicon glyphicon-user" style="font-size:30px;color:white"></span>
-			</div>
-			<div class="pull-left info">
-			  <p>Alexander Pierce</p>
-			  <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-			</div>
-		  </div>
-		  <!-- sidebar menu: : style can be found in sidebar.less -->
-		  <ul class="sidebar-menu">
-			<li class="active" id="home">
-			  <a href="/Home">
-				<i class="fa fa-dashboard"></i> <span>Analytics</span>
-			  </a>
-			</li>
-			<li id="case">
-			  <a href="/CaseDetails">
-				<i class="fa fa-files-o"></i>
-				<span>Cases</span>
-			  </a>
-			</li>
-			<li>
-			  <a href="pages/calendar.html">
-				<i class="fa fa-calendar"></i> <span>Calendar</span>
-				<span class="pull-right-container">
-				  <small class="label pull-right bg-red">3</small>
-				  <small class="label pull-right bg-blue">17</small>
-				</span>
-			  </a>
-			</li>
-		  </ul>
-		</section>
-		<!-- /.sidebar -->
-	  </aside>
-	<!-- content -->
-	<div class="content-wrapper" style="padding:20px;background-image:url(http://cdn.cnn.com/cnnnext/dam/assets/160216120505-the-courtroom-of-the-supreme-court-showing-justice-antonin-scalias-bench-chair-and-the-bench-draped-in-black-full-169.jpeg);background-position:center;background-size:cover;background-attachment:fixed">
-		<asp:ContentPlaceHolder ID="MainContent" runat="server" />
-	</div>
-	<!-- content -->
-</div> 
+<body>                 
+    <nav class="navbar navbar-findcond navbar-fixed-top">
+        <div class="container">
+		    <div class="navbar-header">
+			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				    <span class="sr-only">Toggle navigation</span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="javascript:;">Justice Align</a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="navbar">
+			    <ul class="nav navbar-nav navbar-right">
+				    <li class="active"><a href="javascript:;">Ana Sayfa <span class="sr-only">(current)</span></a></li>
+				    <li class="dropdown">
+					    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+					    <ul class="dropdown-menu" role="menu">
+						    <li><a href="javascript:;">Geri bildirim</a></li>
+						    <li><a href="javascript:;">Yardım</a></li>
+						    <li class="divider"></li>
+						    <li><a href="javascript:;">Ayarlar</a></li>
+						    <li><a href="#exit">Çıkış yap</a></li>
+					    </ul>
+				    </li>
+			    </ul>
+		    </div>
+	    </div>
+    </nav>                        
+    <div class="container-fluid" style="padding-top:70px">
+	    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>  
+    </div> 
 <!-- jQuery 3 -->
 <%--<script src="../../Scripts/jquery.min.js"></script>--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
-<script src="../../Scripts/fullcalendar.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js"></script>
-<%--<script src="../../Scripts/bootstrap.min.js"></script>--%>
-<!-- FastClick -->
-<script src="../../Scripts/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../Scripts/adminlte.min.js"></script>
-<!-- Sparkline -->
-<script src="../../Scripts/jquery.sparkline.min.js"></script>
-<!-- jvectormap  -->
-<script src="../../Scripts/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../../Scripts/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll -->
-<script src="../../Scripts/jquery.slimscroll.min.js"></script>
-<!--- date calendar -->
-<script src="../../Scripts/moment.min.js"></script>
-<script src="../../Scripts/daterangepicker.js"></script>
-<script src="../../Scripts/bootstrap-datepicker.min.js"></script>
-<!-- ChartJS -->
-<script src="../../Scripts/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../../Scripts/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../Scripts/demo.js"></script>
-<!-- iCheck -->
-<script src="../../Scripts/icheck.min.js"></script>
-<script src="../../Scripts/jquery.tmpl.js"> </script>
-<script src="../../Scripts/morris.min.js"></script>
+<!-- Canvas JS --->
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script>
-	var page = "<%: ViewBag.currentPage%>";
-	$(".sidebar-menu li").each(function () {
-		$(this).removeClass("active");
-	});;
-	$("#" + page).addClass("active");
-</script>
-<asp:Contentplaceholder ID="ScriptsSection" runat="server">  
-</asp:Contentplaceholder>
+<asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  
+</asp:ContentPlaceHolder>
 </body>
 </html>
