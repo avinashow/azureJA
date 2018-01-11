@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css" />
   <!--<link rel="stylesheet" href="../../Content/bootstrap-datepicker.min.css" />-->
   <link rel="stylesheet" href="../../Content/fullcalendar.min.css" />
+  <link rel="stylesheet" href="../../Content/circle.css">
   <link rel="stylesheet" href="../../Content/blue.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="../../Content/jquery-jvectormap.css">
@@ -243,7 +244,7 @@
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>             
-	<div class="container-fluid" style="padding-top:90px">
+	<div class="container-fluid" style="background-image:url(http://bilerico.lgbtqnation.com/images/supreme-court-side-view.jpg);background-position:center;background-size:cover;background-attachment:fixed;padding-top:90px">
 		<asp:ContentPlaceHolder ID="MainContent" runat="server"/>  
 	</div> 
 <!-- jQuery 3 -->
@@ -264,9 +265,9 @@
 	<script src="../../Scripts/jquery-jvectormap-usa-en.js"></script>
 <!-- initializing map -->
 <script src="../../Scripts/Chart.js"></script>
-<script src="../../Scripts/dashboard2.js"></script>
 <!-- Canvas JS --->
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="../../Scripts/dashboard2.js"></script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  
 </asp:ContentPlaceHolder>
 </body>

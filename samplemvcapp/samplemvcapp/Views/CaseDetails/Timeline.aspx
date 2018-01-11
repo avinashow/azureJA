@@ -10,7 +10,67 @@
 		<div class="col-md-6">
 			<div class="box box-primary">
 				<div class="box-body">
-					<div id="pieChart" style="height:360px;width:100%"></div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="row" style="text-align:center">
+								<h2>Criminal Proceedings</h2>
+							</div>
+							<div class="row" style="display:flex;justify-content:center">
+								<div class="c100 p25">
+									<span>25%</span>
+									<div class="slice">
+										<div class="bar"></div>
+										<div class="fill"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="col-md-6">
+							<div class="row" style="text-align:center">
+								<h2>SLA Disposal</h2>
+							</div>
+							<div class="row" style="display:flex;justify-content:center">
+								<div class="c100 p25 green">
+									<span>4%</span>
+									<div class="slice">
+										<div class="bar"></div>
+										<div class="fill"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="row" style="text-align:center">
+								<h2>Average Hearing for Category</h2>
+							</div>
+							<div class="row" style="display:flex;justify-content:center">
+								<div class="c100 p25 orange">
+									<span>12%</span>
+									<div class="slice">
+										<div class="bar"></div>
+										<div class="fill"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row" style="text-align:center">
+								<h2>CUrrent Conducted Hearing</h2>
+							</div>
+							<div class="row" style="display:flex;justify-content:center">
+								<div class="c100 p25 green">
+									<span>1%</span>
+									<div class="slice">
+										<div class="bar"></div>
+										<div class="fill"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -94,56 +154,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
 	
 	<script>
-		var pieChartValues = [{
-			y: 39.16,
-			exploded: true,
-			indexLabel: "Criminal Proceedings",
-			color: "#1f77b4"
-		}, {
-			y: 21.8,
-			indexLabel: "Average Hearing for category",
-			exploded: true,
-			color: "#ff7f0e"
-		}, {
-			y: 21.45,
-			indexLabel: "SLA disposal",
-			exploded: true,
-			color: " #ffbb78"
-		}, {
-			y: 5.56,
-			indexLabel: "Current Conducting Hearings",
-			exploded: true,
-			color: "#d62728"
-		}];
-		renderPieChart(pieChartValues);
-		function renderPieChart(values) {
-
-			var chart = new CanvasJS.Chart("pieChart", {
-				backgroundColor: "white",
-				colorSet: "colorSet2",
-
-				title: {
-					text: "Case Category",
-					fontFamily: "Verdana",
-					fontSize: 25,
-					fontWeight: "normal",
-				},
-				animationEnabled: true,
-				data: [{
-					indexLabelFontSize: 15,
-					indexLabelFontFamily: "Monospace",
-					indexLabelFontColor: "darkgrey",
-					indexLabelLineColor: "darkgrey",
-					indexLabelPlacement: "outside",
-					type: "pie",
-					showInLegend: false,
-					toolTipContent: "<strong>#percent%</strong>",
-					dataPoints: values
-				}]
-			});
-			chart.render();
-		}
-
+		//column chart
 		var columnChartValues = [{
 			y: 686.04,
 			label: "Jan",
@@ -181,7 +192,7 @@
 				backgroundColor: "white",
 				colorSet: "colorSet3",
 				title: {
-				    text: "Case Category Trend",
+					text: "Case Category Trend",
 					fontFamily: "Verdana",
 					fontSize: 25,
 					fontWeight: "normal",

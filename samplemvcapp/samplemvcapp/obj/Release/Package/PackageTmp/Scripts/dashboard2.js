@@ -92,67 +92,232 @@ $(function () {
   // - PIE CHART -
   // -------------
   // Get context with jQuery - using jQuery's .get() method.
-  var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
-  var pieChart       = new Chart(pieChartCanvas);
-  var PieData        = [
-    {
-      value    : 700,
-      color    : '#f56954',
-      highlight: '#f56954',
-      label    : 'Cancelled'
-    },
-    {
-      value    : 500,
-      color    : '#00a65a',
-      highlight: '#00a65a',
-      label    : 'Completed'
-    },
-    {
-      value    : 400,
-      color    : '#f39c12',
-      highlight: '#f39c12',
-      label    : 'Backlogged'
-    },
-    {
-      value    : 100,
-      color    : '#d2d6de',
-      highlight: '#d2d6de',
-      label    : 'Deferred'
-    }
-  ];
-  var pieOptions     = {
-    // Boolean - Whether we should show a stroke on each segment
-    segmentShowStroke    : true,
-    // String - The colour of each segment stroke
-    segmentStrokeColor   : '#fff',
-    // Number - The width of each segment stroke
-    segmentStrokeWidth   : 1,
-    // Number - The percentage of the chart that we cut out of the middle
-    percentageInnerCutout: 50, // This is 0 for Pie charts
-    // Number - Amount of animation steps
-    animationSteps       : 100,
-    // String - Animation easing effect
-    animationEasing      : 'easeOutBounce',
-    // Boolean - Whether we animate the rotation of the Doughnut
-    animateRotate        : true,
-    // Boolean - Whether we animate scaling the Doughnut from the centre
-    animateScale         : false,
-    // Boolean - whether to make the chart responsive to window resizing
-    responsive           : true,
-    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-    maintainAspectRatio  : false,
-    // String - A legend template
-    legendTemplate       : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
-    // String - A tooltip template
-    tooltipTemplate      : '<%=value %> <%=label%> users'
-  };
+  //var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
+  //var pieChart       = new Chart(pieChartCanvas);
+  //var PieData        = [
+  //  {
+  //    value    : 700,
+  //    color    : '#f56954',
+  //    highlight: '#f56954',
+  //    label    : 'Cancelled'
+  //  },
+  //  {
+  //    value    : 500,
+  //    color    : '#00a65a',
+  //    highlight: '#00a65a',
+  //    label    : 'Completed'
+  //  },
+  //  {
+  //    value    : 400,
+  //    color    : '#f39c12',
+  //    highlight: '#f39c12',
+  //    label    : 'Backlogged'
+  //  },
+  //  {
+  //    value    : 100,
+  //    color    : '#d2d6de',
+  //    highlight: '#d2d6de',
+  //    label    : 'Deferred'
+  //  }
+  //];
+  //var pieOptions     = {
+  //  // Boolean - Whether we should show a stroke on each segment
+  //  segmentShowStroke    : true,
+  //  // String - The colour of each segment stroke
+  //  segmentStrokeColor   : '#fff',
+  //  // Number - The width of each segment stroke
+  //  segmentStrokeWidth   : 1,
+  //  // Number - The percentage of the chart that we cut out of the middle
+  //  percentageInnerCutout: 50, // This is 0 for Pie charts
+  //  // Number - Amount of animation steps
+  //  animationSteps       : 100,
+  //  // String - Animation easing effect
+  //  animationEasing      : 'easeOutBounce',
+  //  // Boolean - Whether we animate the rotation of the Doughnut
+  //  animateRotate        : true,
+  //  // Boolean - Whether we animate scaling the Doughnut from the centre
+  //  animateScale         : false,
+  //  // Boolean - whether to make the chart responsive to window resizing
+  //  responsive           : true,
+  //  // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+  //  maintainAspectRatio  : false,
+  //  // String - A legend template
+  //  legendTemplate       : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+  //  // String - A tooltip template
+  //  tooltipTemplate      : '<%=value %> <%=label%> users'
+  //};
   // Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.
-  pieChart.Doughnut(PieData, pieOptions);
+  //pieChart.Doughnut(PieData, pieOptions);
   // -----------------
   // - END PIE CHART -
   // -----------------
+// KNOB values
+//START
+    // rendering the pending cases
+  var pieChartValues = [{
+      y: 486,
+      exploded: true,
+      indexLabel: "Received",
+      legendText: "Received",
+      color: "#3c8dbc"
+  }, {
+      y: 351,
+      indexLabel: "Approved",
+      legendText: "Approved",
+      exploded: true,
+      color: "black"
+  }];
+  renderPieChart(pieChartValues, "Order Sheets", "orderSheets", "OrderSheetsContainer");
 
+    //rendering the total cases
+    var caseChartValues = [{
+        y: 641,
+        exploded: true,
+        indexLabel: "Assigned",
+        legendText: "Assigned",
+        color: "#3c8dbc"
+    }, {
+        y: 213,
+        indexLabel: "Completed",
+        legendText: "Completed",
+        exploded: true,
+        color: "black"
+    }];
+    renderPieChart(caseChartValues, "Total Cases","totalCasesValue", "totalCases");
+
+    //rendering the case pending cases
+    var pendingChartValues = [{
+        y: 42,
+        exploded: true,
+        indexLabel: "This month",
+        legendText: "This month",
+        color: "#3c8dbc"
+    }, {
+        y: 1520,
+        indexLabel: "Other months",
+        legendText: "Other months",
+        exploded: true,
+        color: "black"
+    }];
+    renderPieChart(pendingChartValues, "Pending Cases", "totaPendingCasesValue", "pendingCases");
+
+    //rendering the disposal ratio
+    var disposalChartValues = [{
+        y: 184,
+        exploded: true,
+        indexLabel: "Time Taken",
+        legendText: "Time Taken",
+        color: "#3c8dbc"
+    }, {
+        y: 260,
+        indexLabel: "Target SLA",
+        legendText: "Target SLA",
+        exploded: true,
+        color: "black"
+    }];
+    renderPieChart(disposalChartValues, "Disposal Ratio", "", "caseDisposal");
+
+  function renderPieChart(values, text, id, divid) {
+      var chart = new CanvasJS.Chart(divid, {
+          backgroundColor: "white",
+          colorSet: "colorSet2",
+          title: {
+              text: text,
+              fontFamily: "Verdana",
+              fontSize: 25,
+              fontWeight: "normal",
+          },
+          animationEnabled: true,
+          data: [{
+              indexLabelFontSize: 15,
+              indexLabelFontFamily: "Monospace",
+              indexLabelFontColor: "darkgrey",
+              indexLabelLineColor: "darkgrey",
+              indexLabelPlacement: "outside",
+              type: "doughnut",
+              showInLegend: true,
+              toolTipContent: "<strong>#percent%</strong>",
+              dataPoints: values
+          }]
+      });
+      chart.render();
+      if (id.length > 0) {
+          $("#" + id).text(getTotal(chart));
+      }
+  }
+
+    //rendering the Pending Cases
+    var pendingCasesChartValues = [{
+    	y: 700,
+    	exploded: true,
+    	indexLabel: "Cancelled",
+    	legendText: "Cancelled",
+    	color: "#3c8dbc"
+    }, {
+    	y: 500,
+    	indexLabel: "Completed",
+    	legendText: "Completed",
+    	exploded: true,
+    	color: "black"
+    }, {
+        y: 400,
+        indexLabel: "Backlogged",
+        legendText: "Backlogged",
+        exploded: true,
+        color: "orange"
+    }, {
+        y: 100,
+        indexLabel: "Deferred",
+        legendText: "Deferred",
+        exploded: true,
+        color: "gray"
+    }];
+
+    renderDonutChart(pendingCasesChartValues);
+
+    function renderDonutChart(values) {
+        console.log("rendering pending cases");
+        var chart = new CanvasJS.Chart("pendingCasesChart", {
+            backgroundColor: "white",
+            colorSet: "colorSet2",
+            title: {
+                text: "Pending Cases Status",
+                fontFamily: "Verdana",
+                fontSize: 25,
+                fontWeight: "normal",
+            },
+            animationEnabled: true,
+            data: [{
+                indexLabelFontSize: 15,
+                indexLabelFontFamily: "Monospace",
+                indexLabelFontColor: "darkgrey",
+                indexLabelLineColor: "darkgrey",
+                indexLabelPlacement: "outside",
+                type: "doughnut",
+                showInLegend: true,
+                toolTipContent: "<strong>#percent%</strong>",
+                dataPoints: values
+            }]
+        });
+        chart.render();
+    }
+
+
+
+    //get Total values
+  function getTotal(chart) {
+      var dps = chart.options.data[0].dataPoints;
+      var sum = 0;
+
+      for (var i = 0; i < dps.length; i++) {
+
+          sum += dps[i].y;
+
+      }
+      return sum;
+  }
+//END 
   /* jVector Maps
    * ------------
    * Create a world map with markers
