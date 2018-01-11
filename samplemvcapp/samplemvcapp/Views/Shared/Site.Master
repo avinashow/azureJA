@@ -128,7 +128,7 @@
 		<!-- /.sidebar -->
 	  </aside>
 	<!-- content -->
-	<div class="content-wrapper" style="padding:20px;background-image:url(../Images/supreme.jpg);background-position:center;background-size:cover;background-attachment:fixed">
+	<div class="content-wrapper" style="padding:20px;background-image:url(http://justicealign.azurewebsites.net/Images/supreme1.jpg);background-position:center;background-size:cover;background-attachment:fixed">
 		<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 	</div>
 	<!-- content -->

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/site.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.CaseDetailsModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<samplemvcapp.Models.CaseDetailsModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	CaseDetails
@@ -23,7 +23,7 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="box box-solid">
 				<div class="box-header with-border">
 				  <h2 class="box-title" style="text-align:center"></h2>
@@ -47,50 +47,48 @@
 								  <dl class="dl-horizontal">
 									<dt>Case#:</dt>
 									<dd><%: Model.caseid %></dd>
-									<dt>District Ct. File #:</dt>
-									<dd></dd>
 									<dt>Case Name:</dt>
 									<dd><%: Model.casename %></dd>
 									<dt>Case Type:</dt>
-									<dd>Civil</dd>
-									<dt>Prosecutor: </dt>
-									<dd>Frank Kratovil</dd>
-									<dt>Created By:</dt>
-									<dd>JUD1</dd>
+									<dd><%:Model.casetype %></dd>
+									<dt>Subject: </dt>
+									<dd><%:Model.subject %></dd>
+									<dt>Jurisdiction:</dt>
+									<dd><%: Model.jurisdiction %></dd>
+									<dt>Police Report#:</dt>
+									<dd><%: Model.policereport %></dd>
 								  </dl>
 							  </div>
 							  <div class="col-md-4">
 								  <dl class="dl-horizontal">
-									<dt>Classification:</dt>
-									<dd><%: Model.casetype %></dd>
+									<dt>Prosecutor:</dt>
+									<dd><%: Model.prosecutor %></dd>
 									<dt>Case Charge:</dt>
-									<dd>Felony</dd>
+									<dd><%: Model.casecharge %></dd>
 									<dt>Status/Penal Code:</dt>
-									<dd>1735A</dd>
-									<dt>Reference#:</dt>
-									<dd>1-188499951</dd>
-									<dt>Status:</dt>
-									<dd>Scheduled</dd>
-									<dt>Disposition:</dt>
-									<dd></dd>
-									<dt>Assigned To:</dt>
-									<dd>JSPREG</dd>
+									<dd><%:Model.penalcode %></dd>
+									<dt>Classification:</dt>
+									<dd><%:Model.classification %></dd>
+									<dt>State:</dt>
+									<dd><%: Model.state %></dd>
+									<dt>Police Station:</dt>
+									<dd><%: Model.policestation %></dd>
 								  </dl>
 							  </div>
 							  <div class="col-md-4">
 								  <dl class="dl-horizontal">
-									<dt>Received By:</dt>
-									<dd>Court Clerk</dd>
-									<dt>Received Date:</dt>
+									<dt>Status:</dt>
+									<dd><%: Model.status %></dd>
+									<dt>Created By:</dt>
+									<dd><%: Model.createdby %></dd>
+									<dt>Submitted By:</dt>
+									<dd><%: Model.submittedby %></dd>
+									<dt>Assigned To:</dt>
+									<dd><%: Model.assignedto %></dd>
+									<dt>Session Date:</dt>
 									<dd><%: Model.casereceiveddate %></dd>
-									<dt>Received From:</dt>
-									<dd>Judicial Department</dd>
-									<dt>Police Division:</dt>
-									<dd>South Block</dd>
-									<dt>Stage:</dt>
-									<dd>Country Court</dd>
 									<dt>Courthouse:</dt>
-									<dd>A24</dd>
+									<dd><%: Model.courthouse %></dd>
 								  </dl>
 							  </div>
 						  </div>
@@ -108,9 +106,9 @@
 			<div class="box box-primary">
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
-						<li><div class="icon-button active" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="0"><i class="material-icons" style="font-size:48px">people_outline</i></div></li>
-						<li><div class="icon-button" data-toggle="tooltip" title="attachments" data-target="#quote-carousel" data-slide-to="1"><i class="material-icons" style="font-size:48px">folder</i></div></li>
-						<li><div class="icon-button" data-toggle="tooltip" title="summary" data-target="#quote-carousel" data-slide-to="2"><i class="fa fa-list-alt" style="font-size:48px"></i></div></li>
+						<li><div class="icon-button active" data-toggle="tooltip" title="summary" data-target="#quote-carousel" data-slide-to="0"><i class="fa fa-list-alt" style="font-size:48px"></i></div></li>
+						<li><div class="icon-button" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="1"><i class="material-icons" style="font-size:48px">people</i></div></li>
+						<li><div class="icon-button" data-toggle="tooltip" title="attachments" data-target="#quote-carousel" data-slide-to="2"><i class="material-icons" style="font-size:48px">folder</i></div></li>
 						<li><div class="icon-button" data-toggle="tooltip" title="timeline" onclick="window.location.replace('/CaseDetails/Timeline/<%: ViewBag.caseid %>')"><img class="img-responsive" width="50px" height="50px" src="../../Images/timeline.png" /></div></li>
 					</ul>
 				</div>
@@ -123,10 +121,24 @@
 				<div class="carousel-inner text-center">
 					<div class="item active">
 						<div class="row">
+							<div class="col-md-11 col-md-offset-1" style="background-color:white">
+								<div class="box box-primary">
+									<div class="box-header">
+										<h2><strong>Summary</strong></h2>
+									</div>
+									<div class="box-body" style="text-align:justify;font-size:17px">
+										<%: Model.summary %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
 							<div class="col-md-11 col-md-offset-1">
 								<div class="box box-primary">
 									<div class="box-header with-border">
-										<h3 class="box-title">Contacts</h3>
+										<h2 ><strong>Contacts</strong></h2>
 										<div class="box-tools pull-right">
 											<button type="button" class="btn btn-box-tool" data-widget="collapse">
 												<i class="fa fa-minus"></i>
@@ -139,12 +151,12 @@
 												<div class="product-img">
 													<img src="../../Images/Defendant.png" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
 												</div>
-												<div class="product-info" style="display:none">
+												<div class="product-info">
 													<span class="product-description">
 														<table class="table">
-															<tr><td>Name: Martin Hall</td><td>Party Type : Respondent </td><td>Gender: Male</td></tr>
-															<tr><td>ID#: 998-95-5491</td><td>Status : Verified </td><td>Number Of Cases: 05</td></tr>
-															<tr><td>Nationality : USA</td></tr>
+															<tr><td><strong>Name:</strong> <span style="color:black">Martin Hall</span></td><td><strong>Party Type : </strong> <span style="color:black">Respondent</span> </td><td><strong>Gender: </strong> <span style="color:black">Male</span></td></tr>
+															<tr><td><strong>ID#: </strong> <span style="color:black">998-95-5491</td><td><strong>Status : </strong> <span style="color:black">Verified</span> </td><td><strong> Of Cases: </strong> <span style="color:black">05</span></td></tr>
+															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
 														</table>
 													</span>
 												</div>
@@ -153,12 +165,26 @@
 												<div class="product-img">
 													<img src="../../Images/07nlook4.jpg" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
 												</div>
-												<div class="product-info" style="display:none">
+												<div class="product-info">
 													<span class="product-description">
 														<table class="table">
-															<tr><td>Name: Lewis Smith</td><td>Party Type : Petitioner Attorney</td><td>Gender: Male</td></tr>
-															<tr><td>ID#: 998-43-6666</td><td>Status : Verified </td><td>Number Of Cases: 16</td></tr>
-															<tr><td>Nationality : USA</td></tr>
+															<tr><td><strong>Name: </strong> <span style="color:black">Lewis Smith</span></td><td><strong>Party Type : </strong> <span style="color:black">Petitioner Attorney</span></td><td><strong>Gender: </strong> <span style="color:black">Male</span></td></tr>
+															<tr><td><strong>ID#: </strong> <span style="color:black">998-43-6666</span></td><td><strong>Status : </strong> <span style="color:black">Verified </span></td><td><strong>Number Of Cases: </strong> <span style="color:black">16</span></td></tr>
+															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
+														</table>
+													</span>
+												</div>
+											</li>
+											<li class="item">
+												<div class="product-img">
+													<img src="" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
+												</div>
+												<div class="product-info">
+													<span class="product-description">
+														<table class="table">
+															<tr><td><strong>Name: </strong> <span style="color:black">Stephanie Anderson</span></td><td><strong>Party Type : </strong> <span style="color:black">Petitioner</span></td><td><strong>Gender: </strong> <span style="color:black">Female</span></td></tr>
+															<tr><td><strong>ID#: </strong> <span style="color:black">998-95-4624</span></td><td><strong>Status : </strong> <span style="color:black">Verified </span></td><td><strong>Number Of Cases: </strong> <span style="color:black">01</span></td></tr>
+															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
 														</table>
 													</span>
 												</div>
@@ -171,25 +197,32 @@
 					</div>
 					<div class="item">
 						<div class="row">
-							<div class="col-md-11 col-md-offset-1" style="padding:30px;background-color:white;border-radius:10px">
-								<div class="box">
+							<div class="col-md-11 col-md-offset-1" style="background-color:white;border-radius:10px">
+								<div class="box box-primary">
+									<div class="box-header">
+										<h2><strong>Attachments</strong></h2>
+									</div>
 									<div class="box-body">
-										<button type="button" id="mymodal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
-											View OrderSheet
-										</button>
+										<div class="row">
+										  <div class="col-xs-6 col-md-3">
+											<div href="#" type="button" id="mymodal" class="thumbnail btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
+											  <img src="https://cdn.tidyform.com/Download/708/idaho-family-law-case-information-sheet_000003.png" alt="ordersheet">
+											  <div class="caption">
+												<h3 style="color:white">Order Sheet</h3>
+											  </div>
+											</div>
+										  </div>
+										  <div class="col-xs-6 col-md-3">
+											<div href="#" type="button" id="Div1" class="thumbnail btn btn-primary btn-lg">
+											  <img src="https://cdn.tidyform.com/Download/708/idaho-family-law-case-information-sheet_000003.png" alt="ordersheet">
+											  <div class="caption">
+												<h3 style="color:white">Notice</h3>
+											  </div>
+											</div>
+										  </div>
+										</div>
 									</div>
 								</div>									
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-md-11 col-md-offset-1" style="background-color:white">
-								<div class="box box-primary">
-									<div class="box-body" style="text-align:justify;font-size:17px">
-										<%: Model.summary %>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -209,8 +242,8 @@
 		});
 
 		$(".icon-button").on("click", function () {
-			var arr = { 0: "people", 1: "folder" };
-			var sarr = { 0: "people_outline", 1: "folder_open" };
+			var arr = { 1: "people", 2: "folder" };
+			var sarr = { 1: "people_outline", 2: "folder_open" };
 			var that = $(this);
 			$(".icons-buttons").find(".icon-button").each(function () {
 				$(this).find("i").text(arr[$(this).attr("data-slide-to")]);

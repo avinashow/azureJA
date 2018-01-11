@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Timeline
@@ -6,17 +6,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<section class="content">
-
 		<div class="row">
 		<div class="col-md-6">
-			<div class="box">
+			<div class="box box-primary">
 				<div class="box-body">
 					<div id="pieChart" style="height:360px;width:100%"></div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
-			<div class="box">
+			<div class="box box-primary">
 				<div class="box-body">
 					<div id="columnChart" style="height:360px;width:100%"></div>
 				</div>
@@ -24,96 +23,68 @@
 		</div>
 	</div>
 		<!-- row -->
-		<div class="row">
-		<div class="col-md-12">
-		  <div class="box box-primary">
-			  <div class="box-body">
-				  <!-- The time line -->
-				  <ul class="timeline">
-					<!-- timeline time label -->
-					<li class="time-label">
-						  <span class="bg-red">
-							2017
-						  </span>
-					</li>
-					<li class="time-label">
-						  <span class="bg-red">
-							21 December 2017
-						  </span>
-					</li>
-					<!-- /.timeline-label -->
-					<!-- timeline item -->
-					<li>
-					  <i class="fa fa-envelope bg-blue"></i>
-
-					  <div class="timeline-item">
-						<span class="time"><i class="fa fa-calendar-o"></i> 21 December 2017</span>
-
-						<h2 class="timeline-header"><strong>Status: Scheduled</strong></h2>
-
-						<div class="timeline-body">
-						</div>
-						<!--<div class="timeline-footer">
-						  <a class="btn btn-primary btn-xs">Read more</a>
-						  <a class="btn btn-danger btn-xs">Delete</a>
-						</div>-->
-					  </div>
-					</li>
-					<li class="time-label">
-						  <span class="bg-red">
-							18 December 2017
-						  </span>
-					</li>
-					<li>
-						<i class="fa fa-envelope bg-blue"></i>
-						<div class="timeline-item">
-							<span class="time"><i class="fa fa-calendar-o"></i> 18 December 2017</span>
-							<h2 class="timeline-header"><strong>Anderson vs Martin</strong></h2>
-							<div class="timeline-body">
-								<h3><b>Summary:</b></h3>
-								<p>Both parties appeared before court, Police presented enough evidence against Martin to be Pronounced Guilty </p>
-								<h3><b>Result:</b></h3>
-								<p><b>Session Time: </b> 31mins<br /></p>
-								<p><b>Short Order: </b>Notice to Authority Medical Test reports Of Minor</p>
+		<div class="row" >
+			<div class="container">
+				<div class="box box-primary">
+				  <div class="box-body">
+					  <ul class="timeline">
+						<li class="time-label">
+							<span class="bg-red">
+								15 December 2017
+							  </span>
+						</li>
+						<li>
+							<i class="fa fa-envelope bg-blue"></i>
+							<div class="timeline-item">
+								<h3 class="timeline-header"><strong>Order Sheet Approved Case Closed</strong></h3>
 							</div>
-						</div>
-					</li>
-					<li class="time-label">
-						  <span class="bg-red">
-							18 December 2017
-						  </span>
-					</li>
-					<li>
-						<i class="fa fa-user-o bg-blue"></i>
-
-						<div class="timeline-item">
-							<span class="time"><i class="fa fa-calendar-o"></i> 18 December 2017</span>
-
-							<h3 class="timeline-header"><strong>Lewis Smith</strong><br/><small>Petitioner's Attorney</small></h3>
-
-							<div class="timeline-body">
-								<table class="table">
-									<tbody>
-										<tr>
-											<td>SSN: </td><td>998226988</td>
-										</tr>
-										<tr>
-											<td>Started Practice: </td><td>1996</td>
-										</tr>
-										<tr>
-											<td>Current Cases: </td><td>14</td>
-										</tr>
-									</tbody>
-								</table>
+						</li>
+						<li class="time-label">
+							<span class="bg-red">
+								14 December 2017
+							  </span>
+						</li>
+						<li>
+							<i class="fa fa-envelope bg-blue"></i>
+							<div class="timeline-item">
+								<h3 class="timeline-header"><strong>Order Sheet Submitted for Approval</strong></h3>
 							</div>
-						</div>
-					</li>
+						</li>
+						<li class="time-label">
+							<span class="bg-red">
+								13 December 2017
+							  </span>
+						</li>
+						<li>
+							<i class="fa fa-envelope bg-blue"></i>
+							<div class="timeline-item">
+								<h3 class="timeline-header"><strong>First Hearing Scheduled</strong></h3>
+								<div class="timeline-body">
+									<h3><b>Summary:</b></h3>
+									<p>Both parties appeared before court, Police presented enough evidence against Martin to be Pronounced Guilty </p>
+									<h3><b>Result:</b></h3>
+									<p><b>Session Time: </b> 31mins<br /></p>
+									<p><b>Short Order: </b>Disposed, Life Sentence</p>
+								</div>
+							</div>
+						</li>
+						<li class="time-label">
+							<span class="bg-red">
+								12 December 2017
+							  </span>
+						</li>
+						<li>
+							<i class="fa fa-envelope bg-blue"></i>
+							<div class="timeline-item">
+								<h3 class="timeline-header"><strong>Case Filed in the Court</strong></h3>
+							</div>
+						
+						</li>
 			
-				 </ul>
+					 </ul>
+				  </div>
 			  </div>
-		  </div>
-		  
-		</div>
+			</div>
 	   </div>
 	</section>
 	
@@ -121,6 +92,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
+	
 	<script>
 		var pieChartValues = [{
 			y: 39.16,
@@ -174,31 +146,31 @@
 
 		var columnChartValues = [{
 			y: 686.04,
-			label: "one",
+			label: "Jan",
 			color: "#1f77b4"
 		}, {
 			y: 381.84,
-			label: "two",
+			label: "Feb",
 			color: "#ff7f0e"
 		}, {
 			y: 375.76,
-			label: "three",
+			label: "Mar",
 			color: " #ffbb78"
 		}, {
 			y: 97.48,
-			label: "four",
+			label: "Apr",
 			color: "#d62728"
 		}, {
 			y: 94.2,
-			label: "five",
+			label: "May",
 			color: "#98df8a"
 		}, {
 			y: 65.28,
-			label: "Hi",
+			label: "Jun",
 			color: "#bcbd22"
 		}, {
 			y: 51.2,
-			label: "Hello",
+			label: "Jul",
 			color: "#f7b6d2"
 		}];
 		renderColumnChart(columnChartValues);
@@ -209,7 +181,7 @@
 				backgroundColor: "white",
 				colorSet: "colorSet3",
 				title: {
-					text: "Current Trend",
+				    text: "Case Category Trend",
 					fontFamily: "Verdana",
 					fontSize: 25,
 					fontWeight: "normal",

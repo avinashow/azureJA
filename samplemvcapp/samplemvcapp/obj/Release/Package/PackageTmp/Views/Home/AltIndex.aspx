@@ -66,16 +66,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="cover-card col-sm-5" style="height:50vh;background: url(http://lorempixel.com/300/200/nightlife/2) no-repeat center top;background-size:cover;">
+			<div class="cover-card col-sm-12" style="height:50vh;">
 				<div id="chartContainer" style="height: 100%; width: 100%;"></div>
 			</div>
-			<div class="cover-card col-sm-7" style="height:50vh;background: url(http://lorempixel.com/600/200/nightlife/3) no-repeat center top;background-size:cover;">
+			<div class="cover-card col-sm-7" style="height:50vh;">
 				<div id="vmap" style="width: 100%; height: 100%;"></div>
 			</div>
-			<div class="cover-card col-sm-4" style="height:50vh;background: url(http://lorempixel.com/600/200/city/4) no-repeat center top;background-size:cover;">
+			<div class="cover-card col-sm-5" style="height:50vh;">
 				<div id="dounut" style="height:100%;width:100%"></div>
 			</div>
-			<div class="cover-card col-sm-4" style="background: url(http://lorempixel.com/300/200/city/5) no-repeat center top;background-size:cover;">
+			<div class="cover-card col-sm-4" style="">
 			</div>
 			<div class="cover-card col-sm-4" style="background: url(http://lorempixel.com/300/200/city/6) no-repeat center top;background-size:cover;">
 			</div>

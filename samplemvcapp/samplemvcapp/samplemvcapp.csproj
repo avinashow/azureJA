@@ -304,7 +304,10 @@
     <Content Include="Images\blue.png" />
     <Content Include="Images\Defendant.png" />
     <Content Include="Images\intro-bg.jpg" />
+    <Content Include="Images\latestKPI.png" />
+    <Content Include="Images\stephanie.png" />
     <Content Include="Images\supreme.jpg" />
+    <Content Include="Images\supreme1.jpg" />
     <Content Include="Images\timeline.png" />
     <Content Include="Images\user2-160x160.jpg" />
     <Content Include="Scripts\adminlte.min.js" />
@@ -325,6 +328,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery-jvectormap-usa-en.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

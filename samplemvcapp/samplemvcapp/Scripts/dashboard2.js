@@ -158,7 +158,7 @@ $(function () {
    * Create a world map with markers
    */
   $('#world-map-markers').vectorMap({
-    map              : 'world_mill_en',
+      map: 'us_aea',
     normalizeFunction: 'polynomial',
     hoverOpacity     : 0.7,
     hoverColor       : false,
@@ -182,37 +182,39 @@ $(function () {
     },
     markerStyle      : {
       initial: {
-        fill  : '#00a65a',
+          fill: '#0073b7',
         stroke: '#111'
       }
     },
-    markers          : [
-      { latLng: [41.90, 12.45], name: 'Vatican City' },
-      { latLng: [43.73, 7.41], name: 'Monaco' },
-      { latLng: [-0.52, 166.93], name: 'Nauru' },
-      { latLng: [-8.51, 179.21], name: 'Tuvalu' },
-      { latLng: [43.93, 12.46], name: 'San Marino' },
-      { latLng: [47.14, 9.52], name: 'Liechtenstein' },
-      { latLng: [7.11, 171.06], name: 'Marshall Islands' },
-      { latLng: [17.3, -62.73], name: 'Saint Kitts and Nevis' },
-      { latLng: [3.2, 73.22], name: 'Maldives' },
-      { latLng: [35.88, 14.5], name: 'Malta' },
-      { latLng: [12.05, -61.75], name: 'Grenada' },
-      { latLng: [13.16, -61.23], name: 'Saint Vincent and the Grenadines' },
-      { latLng: [13.16, -59.55], name: 'Barbados' },
-      { latLng: [17.11, -61.85], name: 'Antigua and Barbuda' },
-      { latLng: [-4.61, 55.45], name: 'Seychelles' },
-      { latLng: [7.35, 134.46], name: 'Palau' },
-      { latLng: [42.5, 1.51], name: 'Andorra' },
-      { latLng: [14.01, -60.98], name: 'Saint Lucia' },
-      { latLng: [6.91, 158.18], name: 'Federated States of Micronesia' },
-      { latLng: [1.3, 103.8], name: 'Singapore' },
-      { latLng: [1.46, 173.03], name: 'Kiribati' },
-      { latLng: [-21.13, -175.2], name: 'Tonga' },
-      { latLng: [15.3, -61.38], name: 'Dominica' },
-      { latLng: [-20.2, 57.5], name: 'Mauritius' },
-      { latLng: [26.02, 50.55], name: 'Bahrain' },
-      { latLng: [0.33, 6.73], name: 'São Tomé and Príncipe' }
+    markers: [{
+        latLng: [41.50, -87.37],
+        name: 'Chicago'
+    }, {
+        latLng: [32.46, -96.46],
+        name: 'Dallas'
+    },
+    { latLng: [42.40, -73.45], name: 'Albany' },
+    { latLng: [35.05, -106.39], name: 'Albuqerque' },
+    { latLng: [35.11, -101.50], name: 'Amarillo' },
+    { latLng: [30.16, -97.44], name: 'Austin' },
+    { latLng: [44.47, -117.50], name: 'Baker' },
+    { latLng: [39.18, -76.38], name: 'Baltimore' },
+    { latLng: [44.48, -68.47], name: 'Bangor' },
+    { latLng: [42.21, -71.05], name: 'Boston' },
+    { latLng: [42.55, -78.50], name: 'Buffalo' },
+    { latLng: [51.01, -114.01], name: 'Calgary' },
+    { latLng: [35.14, -80.50], name: 'Charlotte' },
+    { latLng: [41.28, -81.37], name: 'Cleveland' },
+    { latLng: [32.46, -96.46], name: 'Dallas' },
+    { latLng: [39.45, -105.0], name: 'Denver' },
+    { latLng: [42.20, -93.37], name: 'Detroit' },
+    { latLng: [53.34, -113.28], name: 'Edmonton' },
+    { latLng: [31.46, -106.29], name: 'El Paso' },
+    { latLng: [46.52, -96.48], name: 'Fargo' },
+    { latLng: [32.43, -97.19], name: 'Fort Worth' },
+    { latLng: [39.05, -108.33], name: 'Grand Junction' },
+    { latLng: [39.06, -94.35], name: 'Kansas ' },
+    { latLng: [39.46, -86.10], name: 'Indianapolis' }
     ]
   });
 

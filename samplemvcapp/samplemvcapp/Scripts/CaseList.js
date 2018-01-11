@@ -38,9 +38,6 @@ function clearAllSelection(date) {
 	date.children().css("background-color", "black");
 }
 
-function updatePagination() {
-
-}
 
 function updateCasesListView(cases, parent) {
 	var casesByCategory = getCasesByCategory();
@@ -247,13 +244,6 @@ function initPopover() {
 	});
 }
 
-function initPagination() {
-	var monkeyList = new List('tab-pane', {
-		page: 2,
-		pagination: true
-	});
-}
-
 (function () {
 	allCases = getAllCases();
 	var casesByDate = getCasesByDate();
@@ -262,7 +252,6 @@ function initPagination() {
 	updateCasesListView(allCases, "ul.list-group");
 	renderCalendarEvents(allCases);
 	initSearch();
-	initPagination();
 	intiClearSelectionDate();
 	initTabClick();
 	updateTabCounts();

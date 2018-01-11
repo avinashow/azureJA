@@ -18,25 +18,25 @@ namespace samplemvcapp.Models
         public String caseid { get; set; }
         public String casereceiveddate { get; set; }
         public string summary { get; set; }
+        public string status { get; set; }
         public string subject { get; set; }
         public String classification { get; set; }
         public String casename { get; set; }
         public String casetype { get; set; }
         public String category { get; set; }
         public int id { get; set; }
-        /*public int petitioner { get; set; }
-        public int respondent { get; set; }
-        public String casecharge { get; set; }
-        public int prosecutor { get; set; }
-        public int judge { get; set; }
+        public string state { get; set; }
+        public string policestation { get; set; }
         public String penalcode { get; set; }
-        public String status { get; set; }
-        public int assignedto { get; set; }
-        public String receivedfrom { get; set; }
-        public String stage { get; set; }
+        public string prosecutor { get; set; }
+        public String policereport { get; set; }
+        public string jurisdiction { get; set; }
+        public String createdby { get; set; }
+        public string assignedto { get; set; }
         public String courthouse { get; set; }
-        public String category { get; set; }
-        public List<ContactModel> contact { get; set; }*/
+        public String submittedby { get; set; }
+        public string petitioner { get; set; }
+        public string casecharge { get; set; }
 
         public static void CreateCase(CaseDetailsModel casedetail)
         {
@@ -117,11 +117,24 @@ namespace samplemvcapp.Models
                         {
                             caseDetail.caseid = Convert.ToString(rd.GetSqlValue(0));
                             caseDetail.casereceiveddate = Convert.ToString(rd.GetSqlValue(1));
-                            caseDetail.casename = Convert.ToString(rd.GetSqlValue(5));
-                            caseDetail.subject = Convert.ToString(rd.GetSqlValue(3)).Trim();
                             caseDetail.summary = Convert.ToString(rd.GetSqlValue(2)).Trim();
-                            caseDetail.category = Convert.ToString(rd.GetSqlValue(7));
+                            caseDetail.subject = Convert.ToString(rd.GetSqlValue(3)).Trim();
                             caseDetail.casetype = Convert.ToString(rd.GetSqlValue(4));
+                            caseDetail.casename = Convert.ToString(rd.GetSqlValue(5));                            
+                            caseDetail.category = Convert.ToString(rd.GetSqlValue(7));
+                            caseDetail.state = Convert.ToString(rd.GetSqlValue(8));
+                            caseDetail.policestation = Convert.ToString(rd.GetSqlValue(9));
+                            caseDetail.penalcode = Convert.ToString(rd.GetSqlValue(10));
+                            caseDetail.prosecutor = Convert.ToString(rd.GetSqlValue(11));
+                            caseDetail.policereport = Convert.ToString(rd.GetSqlValue(12));
+                            caseDetail.jurisdiction = Convert.ToString(rd.GetSqlValue(13));
+                            caseDetail.createdby = Convert.ToString(rd.GetSqlValue(14));
+                            caseDetail.assignedto = Convert.ToString(rd.GetSqlValue(15));
+                            caseDetail.courthouse = Convert.ToString(rd.GetSqlValue(16));
+                            caseDetail.submittedby = Convert.ToString(rd.GetSqlValue(17));
+                            caseDetail.status = Convert.ToString(rd.GetSqlValue(18));
+                            caseDetail.casecharge = Convert.ToString(rd.GetSqlValue(19));
+                            caseDetail.classification = Convert.ToString(rd.GetSqlValue(20));
                         }
                         con.Close();
                     }
