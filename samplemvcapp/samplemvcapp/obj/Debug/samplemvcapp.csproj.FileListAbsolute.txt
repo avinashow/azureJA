@@ -99,4 +99,5 @@ C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\bin\DotNet
 C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\obj\Debug\samplemvcapp.dll
 C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\obj\Debug\samplemvcapp.pdb
-C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\obj\Debug\samplemvcapp.csprojResolveAssemblyReference.cache
+C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\bin\samplemvcapp.dll.CodeAnalysisLog.xml
+C:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\bin\samplemvcapp.dll.lastcodeanalysissucceeded

@@ -12,8 +12,8 @@
 				<div class="box-body">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="row" style="text-align:center">
-								<h2>Criminal Proceedings</h2>
+							<div class="row" style="text-align:center;padding-left:10px">
+								<h2>Criminal Proceedings Filing</h2>
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25">
@@ -32,7 +32,7 @@
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 green">
-									<span>4%</span>
+									<span>4<h6 style="position:relative;top:-49px">Weeks</h6></span>
 									<div class="slice">
 										<div class="bar"></div>
 										<div class="fill"></div>
@@ -44,7 +44,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="row" style="text-align:center">
-								<h2>Average Hearing for Category</h2>
+								<h2>Average Hearing for Category Disposal</h2>
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 orange">
@@ -57,8 +57,8 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="row" style="text-align:center">
-								<h2>CUrrent Conducted Hearing</h2>
+							<div class="row" style="padding-left:10px;text-align:center">
+								<h2>Current Conducted Hearing</h2>
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 green">
@@ -77,7 +77,7 @@
 		<div class="col-md-6">
 			<div class="box box-primary">
 				<div class="box-body">
-					<div id="columnChart" style="height:360px;width:100%"></div>
+					<div id="columnChart" style="height:420px;width:100%"></div>
 				</div>
 			</div>            
 		</div>
@@ -87,61 +87,103 @@
 			<div class="container">
 				<div class="box box-primary">
 				  <div class="box-body">
-					  <ul class="timeline">
-						<li class="time-label">
-							<span class="bg-red">
-								15 December 2017
-							  </span>
-						</li>
-						<li>
-							<i class="fa fa-envelope bg-blue"></i>
-							<div class="timeline-item">
-								<h3 class="timeline-header"><strong>Order Sheet Approved Case Closed</strong></h3>
-							</div>
-						</li>
-						<li class="time-label">
-							<span class="bg-red">
-								14 December 2017
-							  </span>
-						</li>
-						<li>
-							<i class="fa fa-envelope bg-blue"></i>
-							<div class="timeline-item">
-								<h3 class="timeline-header"><strong>Order Sheet Submitted for Approval</strong></h3>
-							</div>
-						</li>
-						<li class="time-label">
-							<span class="bg-red">
-								13 December 2017
-							  </span>
-						</li>
-						<li>
-							<i class="fa fa-envelope bg-blue"></i>
-							<div class="timeline-item">
-								<h3 class="timeline-header"><strong>First Hearing Scheduled</strong></h3>
-								<div class="timeline-body">
-									<h3><b>Summary:</b></h3>
-									<p>Both parties appeared before court, Police presented enough evidence against Martin to be Pronounced Guilty </p>
-									<h3><b>Result:</b></h3>
-									<p><b>Session Time: </b> 31mins<br /></p>
-									<p><b>Short Order: </b>Disposed, Life Sentence</p>
+					  <div class="timeline_block">
+							<div class="timeline_inblock">
+								<br>
+								<div class="timeline_title"> Case Timeline</div>
+								<div class="container_chart">
+									<section id="timeline-wrapper">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="timeline-top">
+													<div class="top-year">2017</div>
+												</div>
+												<div class="timeline-block">
+													<div class="timeline-events">
+														<br>
+														<div class="event l-event col-md-6 col-sm-6 col-xs-8 ">
+															<span class="thumb fa fa-calendar"></span>
+															<div class=" event-body" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+																<div class="event-content">
+																	<h5 class="text-case-primary text-left">Order Sheet Approved Case Closed</h5>
+																	<span class="text-muted text-left" style="display:block; margin: 0">
+																		<small>15 December 2017</small>
+																	</span>
+																	<br>
+																	<br>
+																</div>
+															</div>
+														</div>
+														<!-- end of event body -->
+														<div class="row"></div>
+														<div class="clear-fix"></div>
+														<div class="event r-event col-md-6 col-sm-6 col-xs-8 ">
+															<span class="thumb fa fa-calendar"></span>
+															<div class=" event-body" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+																<div class="event-content">
+																	<h5 class="text-case-primary text-left">Order Sheet Submitted for Approval</h5>
+																	<span class="text-muted text-left" style="display:block; margin: 0">
+																		<small>14 December 2017</small>
+																	</span>
+																	<br>
+																	<br>
+																</div>
+															</div>
+														</div>
+														<!-- end of right event <-->
+														<div class="row"></div>
+														<div class="clearfix"></div>
+														<div class="event l-event col-md-6 col-sm-6 col-xs-8 ">
+															<span class="thumb fa fa-calendar"></span>
+															<div class=" event-body" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+																<div class="event-content">
+																	<h5 class="text-case-primary text-left">First Hearing Scheduled</h5>
+																	<span class="text-muted text-left" style="display:block; margin: 0">
+																		<small>13 December 2017</small>
+																	</span>
+																	<br>
+																	<br>
+																	<blockquote class=" text-left">
+																		<span class="text-muted">Summary :</span>
+																		<br> Both parties appeared before court, Police presented enough evidence against Martin to be Pronounced Guilty 
+																		<br>
+																		<span class="text-muted">Result :</span>
+																		<br>
+																		<span >
+																			<span style="font-weight:bold;font-size: 11.5px;">Session Time</span> : 31mins
+																			<br>
+																		</span>
+																		<span>
+																			<span style="font-weight:bold;font-size: 11.5px;">Short Order :</span> Disposed, Life Sentence.
+																		</span>
+																	</blockquote>
+																</div>
+															</div>
+														</div>
+														<div class="row"></div>
+														<div class="clearfix"></div>
+														<div class="event r-event col-md-6 col-sm-6 col-xs-8 ">
+															<span class="thumb fa fa-calendar"></span>
+															<div class=" event-body" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+																<div class="event-content">
+																	<h5 class="text-case-primary text-left">Case Filed in the Court</h5>
+																	<span class="text-muted text-left" style="display:block; margin: 0">
+																		<small>12 December 2017</small>
+																	</span>
+																	<br>
+																	<br>
+																</div>
+															</div>
+														</div>
+														<div class="clearfix"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
 								</div>
 							</div>
-						</li>
-						<li class="time-label">
-							<span class="bg-red">
-								12 December 2017
-							  </span>
-						</li>
-						<li>
-							<i class="fa fa-envelope bg-blue"></i>
-							<div class="timeline-item">
-								<h3 class="timeline-header"><strong>Case Filed in the Court</strong></h3>
-							</div>
-						
-						</li>
-			
-					 </ul>
+					  </div>
 				  </div>
 			  </div>
 			</div>
@@ -189,28 +231,21 @@
 		function renderColumnChart(values) {
 
 			var chart = new CanvasJS.Chart("columnChart", {
-				backgroundColor: "white",
-				colorSet: "colorSet3",
 				title: {
 					text: "Case Category Trend",
 					fontFamily: "Verdana",
 					fontSize: 25,
-					fontWeight: "normal",
+					fontWeight: "normal"
 				},
 				animationEnabled: true,
 				legend: {
 					verticalAlign: "bottom",
 					horizontalAlign: "center"
 				},
-				theme: "theme2",
+				theme: "theme1",
 				data: [
 
 				  {
-					  indexLabelFontSize: 15,
-					  indexLabelFontFamily: "Monospace",
-					  indexLabelFontColor: "darkgrey",
-					  indexLabelLineColor: "darkgrey",
-					  indexLabelPlacement: "outside",
 					  type: "column",
 					  showInLegend: false,
 					  legendMarkerColor: "grey",

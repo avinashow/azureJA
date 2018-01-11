@@ -30,6 +30,7 @@ function redisplay(id) {
 		$("ul.list-group").html("<li class='list-group-item' style='text-align:center'><h3>No Cases</h3></li>");
 		$("span#pending").text("");
 		$("span#reschedule").text("");
+		$("span#highpriority").text("");
 	}
 }
 
@@ -43,17 +44,22 @@ function updateCasesListView(cases, parent) {
 	var casesByCategory = getCasesByCategory();
 	$("span#pending").text("");
 	$("span#reschedule").text("");
+	$("span#highpriority").text("");
 	for (var category in casesByCategory) {
 		var categoryId = category.toLowerCase();
-		if (categoryId == 'pending' || categoryId == 'reschedule') {
+		if (categoryId == 'pending' || categoryId == 'reschedule' || categoryId == 'highpriority') {
 			$("span#" + categoryId).text(casesByCategory[category].length);
 		}
 	}
 	$("ul.list-group").empty();
 	var casesJson = {};
 	casesJson["cases"] = cases;
+	$("li a[role='tab']").each(function () {
+	    $(this).removeClass("active");
+	});
 	$("#caseListTemplate").tmpl(casesJson).appendTo(parent);
 	initMultiSelect();
+	initDropDownSelect();
 }
 
 //Fetching the cases by date data
@@ -213,8 +219,10 @@ function initMultiSelect() {
 		}
 		consoleLog("Selected Cases" + selectedIds);
 		if (selectedIds.length <= 1) {
+		    $("#dropdownMenu").hide();
 			$("#dropdownMenuButton").css("display", "none");
 		} else {
+		    $("#dropdownMenu").show();
 			$("#dropdownMenuButton").css("display", "block");
 		}
 	});
@@ -244,6 +252,18 @@ function initPopover() {
 	});
 }
 
+function initDropDownSelect() {
+	$("#conmenu a").on("click",function (e) {
+		postData($(this).text());
+		return false;
+	});
+
+	$("#dropdownMenu a").on("click",function (e) {
+		postData($(this).text());
+		return false;
+	});
+}
+
 (function () {
 	allCases = getAllCases();
 	var casesByDate = getCasesByDate();
@@ -254,8 +274,8 @@ function initPopover() {
 	initSearch();
 	intiClearSelectionDate();
 	initTabClick();
+	initDropDownSelect();
 	updateTabCounts();
-	initPopover();
 })();
 
 function updateTabCounts() {
@@ -263,15 +283,3 @@ function updateTabCounts() {
 	//get categories count
 	var casesByCategory = getCasesByCategory();
 }
-
-$("ul#conmenu > li > a").on("click", function () {
-	alert($(this).text());
-	postData($(this).text(), e);
-	return false;
-});
-
-$("#dropdownMenu a").click(function (e) {
-	alert($(this).text());
-	postData($(this).text(),e);
-	return false;
-});

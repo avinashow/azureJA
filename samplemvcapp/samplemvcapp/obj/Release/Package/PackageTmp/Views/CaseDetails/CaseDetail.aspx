@@ -24,79 +24,63 @@
 	</div><!-- /.modal -->
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="box box-solid">
-				<div class="box-header with-border">
-				  <h2 class="box-title" style="text-align:center"></h2>
+			<div class="box box-primary">
+				<div class="box-header with-border" style="text-align:center">
+				  <h2><strong>Case Details</strong></h2>
 				</div>
 				<!-- /.box-header -->
-				<div class="box-body">
-				  <div class="box-group" id="accordion">
-					<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-					<div class="panel box box-primary">
-					  <div class="box-header with-border">
-						<h4 class="box-title">
-						  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-							Case Details
-						  </a>
-						</h4>
-					  </div>
-					  <div id="collapseOne" class="panel-collapse collapse in">
-						<div class="box-body">
-						  <div class="row">
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Case#:</dt>
-									<dd><%: Model.caseid %></dd>
-									<dt>Case Name:</dt>
-									<dd><%: Model.casename %></dd>
-									<dt>Case Type:</dt>
-									<dd><%:Model.casetype %></dd>
-									<dt>Subject: </dt>
-									<dd><%:Model.subject %></dd>
-									<dt>Jurisdiction:</dt>
-									<dd><%: Model.jurisdiction %></dd>
-									<dt>Police Report#:</dt>
-									<dd><%: Model.policereport %></dd>
-								  </dl>
-							  </div>
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Prosecutor:</dt>
-									<dd><%: Model.prosecutor %></dd>
-									<dt>Case Charge:</dt>
-									<dd><%: Model.casecharge %></dd>
-									<dt>Status/Penal Code:</dt>
-									<dd><%:Model.penalcode %></dd>
-									<dt>Classification:</dt>
-									<dd><%:Model.classification %></dd>
-									<dt>State:</dt>
-									<dd><%: Model.state %></dd>
-									<dt>Police Station:</dt>
-									<dd><%: Model.policestation %></dd>
-								  </dl>
-							  </div>
-							  <div class="col-md-4">
-								  <dl class="dl-horizontal">
-									<dt>Status:</dt>
-									<dd><%: Model.status %></dd>
-									<dt>Created By:</dt>
-									<dd><%: Model.createdby %></dd>
-									<dt>Submitted By:</dt>
-									<dd><%: Model.submittedby %></dd>
-									<dt>Assigned To:</dt>
-									<dd><%: Model.assignedto %></dd>
-									<dt>Session Date:</dt>
-									<dd><%: Model.casereceiveddate %></dd>
-									<dt>Courthouse:</dt>
-									<dd><%: Model.courthouse %></dd>
-								  </dl>
-							  </div>
-						  </div>
+				<div class="box-body" style="display:flex;justify-content:center">
+						<div class="row">
+							<div class="col-md-4">
+								<dl class="dl-horizontal">
+								<dt>Case#:</dt>
+								<dd><%: Model.caseid %></dd>
+								<dt>Case Name:</dt>
+								<dd><%: Model.casename %></dd>
+								<dt>Case Type:</dt>
+								<dd><%:Model.casetype %></dd>
+								<dt>Subject: </dt>
+								<dd><%:Model.subject %></dd>
+								<dt>Jurisdiction:</dt>
+								<dd><%: Model.jurisdiction %></dd>
+								<dt>Police Report#:</dt>
+								<dd><%: Model.policereport %></dd>
+								</dl>
+							</div>
+							<div class="col-md-4">
+								<dl class="dl-horizontal">
+								<dt>Prosecutor:</dt>
+								<dd><%: Model.prosecutor %></dd>
+								<dt>Case Charge:</dt>
+								<dd><%: Model.casecharge %></dd>
+								<dt>Status/Penal Code:</dt>
+								<dd><%:Model.penalcode %></dd>
+								<dt>Classification:</dt>
+								<dd><%:Model.classification %></dd>
+								<dt>State:</dt>
+								<dd><%: Model.state %></dd>
+								<dt>Police Station:</dt>
+								<dd><%: Model.policestation %></dd>
+								</dl>
+							</div>
+							<div class="col-md-4">
+								<dl class="dl-horizontal">
+								<dt>Status:</dt>
+								<dd><%: Model.status %></dd>
+								<dt>Created By:</dt>
+								<dd><%: Model.createdby %></dd>
+								<dt>Submitted By:</dt>
+								<dd><%: Model.submittedby %></dd>
+								<dt>Assigned To:</dt>
+								<dd><%: Model.assignedto %></dd>
+								<dt>Session Date:</dt>
+								<dd><%: Model.casereceiveddate %></dd>
+								<dt>Courthouse:</dt>
+								<dd><%: Model.courthouse %></dd>
+								</dl>
+							</div>
 						</div>
-					  </div>
 					</div>
-				  </div>
-				</div>
 				<!-- /.box-body -->
 			  </div>
 		</div>
@@ -121,7 +105,7 @@
 				<div class="carousel-inner text-center">
 					<div class="item active">
 						<div class="row">
-							<div class="col-md-11 col-md-offset-1" style="background-color:white">
+							<div class="col-md-11 col-md-offset-1">
 								<div class="box box-primary">
 									<div class="box-header">
 										<h2><strong>Summary</strong></h2>
@@ -139,57 +123,113 @@
 								<div class="box box-primary">
 									<div class="box-header with-border">
 										<h2 ><strong>Contacts</strong></h2>
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" data-widget="collapse">
-												<i class="fa fa-minus"></i>
-											</button>
-										</div>
 									</div>
 									<div class="box-body">
-										<ul class="products-list product-list-in-box">
-											<li class="item">
-												<div class="product-img">
-													<img src="../../Images/Defendant.png" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
+											<div class="row">
+												<div class="col-md-2">
+													<img src="../../Images/Defendant.png" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
 												</div>
-												<div class="product-info">
-													<span class="product-description">
-														<table class="table">
-															<tr><td><strong>Name:</strong> <span style="color:black">Martin Hall</span></td><td><strong>Party Type : </strong> <span style="color:black">Respondent</span> </td><td><strong>Gender: </strong> <span style="color:black">Male</span></td></tr>
-															<tr><td><strong>ID#: </strong> <span style="color:black">998-95-5491</td><td><strong>Status : </strong> <span style="color:black">Verified</span> </td><td><strong> Of Cases: </strong> <span style="color:black">05</span></td></tr>
-															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
-														</table>
-													</span>
+												<div class="col-md-10">
+													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>Name:</dt>
+																<dd>Martin Hall</dd>
+																<dt>Party Type:</dt>
+																<dd>Respondent</dd>
+																<dt>Gender:</dt>
+																<dd>Male</dd>
+															</dl>
+														</div>
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>ID#:</dt>
+																<dd>998-95-5491</dd>
+																<dt>Status:</dt>
+																<dd>Verified</dd>
+																<dt>Number Of Cases:</dt>
+																<dd>05</dd>
+															</dl>
+														</div>
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>Nationality:</dt>
+																<dd>USA</dd>
+															</dl>
+														</div>
+													</div>
 												</div>
-											</li>
-											<li class="item">
-												<div class="product-img">
-													<img src="../../Images/07nlook4.jpg" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
+											</div>
+											<div class="row">
+												<div class="col-md-2">
+													<img src="../../Images/07nlook4.jpg" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
 												</div>
-												<div class="product-info">
-													<span class="product-description">
-														<table class="table">
-															<tr><td><strong>Name: </strong> <span style="color:black">Lewis Smith</span></td><td><strong>Party Type : </strong> <span style="color:black">Petitioner Attorney</span></td><td><strong>Gender: </strong> <span style="color:black">Male</span></td></tr>
-															<tr><td><strong>ID#: </strong> <span style="color:black">998-43-6666</span></td><td><strong>Status : </strong> <span style="color:black">Verified </span></td><td><strong>Number Of Cases: </strong> <span style="color:black">16</span></td></tr>
-															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
-														</table>
-													</span>
+												<div class="col-md-10">
+													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
+														<div class="col-md-4 col-sm-6">
+															<dl class="dl-horizontal">
+																<dt>Name:</dt>
+																<dd>Lewis Smith</dd>
+																<dt>Party Type:</dt>
+																<dd>Petitioner Attorney</dd>
+																<dt>Gender:</dt>
+																<dd>Male</dd>
+															</dl>
+														</div>
+														<div class="col-md-4 col-sm-6">
+															<dl class="dl-horizontal">
+																<dt>ID#:</dt>
+																<dd>998-43-6666</dd>
+																<dt>Status:</dt>
+																<dd>Verified</dd>
+																<dt>Number Of Cases:</dt>
+																<dd>16</dd>
+															</dl>
+														</div>
+														<div class="col-md-4 col-sm-6">
+															<dl class="dl-horizontal">
+																<dt>Nationality:</dt>
+																<dd>USA</dd>
+															</dl>
+														</div>
+													</div>
 												</div>
-											</li>
-											<li class="item">
-												<div class="product-img">
-													<img src="" style="border:1px double #3c8dbc; border-radius:50%;" width="100px" height="100px" />
+											</div>
+											<div class="row">
+												<div class="col-md-2">
+													<img src="../../Images/stephanie.png" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
 												</div>
-												<div class="product-info">
-													<span class="product-description">
-														<table class="table">
-															<tr><td><strong>Name: </strong> <span style="color:black">Stephanie Anderson</span></td><td><strong>Party Type : </strong> <span style="color:black">Petitioner</span></td><td><strong>Gender: </strong> <span style="color:black">Female</span></td></tr>
-															<tr><td><strong>ID#: </strong> <span style="color:black">998-95-4624</span></td><td><strong>Status : </strong> <span style="color:black">Verified </span></td><td><strong>Number Of Cases: </strong> <span style="color:black">01</span></td></tr>
-															<tr><td><strong>Nationality : </strong> <span style="color:black">USA</span></td></tr>
-														</table>
-													</span>
+												<div class="col-md-10">
+													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>Name:</dt>
+																<dd>Stephanie Anderson</dd>
+																<dt>Party Type:</dt>
+																<dd>Petitioner</dd>
+																<dt>Gender:</dt>
+																<dd>Female</dd>
+															</dl>
+														</div>
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>ID#:</dt>
+																<dd>998-95-4624</dd>
+																<dt>Status:</dt>
+																<dd>Verified</dd>
+																<dt>Number Of Cases:</dt>
+																<dd>01</dd>
+															</dl>
+														</div>
+														<div class="col-md-4">
+															<dl class="dl-horizontal">
+																<dt>Nationality:</dt>
+																<dd>USA</dd>
+															</dl>
+														</div>
+													</div>
 												</div>
-											</li>
-										</ul>
+											</div>
 									</div>
 								</div>
 							</div>

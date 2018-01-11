@@ -31,13 +31,14 @@
 									</button>
 								
 								</div>
-								<div class="col-md-4">
-									<button class="btn btn-danger dropdown-toggle" style="display:none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Select Category
+								<div class="col-md-3">
+									<button class="btn btn-danger dropdown-toggle" style="display:none;width:100%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Category
 									</button>
 									<ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
 										<li><a class="dropdown-item" href="#">Reschedule</a></li>
 										<li><a class="dropdown-item" href="#">Pending</a></li>
+										<li><a class="dropdown-item" href="#">HighPriority</a></li>
 									</ul>
 								</div>
 							</div>
@@ -51,14 +52,14 @@
 								<li role="presentation">
 									<a href="#content" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge" style="background-color:#0069d9"></span></a>     
 								</li>
+								<li role="presentation">
+									<a href="#content" id="HighPriority" aria-controls="highpriority" role="tab" data-toggle="tab">HighPriority <span id="highpriority" class="badge" style="background-color:#0069d9"></span></a>     
+								</li>
 							</ul>
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane active" id="content">
 									<ul class="list-group list-cust" style="margin:20px;overflow:auto;">  
 									
-									</ul>
-									<ul class="pagination">
-						
 									</ul>
 								</div>
 							</div>
@@ -96,6 +97,7 @@
 								<ul class="dropdown-menu" id="conmenu">
 									<li><a class="dropdown-item" href="">Reschedule</a></li>
 									<li><a class="dropdown-item" href="">Pending</a></li>
+									<li><a class="dropdown-item" href="">HighPriority</a></li>
 								</ul>
 							</div>
 						</div>
@@ -138,7 +140,7 @@
 			return allCases;
 		}
 
-		function postData(selectedMenu, e) {
+		function postData(selectedMenu) {
 			var caseData;
 			var data = {};
 			for (var i = 0; i < allCases.length; i++) {
@@ -159,6 +161,8 @@
 					alert('Error message.');
 				}
 			});
+		    $("#dropdownMenuButton").hide();
+		    $("#dropdownMenu").hide();
 			updateCasesListView(getCasesForSelectedDate(), "ul.list-group");
 		}
 	</script>

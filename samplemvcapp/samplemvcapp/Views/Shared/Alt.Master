@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../../Content/fullcalendar.min.css" />
   <link rel="stylesheet" href="../../Content/circle.css">
   <link rel="stylesheet" href="../../Content/blue.css">
+  <link rel="stylesheet" href="../../Content/timeline/timeline.css" />
   <!-- jvectormap -->
   <link rel="stylesheet" href="../../Content/jquery-jvectormap.css">
   <style>     
@@ -53,7 +54,7 @@
 	}
 
 	.navbar-default .navbar-brand {
-	  color: #002433;
+	  color: #ffffff;
 	}
 
 	.navbar-default .navbar-brand:hover {
@@ -175,14 +176,20 @@
 		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 		transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 	}
+	@media only screen 
+	and (min-device-width : 320px) 
+	and (max-device-width : 1024px) {
+		.glyphicon {
+			font-size: 50px;
+		}
+	}
 	@media screen and (max-device-width: 1024px) {
 		.cover-card .col-sm-3 {
 			  width:23%;
 		  }
 		h2 {
-			  font-size: 1.4em;
-			  overflow-wrap:break-word;
-		  }
+			font-size:1.3em;
+		}
 		h3 {
 			font-size: 1.3em;
 		}
@@ -196,7 +203,7 @@
 			  width:50%;
 		  }
 		  h2 {
-			  font-size: 1.3em;
+			  font-size: 2em;
 			  overflow-wrap:break-word;
 		  }
 		  h3
@@ -211,7 +218,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body>                 
+<body style="background-image:url(http://bilerico.lgbtqnation.com/images/supreme-court-side-view.jpg);background-position:center;background-size:cover;background-attachment:fixed;padding-top:90px">                 
 	<nav class="navbar navbar-fixed-top navbar-default">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -222,7 +229,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="#"><i class="fa fa-gavel"></i>&nbsp;Justicealign</a>
+		  <a class="navbar-brand" href="/"><i class="fa fa-gavel"></i>&nbsp;Justicealign</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -244,7 +251,7 @@
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>             
-	<div class="container-fluid" style="background-image:url(http://bilerico.lgbtqnation.com/images/supreme-court-side-view.jpg);background-position:center;background-size:cover;background-attachment:fixed;padding-top:90px">
+	<div class="container-fluid">
 		<asp:ContentPlaceHolder ID="MainContent" runat="server"/>  
 	</div> 
 <!-- jQuery 3 -->
@@ -266,7 +273,8 @@
 <!-- initializing map -->
 <script src="../../Scripts/Chart.js"></script>
 <!-- Canvas JS --->
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+<script src="../../Scripts/jquery.canvasjs.min.js"></script>
 <script src="../../Scripts/dashboard2.js"></script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  
 </asp:ContentPlaceHolder>
