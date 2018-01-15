@@ -214,11 +214,45 @@
 			  font-size:1.1em;
 		  }
 	  }
+	  body
+	  {
+		  background-image:url(http://bilerico.lgbtqnation.com/images/supreme-court-side-view.jpg);
+		  background-position:center;
+		  background-size:cover;
+		  background-attachment:fixed;
+		  padding-top:90px;
+	  }
+	  .bg-image
+	  {
+		  text-align:match-parent;
+	  }
+	  .bg-image::before
+	  {
+			content: "";
+			position: absolute;
+			background:inherit;
+			z-index: -1;
+			top:0px;
+			left:0px;
+			width:100%;
+			min-height:100%;
+			height:auto;
+			filter        : blur(10px);
+			-moz-filter   : blur(10px);
+			-webkit-filter: blur(10px);
+			-o-filter     : blur(10px);
+	
+			transition        : all 2s linear;
+			-moz-transition   : all 2s linear;
+			-webkit-transition: all 2s linear;
+			-o-transition     : all 2s linear;
+
+		}
   </style>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body style="background-image:url(http://bilerico.lgbtqnation.com/images/supreme-court-side-view.jpg);background-position:center;background-size:cover;background-attachment:fixed;padding-top:90px">                 
+<body class="bg-image">                
 	<nav class="navbar navbar-fixed-top navbar-default">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -276,7 +310,10 @@
 <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
 <script src="../../Scripts/jquery.canvasjs.min.js"></script>
 <script src="../../Scripts/dashboard2.js"></script>
+<script>
+</script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  
+	
 </asp:ContentPlaceHolder>
 </body>
 </html>

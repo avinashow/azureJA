@@ -196,6 +196,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
 	
 	<script>
+	    $("body").css("background-image", "url('https://www.elijahkyeyune.com/home/wp-content/uploads/2013/07/blue-wood-bkg.jpg')");
 		//column chart
 		var columnChartValues = [{
 			y: 686.04,

@@ -237,7 +237,7 @@
 					</div>
 					<div class="item">
 						<div class="row">
-							<div class="col-md-11 col-md-offset-1" style="background-color:white;border-radius:10px">
+							<div class="col-md-11 col-md-offset-1" style="border-radius:10px">
 								<div class="box box-primary">
 									<div class="box-header">
 										<h2><strong>Attachments</strong></h2>
@@ -246,7 +246,7 @@
 										<div class="row">
 										  <div class="col-xs-6 col-md-3">
 											<div href="#" type="button" id="mymodal" class="thumbnail btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
-											  <img src="https://cdn.tidyform.com/Download/708/idaho-family-law-case-information-sheet_000003.png" alt="ordersheet">
+											  <img src="../../Images/ordersheet.png" alt="ordersheet">
 											  <div class="caption">
 												<h3 style="color:white">Order Sheet</h3>
 											  </div>
@@ -275,6 +275,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
+	    $(".bg-image").css("height", "100%");
 		$(".product-img").click(function () { $(this).next().toggle(); });
 		$('div[data-toggle="tooltip"]').tooltip({
 			animated: 'fade',

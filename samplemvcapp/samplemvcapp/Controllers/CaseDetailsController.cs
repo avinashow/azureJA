@@ -17,7 +17,7 @@ namespace samplemvcapp.Controllers
         
         public ActionResult Index()
         {
-            ViewBag.currentPage = "case";
+            ViewBag.currentPage = "caseList";
             var cases = CaseDetailsModel.GetCases();
             if (cases != null)
             {
@@ -77,19 +77,19 @@ namespace samplemvcapp.Controllers
         {
             //ViewBag.caseid = (String)this.ControllerContext.RouteData.Values["id"];
             ViewBag.caseid = id;
-            ViewBag.currentPage = "case";
+            ViewBag.currentPage = "caseDetail";
             return View(CaseDetailsModel.GetCase(id));
         }
 
         public ActionResult Timeline()
         {
-            ViewBag.currentPage = "case";
+            ViewBag.currentPage = "caseTimeLine";
             return View();
         }
 
         public ActionResult Create()
         {
-            ViewBag.currentPage = "case";
+            ViewBag.currentPage = "caseCreate";
             ViewBag.submitted = false;
             return View();
         }
@@ -98,7 +98,7 @@ namespace samplemvcapp.Controllers
         public ActionResult Create(CaseDetailsModel casedetail)
         {
             CaseDetailsModel.CreateCase(casedetail);
-            ViewBag.currentPage = "case";
+            ViewBag.currentPage = "caseCreate";
             ViewBag.submitted = true;
             ViewBag.Message = "Case Created Successfully ";
             return View();
