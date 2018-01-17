@@ -25,14 +25,14 @@
                 <%: Html.ValidationMessageFor(m => m.Password) %>                
             </div>
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col" style="margin:20px">
                     <div class="checkbox icheck">
                         <%: Html.CheckBoxFor(m => m.RememberMe) %>
                         <%: Html.LabelFor(m => m.RememberMe) %>
                     </div>
                 </div>
                  <!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-4" style="margin:20px">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                 </div>
                 <!-- /.col -->

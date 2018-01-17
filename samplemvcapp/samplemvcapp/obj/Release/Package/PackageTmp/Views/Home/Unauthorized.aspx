@@ -3,6 +3,8 @@
 <asp:Content ID="errorTitle" ContentPlaceHolderID="TitleContent" runat="server">
 	Error - My ASP.NET MVC Application
 </asp:Content>
+<asp:Content ID="content3" ContentPlaceHolderID="FeaturedContent" runat="server">
+</asp:Content>
 
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
 	<hgroup class="title">

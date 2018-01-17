@@ -5,6 +5,9 @@
 	Home Page - My ASP.NET MVC Application
 </asp:Content>
 
+<asp:Content ID="content3" ContentPlaceHolderID="FeaturedContent" runat="server">
+</asp:Content>
+
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="row">
 		<div class="col-md-5" style="border-radius:20px">
@@ -42,6 +45,7 @@
 									</ul>
 								</div>
 							</div>
+							<br /><br />
 							<ul class="nav nav-tabs" role="tablist" style="margin-top:20px">
 								<li role="presentation" class="active">
 									<a href="#content" id="All" aria-controls="all" role="tab" data-toggle="tab">All</a>     
@@ -148,6 +152,7 @@
 					allCases[i].category = selectedMenu.trim();
 				}
 			}
+			console.log(selectedTab);
 			$.ajax({
 				url: "<%: Url.Action("UpdateCategory","CaseDetails") %>",
 				type: 'POST',
@@ -161,9 +166,10 @@
 					alert('Error message.');
 				}
 			});
-		    $("#dropdownMenuButton").hide();
-		    $("#dropdownMenu").hide();
-			updateCasesListView(getCasesForSelectedDate(), "ul.list-group");
+			$("#dropdownMenuButton").hide();
+			$("#dropdownMenu").hide();
+			var casesByCategory = getCasesByCategory();
+			updateCasesListView(casesByCategory[selectedTab], "ul.list-group");
 		}
 	</script>
 	<script src="../../Scripts/CaseList.js"></script>

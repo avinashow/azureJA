@@ -1,87 +1,123 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-	
-	Home Page - My ASP.NET MVC Application
+	Home Page
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-		<!--<div class="row text-center">
-			<h3 style="color:black;font-family:verdana;">Snap Tight Image Tiles (Responisve)</h3>
-		</div>-->
 		<div class="row">
-			<div class="cover-card col-sm-3" style="margin: 20px 0px 5px 0px;background-color:#3c8dbc">
-				<div class="row" style="color:white;text-align:center">
-					<h2>Order Sheets</h2>
-				</div>
-				<div class="row" style="display:flex;color:white;justify-content:space-around">
-					<div class="col">
-						<span class="glyphicon glyphicon-list-alt" style="color:white;padding-top:20px;font-size:60px"></span>
+			<div class="cover-card col-sm-12" style="height:100vh;">
+				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					  <li data-target="#myCarousel" data-slide-to="1"></li>
+					  <li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+					  <div class="item active">
+						<img src="" alt="Los Angeles" style="width:100%;">
+					  </div>
+
+					  <div class="item">
+						<img src="" alt="Chicago" style="width:100%;">
+					  </div>
+	
+					  <div class="item">
+						<img src="ny.jpg" alt="New york" style="width:100%;">
+					  </div>
 					</div>
-					<div class="col" style="color:white">
-						<div><h3>Received: 486</h3></div>
-						<div><h4>Approved: 351</h4></div>
+
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					  <span class="glyphicon glyphicon-chevron-left"></span>
+					  <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">
+					  <span class="glyphicon glyphicon-chevron-right"></span>
+					  <span class="sr-only">Next</span>
+					</a>
+				  </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container">
+				<div class="row" style="display:flex;justify-content:center">
+					<div class="col-md-10">
+						<table>
+							<tr>
+								<td>
+									<div class="cover-card col" style="background-color:#3c8dbc">
+										<div class="row" style="color:white;text-align:center">
+											<h2>Order Sheets</h2>
+										</div>
+										<div class="row" style="display:flex;color:white;justify-content:space-around">
+											<div class="col">
+												<span class="glyphicon glyphicon-list-alt" style="color:white;padding-top:20px;font-size:60px"></span>
+											</div>
+											<div class="col" style="color:white">
+												<div><h3>Received: 486</h3></div>
+												<div><h4>Approved: 351</h4></div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="cover-card" style="background-color:#98FB98">
+										<div class="row" style="color:white;text-align:center">
+											<h2>Total Cases</h2>
+										</div>
+										<div class="row" style="display:flex;color:white;justify-content:space-around">
+											<div class="col">
+												<span class="glyphicon glyphicon-briefcase" style="color:white;padding-top:20px;font-size:60px"></span>
+											</div>
+											<div class="col" style="color:white">
+												<div><h3>Assigned: 641</h3></div>
+												<div><h4>Completed: 213</h4></div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="cover-card" style="background-color:#FF7F50">
+										<div class="row" style="color:white;text-align:center">
+											<h2>Case Disposal Ratio</h2>
+										</div>
+										<div class="row" style="display:flex;color:white;justify-content:space-around">
+											<div class="col">
+												<span class="glyphicon glyphicon-repeat" style="color:white;padding-top:20px;font-size:60px"></span>
+											</div>
+											<div class="col" style="color:white">
+												<div><h3>Time Taken: 46%</h3></div>
+												<div><h4>Target SLA: 65%</h4></div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="cover-card" style="background-color:#cc5490">
+										<div class="row" style="color:white;text-align:center">
+											<h2>Pending Cases</h2>
+										</div>
+										<div class="row" style="display:flex;color:white;justify-content:space-around">
+											<div class="col">
+												<i class="fa fa-hourglass" style="color:white;padding-top:20px;font-size:60px"></i>
+											</div>
+											<div class="col" style="color:white">
+												<div><h3>Total: 1562</h3></div>
+												<div><h4>This Month: 42</h4></div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
-			</div>
-			<div class="cover-card col-sm-3" style="margin: 20px 0px 5px 0px;background-color:#98FB98">
-				<div class="row" style="color:white;text-align:center">
-					<h2>Total Cases</h2>
-				</div>
-				<div class="row" style="display:flex;color:white;justify-content:space-around">
-					<div class="col">
-						<span class="glyphicon glyphicon-briefcase" style="color:white;padding-top:20px;font-size:60px"></span>
-					</div>
-					<div class="col" style="color:white">
-						<div><h3>Assigned: 641</h3></div>
-						<div><h4>Completed: 213</h4></div>
-					</div>
-				</div>
-			</div>
-			<div class="cover-card col-sm-3" style="margin: 20px 0px 5px 0px;background-color:#FF7F50">
-				<div class="row" style="color:white;text-align:center">
-					<h2>Case Disposal Ratio</h2>
-				</div>
-				<div class="row" style="display:flex;color:white;justify-content:space-around">
-					<div class="col">
-						<span class="glyphicon glyphicon-repeat" style="color:white;padding-top:20px;font-size:60px"></span>
-					</div>
-					<div class="col" style="color:white">
-						<div><h3>Time Taken: 46%</h3></div>
-						<div><h4>Target SLA: 65%</h4></div>
-					</div>
-				</div>
-			</div>
-			<div class="cover-card col-sm-3" style="background-color:#cc5490">
-				<div class="row" style="color:white;text-align:center">
-					<h2>Pending Cases</h2>
-				</div>
-				<div class="row" style="display:flex;color:white;justify-content:space-around">
-					<div class="col">
-						<i class="fa fa-hourglass" style="color:white;padding-top:20px;font-size:60px"></i>
-					</div>
-					<div class="col" style="color:white">
-						<div><h3>Total: 1562</h3></div>
-						<div><h4>This Month: 42</h4></div>
-					</div>
-				</div>
-			</div>
-			<div class="cover-card col-sm-12" style="height:50vh;">
-				<div id="chartContainer" style="height: 100%; width: 100%;"></div>
-			</div>
-			<div class="cover-card col-sm-7" style="height:50vh;">
-				<div id="vmap" style="width: 100%; height: 100%;"></div>
-			</div>
-			<div class="cover-card col-sm-5" style="height:50vh;">
-				<div id="dounut" style="height:100%;width:100%"></div>
-			</div>
-			<div class="cover-card col-sm-4" style="">
-			</div>
-			<div class="cover-card col-sm-4" style="background: url(http://lorempixel.com/300/200/city/6) no-repeat center top;background-size:cover;">
-			</div>
-			<div class="cover-card col-sm-6" style="background: url(http://lorempixel.com/300/200/city/7) no-repeat center top;background-size:cover;">
-			</div>
-			<div class="cover-card col-sm-6" style="background: url(http://lorempixel.com/300/200/city/8) no-repeat center top;background-size:cover;">
 			</div>
 		</div>
 </asp:Content>

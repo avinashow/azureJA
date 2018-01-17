@@ -323,11 +323,11 @@ $(function () {
    * Create a world map with markers
    */
   $('#world-map-markers').vectorMap({
-      map: 'us_aea',
+    map: 'africa_mill',
     normalizeFunction: 'polynomial',
     hoverOpacity     : 0.7,
     hoverColor       : false,
-    backgroundColor  : 'transparent',
+    backgroundColor: 'transparent',
     regionStyle      : {
       initial      : {
         fill            : 'rgba(210, 214, 222, 1)',
@@ -351,35 +351,16 @@ $(function () {
         stroke: '#111'
       }
     },
-    markers: [{
-        latLng: [41.50, -87.37],
-        name: 'Chicago'
-    }, {
-        latLng: [32.46, -96.46],
-        name: 'Dallas'
-    },
-    { latLng: [42.40, -73.45], name: 'Albany' },
-    { latLng: [35.05, -106.39], name: 'Albuqerque' },
-    { latLng: [35.11, -101.50], name: 'Amarillo' },
-    { latLng: [30.16, -97.44], name: 'Austin' },
-    { latLng: [44.47, -117.50], name: 'Baker' },
-    { latLng: [39.18, -76.38], name: 'Baltimore' },
-    { latLng: [44.48, -68.47], name: 'Bangor' },
-    { latLng: [42.21, -71.05], name: 'Boston' },
-    { latLng: [42.55, -78.50], name: 'Buffalo' },
-    { latLng: [51.01, -114.01], name: 'Calgary' },
-    { latLng: [35.14, -80.50], name: 'Charlotte' },
-    { latLng: [41.28, -81.37], name: 'Cleveland' },
-    { latLng: [32.46, -96.46], name: 'Dallas' },
-    { latLng: [39.45, -105.0], name: 'Denver' },
-    { latLng: [42.20, -93.37], name: 'Detroit' },
-    { latLng: [53.34, -113.28], name: 'Edmonton' },
-    { latLng: [31.46, -106.29], name: 'El Paso' },
-    { latLng: [46.52, -96.48], name: 'Fargo' },
-    { latLng: [32.43, -97.19], name: 'Fort Worth' },
-    { latLng: [39.05, -108.33], name: 'Grand Junction' },
-    { latLng: [39.06, -94.35], name: 'Kansas ' },
-    { latLng: [39.46, -86.10], name: 'Indianapolis' }
+    markers: [
+    { latLng: [0.347596, 32.582520], name: "Kampala" },
+    { latLng: [0.363889, 32.528611], name: "Nansana" },
+    { latLng: [0.397237, 32.640557], name: "Kira" },
+    { latLng: [2.7724, 32.2881], name: "Gulu" },
+    { latLng: [-0.341111, 31.736111], name: "Masaka" },
+    { latLng: [2.2472, 32.9000], name: "Lira" },
+    { latLng: [0.3600, 32.7500], name: "Mukono" },
+    { latLng: [1.431944, 31.352500], name: "Hoima" },
+    { latLng: [0.5575, 31.3950], name: "Mubende" }
     ]
   });
 

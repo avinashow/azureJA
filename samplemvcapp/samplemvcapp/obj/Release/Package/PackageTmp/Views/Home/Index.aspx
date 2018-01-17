@@ -2,7 +2,8 @@
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
 	Home Page
 </asp:Content>
-
+<asp:Content ID="content1" ContentPlaceHolderID="FeaturedContent" runat="server">
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<section class="content-header">
 	</section>

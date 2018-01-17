@@ -3,6 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	CaseDetails
 </asp:Content>
+<asp:Content ID="content3" ContentPlaceHolderID="FeaturedContent" runat="server">
+	<div class="row" style="margin-left:20px">
+		<div class="col-lg-2 col-md-3 col-sm-4">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+				</ol>
+			</nav>			
+		</div>
+	</div>	
+</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="modal fade" tabindex="-1" id="modal-default" role="dialog">
@@ -13,11 +23,17 @@
 					<h2 class="modal-title" style="text-align:center">Order Sheet</h2>
 				</div>
 				<div class="modal-body">
-					<iframe src="https://docs.google.com/viewer?url=http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf&embedded=true" style="width:500px;height:500px;" frameborder="0"></iframe>
+					<iframe src="https://docs.google.com/viewer?url=http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf&embedded=true" style="width:100%;height:500px;" frameborder="0"></iframe>
+					<form>
+						<div class="form-group">
+							<label for="comment">Comments:</label>
+							<textarea class="form-control" rows="5" id="comment"></textarea>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+					<button type="button" class="btn btn-primary" id="save">Approve</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -245,18 +261,18 @@
 									<div class="box-body">
 										<div class="row">
 										  <div class="col-xs-6 col-md-3">
-											<div href="#" type="button" id="mymodal" class="thumbnail btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">
+											<div href="#" type="button" id="mymodal" class="thumbnail btn btn-default btn-lg" data-toggle="modal" data-target="#modal-default">
 											  <img src="../../Images/ordersheet.png" alt="ordersheet">
 											  <div class="caption">
-												<h3 style="color:white">Order Sheet</h3>
+												<h3>Order Sheet</h3>
 											  </div>
 											</div>
 										  </div>
 										  <div class="col-xs-6 col-md-3">
-											<div href="#" type="button" id="Div1" class="thumbnail btn btn-primary btn-lg">
-											  <img src="https://cdn.tidyform.com/Download/708/idaho-family-law-case-information-sheet_000003.png" alt="ordersheet">
+											<div href="#" type="button" id="Div1" class="thumbnail btn btn-default btn-lg">
+											  <img src="../../Images/ordersheet.png" alt="notice">
 											  <div class="caption">
-												<h3 style="color:white">Notice</h3>
+												<h3>Notice</h3>
 											  </div>
 											</div>
 										  </div>
@@ -275,11 +291,19 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
-	    $(".bg-image").css("height", "100%");
+		$("ol.breadcrumb").html("<%= ViewBag.breadCrumb %>");
+		$(".bg-image").css("height", "100%");
 		$(".product-img").click(function () { $(this).next().toggle(); });
 		$('div[data-toggle="tooltip"]').tooltip({
 			animated: 'fade',
 			placement: 'bottom',
+		});
+
+		$(document).on("click", "#save", function (event) {
+		    $("#modal-default").modal("hide");
+		    alert("Changes Approved");
+		    
+		    
 		});
 
 		$(".icon-button").on("click", function () {

@@ -77,13 +77,15 @@ namespace samplemvcapp.Controllers
         {
             //ViewBag.caseid = (String)this.ControllerContext.RouteData.Values["id"];
             ViewBag.caseid = id;
+            ViewBag.breadCrumb = "<li class='breadcrumb-item'><a href='/CaseDetails'>Case List</a></li><li class='breadcrumb-item active'>Case Details</li>";
             ViewBag.currentPage = "caseDetail";
             return View(CaseDetailsModel.GetCase(id));
         }
 
-        public ActionResult Timeline()
+        public ActionResult Timeline(String id)
         {
             ViewBag.currentPage = "caseTimeLine";
+            ViewBag.breadCrumb = "<li class='breadcrumb-item'><a href='/CaseDetails'>Case List</a></li><li class='breadcrumb-item'><a href='/CaseDetails/CaseDetail/" + id + "'>Case Details</a></li><li class='breadcrumb-item active'>Time Line</li>";
             return View();
         }
 

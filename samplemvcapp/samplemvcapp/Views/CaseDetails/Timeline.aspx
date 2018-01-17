@@ -3,6 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Timeline
 </asp:Content>
+<asp:Content ID="content4" ContentPlaceHolderID="FeaturedContent" runat="server">
+	<div class="row" style="margin-left:20px">
+		<div class="col-lg-3 col-md-4 col-sm-5">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+				</ol>
+			</nav>			
+		</div>
+	</div>	
+</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<section class="content">
@@ -12,8 +22,10 @@
 				<div class="box-body">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="row" style="text-align:center;padding-left:10px">
-								<h2>Criminal Proceedings Filing</h2>
+							<div class="row" style="display:flex;justify-content:center;text-align:center;padding-left:10px">
+								<div class="col">
+									<h2>Criminal Proceedings Filing</h2>
+								</div>								
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25">
@@ -27,8 +39,10 @@
 							
 						</div>
 						<div class="col-md-6">
-							<div class="row" style="text-align:center">
-								<h2>SLA Disposal</h2>
+							<div class="row" style="display:flex;justify-content:center;text-align:center">
+								<div class="col-md-10">
+									<h2>SLA Disposal</h2>
+								</div>								
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 green">
@@ -43,8 +57,10 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="row" style="text-align:center">
-								<h2>Average Hearing for Category Disposal</h2>
+							<div class="row" style="justify-content:center;display:flex;text-align:center">
+								<div class="col-md-10">
+									<h2>Average Hearing for Category Disposal</h2>
+								</div>								
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 orange">
@@ -57,8 +73,10 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="row" style="padding-left:10px;text-align:center">
-								<h2>Current Conducted Hearing</h2>
+							<div class="row" style="justify-content:center;display:flex;padding-left:10px;text-align:center">
+								<div class="col-md-10">
+									<h2>Current Conducted Hearing</h2>
+								</div>
 							</div>
 							<div class="row" style="display:flex;justify-content:center">
 								<div class="c100 p25 green">
@@ -196,7 +214,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
 	
 	<script>
-	    $("body").css("background-image", "url('https://www.elijahkyeyune.com/home/wp-content/uploads/2013/07/blue-wood-bkg.jpg')");
+
+	    $("ol.breadcrumb").html("<%= ViewBag.breadCrumb %>");
+
+		//$("body").css("background-image", "url('https://www.elijahkyeyune.com/home/wp-content/uploads/2013/07/blue-wood-bkg.jpg')");
 		//column chart
 		var columnChartValues = [{
 			y: 686.04,

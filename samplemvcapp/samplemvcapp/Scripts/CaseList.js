@@ -1,5 +1,6 @@
 ﻿var allCases;
 var selectedDate = null;
+var selectedTab = "";
 
 function initSearch() {
 	//Function for searching the displayed cases using text inside the case div
@@ -55,7 +56,7 @@ function updateCasesListView(cases, parent) {
 	var casesJson = {};
 	casesJson["cases"] = cases;
 	$("li a[role='tab']").each(function () {
-	    $(this).removeClass("active");
+		$(this).removeClass("active");
 	});
 	$("#caseListTemplate").tmpl(casesJson).appendTo(parent);
 	initMultiSelect();
@@ -190,6 +191,8 @@ function renderCalendarEvents(allCases) {
 //initialising the tabclick
 function initTabClick() {
 	$("li a[role='tab']").click(function () {
+	    selectedTab = $(this).attr("id");
+	    console.log("welcone");
 		var casesByCategory = getCasesByCategory();
 		$("ul.list-group").empty();
 		console.log(casesByCategory);
@@ -219,10 +222,10 @@ function initMultiSelect() {
 		}
 		consoleLog("Selected Cases" + selectedIds);
 		if (selectedIds.length <= 1) {
-		    $("#dropdownMenu").hide();
+			$("#dropdownMenu").hide();
 			$("#dropdownMenuButton").css("display", "none");
 		} else {
-		    $("#dropdownMenu").show();
+			$("#dropdownMenu").show();
 			$("#dropdownMenuButton").css("display", "block");
 		}
 	});
