@@ -1,38 +1,40 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt1.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="aboutTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    About - My ASP.NET MVC Application
+	E-Filing Page
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="FeaturedContent" runat="server">
+	<div class="row">
+		<div class="col-md-2 col-sm-5">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class='breadcrumb-item'><a href='/Home/altindex'>Home</a></li>
+					<li class='breadcrumb-item active'>E-filing</li>
+				</ol>
+			</nav>			
+		</div>
+	</div>
 </asp:Content>
 
 <asp:Content ID="aboutContent" ContentPlaceHolderID="MainContent" runat="server">
-    <hgroup class="title">
-        <h1>About.</h1>
-        <h2><%: ViewBag.Message %></h2>
-    </hgroup>
+	
+	<div class="row">
 
-    <article>
-        <p>
-            Use this area to provide additional information.
-        </p>
+		<div class="polaroid">
+		  <img src="http://www.dynafile.com/Media/Default/Solutions/Icons/288/contract-management.png" alt="Norway" style="width:100%">
+		  <div class="cont">
+			<p>E-filing</p>
+		  </div>
+		</div>
+		<div class="polaroid">
+		  <img src="http://www.dynafile.com/Media/Default/Solutions/Icons/288/contract-management.png" alt="Norway" style="width:100%">
+		  <div class="cont">
+			<p>E-filing resources</p>
+		  </div>
+		</div>
+	</div>
+</asp:Content>
 
-        <p>
-            Use this area to provide additional information.
-        </p>
-
-        <p>
-            Use this area to provide additional information.
-        </p>
-    </article>
-
-    <aside>
-        <h3>Aside Title</h3>
-        <p>
-            Use this area to provide additional information.
-        </p>
-        <ul>
-            <li><%: Html.ActionLink("Home", "Index", "Home") %></li>
-            <li><%: Html.ActionLink("About", "About", "Home") %></li>
-            <li><%: Html.ActionLink("Contact", "Contact", "Home") %></li>
-        </ul>
-    </aside>
+<asp:Content ID="Content2" ContentPlaceHolderID="ScriptsSection" runat="server">
 </asp:Content>

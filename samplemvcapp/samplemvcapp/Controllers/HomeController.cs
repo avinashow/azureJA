@@ -23,7 +23,6 @@ namespace samplemvcapp.Controllers
             return View();
         }
 
-        [CustomAuthorize(Roles = "admin")]
         public ActionResult About()
         {
             ViewBag.currentPage = "about";
