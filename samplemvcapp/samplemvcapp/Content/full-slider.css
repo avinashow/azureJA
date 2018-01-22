@@ -56,7 +56,22 @@ div.cont {
 }
 
 footer {
-	margin: 50px 0;
+	bottom:0px;
+	background-color:#006b96;
+	color:white;
+}
+
+footer .container {
+	text-align:center;
+}
+
+footer a {
+	text-decoration:none;
+	color:white;
+}
+footer a:hover {
+	text-decoration:underline;
+	color:lightgray;
 }
 
 /*rollover effect*/
@@ -196,4 +211,23 @@ footer {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+}
+
+
+.panel-group .list-group {
+	margin-bottom: 0;
+}
+
+.panel-group .list-group .list-group-item {
+	border-radius: 0;
+	border-left: none;
+	border-right: none;
+}
+
+.panel-group .list-group .list-group-item:last-child {
+	border-bottom: none;
+}
+
+.panel-body .container a {
+	text-decoration:none;
 }

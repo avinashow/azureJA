@@ -170,7 +170,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CaseDetailsController.cs" />
+    <Compile Include="Controllers\CourtFeesController.cs" />
+    <Compile Include="Controllers\EFilingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LimitationController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -299,6 +302,7 @@
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
     <Content Include="Content\contacts.json" />
+    <Content Include="Content\files\2016CivilPresentation.pptx" />
     <None Include="Properties\PublishProfiles\1457fd8f-0ee0-4-231-b9ee - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\1457fd8f-0ee0-4-231-b9ee - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\JusticeAlign - FTP.pubxml" />
@@ -370,9 +374,13 @@
     <Content Include="Views\CaseDetails\Create.aspx" />
     <Content Include="Views\CaseDetails\Index.aspx" />
     <Content Include="Views\CaseDetails\Timeline.aspx" />
+    <Content Include="Views\CourtFees\Index.aspx" />
+    <Content Include="Views\EFiling\Index.aspx" />
+    <Content Include="Views\EFiling\Resources.aspx" />
     <Content Include="Views\Home\adminIndex.aspx" />
     <Content Include="Views\Home\AltIndex.aspx" />
     <Content Include="Views\Home\Unauthorized.aspx" />
+    <Content Include="Views\Limitation\Index.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

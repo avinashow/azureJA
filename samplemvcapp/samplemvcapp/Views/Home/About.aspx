@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="FeaturedContent" runat="server">
 	<div class="row">
-		<div class="col-md-2 col-sm-5">
+		<div class="col">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class='breadcrumb-item'><a href='/Home/altindex'>Home</a></li>
@@ -21,7 +21,7 @@
 	
 	<div class="row">
 
-		<div class="polaroid">
+		<div class="polaroid" onclick="window.location.href='/Home/Contact'">
 		  <img src="http://www.dynafile.com/Media/Default/Solutions/Icons/288/contract-management.png" alt="Norway" style="width:100%">
 		  <div class="cont">
 			<p>E-filing</p>

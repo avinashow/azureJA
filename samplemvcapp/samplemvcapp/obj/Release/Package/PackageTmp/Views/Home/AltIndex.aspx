@@ -33,7 +33,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh">
-					<a href="/Home/About" class="image-details">
+					<a href="/EFiling" class="image-details">
 						<img width="90%" height="100%" src="https://cdn3.iconfinder.com/data/icons/flatty-series-1/512/e-book_electronic_book_text_holding_digital_tablet_reading_information_flat_icon_illustration-512.png" alt="" />
 						<div class="overlay">
 							<div class="text">e-file</div>
@@ -57,7 +57,7 @@
 					</a>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
-					<a href="javascript:void(0)" class="image-details">
+					<a href="/CourtFees" class="image-details">
 						<img width="100%" height="100%" src="http://www.in.gov/judiciary/images/billboard-e-filing-tutorials.jpg" alt="" />
 						<div class="overlay">
 							<div class="text">Calculate Court Fee</div>
@@ -65,7 +65,7 @@
 					</a>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
-					<a href="javascript:void(0)" class="image-details">
+					<a href="/Limitation" class="image-details">
 						<img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTEZNCvbCEqWLgc0NPdlvc5NeWP4pJ_QJ1-Zlu3JdmorFym5zR" alt="" />
 						<div class="overlay">
 							<div class="text">Calculate Days Limit</div>
