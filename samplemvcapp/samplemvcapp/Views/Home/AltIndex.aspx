@@ -10,37 +10,64 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 
-	<div class="row dash" style="margin-top:20px">
-		<div class="col-md-3">
-				<div class="title">Total Conducted Hearings Today</div>
-				<div class="content">999</div>
+	<div class="row dash" style="margin:20px">
+		<div class="col-md-3" style="opacity:0">
+			<div class="box box-primary" style="height:50%;">
+				<div class="box-heading" style="text-align:center">
+					<h1>999</h1>
+				</div>
+				<div class="box-body">
+					<div class="content">Total Conducted Hearings Today</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-3">
-				<div class="title">Filed Cases</div>
-				<div class="content">3.48M</div>
+		<div class="col-md-3" style="opacity:0">
+			<div class="box box-warning" style="height:50%;">
+				<div class="box-heading" style="text-align:center">
+					<h1>3.48M</h1>
+				</div>
+				<div class="box-body">
+					<div class="content">Filed Cases</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-3">
-				<div class="title">HC Disposed Cases</div>
-				<div class="content">98.97K</div>
+		<div class="col-md-3" style="opacity:0">
+			<div class="box box-danger" style="height:50%;">
+				<div class="box-heading" style="text-align:center">
+					<h1>98.97K</h1>
+				</div>
+				<div class="box-body">
+					<div class="content">HC Disposed Cases</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="title">Total Conducted Hearings Today</div>
-			<div class="content">27.35K</div>
+		<div class="col-md-3" style="opacity:0">
+			<div class="box box-success" style="height:50%;">
+				<div class="box-heading" style="text-align:center">
+				</div>
+				<div class="box-body">
+					<div id="conductedHearingGraph">
+
+					</div>
+					<h1>27.35K</h1>
+					<div class="content">Total Conducted Hearings Today</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<hr />
-	<div class="row" style="margin-top:20px">
+	<div class="row" style="margin:20px">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh">
+			<div class="row " id="icons">
+				<div class="col-md-2 col-sm-4 col-xs-4 col-md-offset-1">
 					<a href="/EFiling" class="image-details">
-						<img width="90%" height="100%" src="https://cdn3.iconfinder.com/data/icons/flatty-series-1/512/e-book_electronic_book_text_holding_digital_tablet_reading_information_flat_icon_illustration-512.png" alt="" />
+						<img width="90%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIjucmDtooVxGBf382UFJGdZF_uMUAPxAXwCimSy2kvc9U1nws" alt="" />
 						<div class="overlay">
 							<div class="text">e-file</div>
 						</div>
 					</a>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
+				<div class="col-md-2 col-sm-4 col-xs-4">
 					<a href="javascript:void(0)" class="image-details">
 						<img width="90%" height="100%" src="https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/finance-hammer-512.png" alt="" />
 						<div class="overlay">
@@ -48,35 +75,27 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
-					<a href="javascript:void(0)" class="image-details">
-						<img width="100%" height="100%" src="https://justifiedgrid.com/wp-content/uploads/documentation.png" alt="" />
+				<div class="col-md-2 col-sm-4 col-xs-4">
+					<a href="/CitizenHelp" class="image-details">
+						<img width="90%" height="100%" src="http://www.communityfoodbank.org/portals/0/Images/Icons/GetHelp/Connect-with-Community-Icon.png" alt="" />
 						<div class="overlay">
 							<div class="text">Citizen Help</div>
 						</div>
 					</a>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
+				<div class="col-md-2 col-sm-4 col-xs-4">
 					<a href="/CourtFees" class="image-details">
-						<img width="100%" height="100%" src="http://www.in.gov/judiciary/images/billboard-e-filing-tutorials.jpg" alt="" />
+						<img width="90%" height="100%" src="https://trafek.com/wp-content/uploads/2016/08/icon-fees.png" alt="" />
 						<div class="overlay">
 							<div class="text">Calculate Court Fee</div>
 						</div>
 					</a>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
+				<div class="col-md-2 col-sm-4 col-xs-4">
 					<a href="/Limitation" class="image-details">
-						<img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTEZNCvbCEqWLgc0NPdlvc5NeWP4pJ_QJ1-Zlu3JdmorFym5zR" alt="" />
+						<img width="90%" height="100%" src="https://pt.seaicons.com/wp-content/uploads/2016/02/google-docs-icon.png" alt="" />
 						<div class="overlay">
 							<div class="text">Calculate Days Limit</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-2 col-sm-4 col-xs-4" style="height:20vh;">
-					<a href="javascript:void(0)" class="image-details">
-						<img width="100%" height="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiT3Wl2sO3SNDR0nPQNaU3qtfATkbfDW6bvqjMkRgFak8TIdABmQ" alt="" />
-						<div class="overlay">
-							<div class="text">Legal Divisions</div>
 						</div>
 					</a>
 				</div>
@@ -89,11 +108,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<script>
 		$(document).ready(function () {
-			$('.rollover').css('display', 'none');
-			$('.image-details').hover(function () {
-				$(this).children('.rollover').slideDown(250);
-			}, function () {
-				$(this).children('.rollover').slideUp(250);
+		    $("#arrow").on("click", function (event) { $('html,body').animate({ scrollTop: $(".dash").offset().top }, 1700);});
+
+			function isScrolledIntoView(elem) {
+				var $window = $(window),
+					docViewTop = $window.scrollTop(),
+					docViewBottom = docViewTop + $window.height(),
+					elemTop = $(elem).offset().top,
+					elemBottom = elemTop + $(elem).outerHeight();
+				return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+			}
+			$(window).on("scroll", function () {
+				if (isScrolledIntoView($(".dash"))) {
+					$(".dash .col-md-3").each(function () {
+						$(this).fadeTo(1000, 1);
+					});
+				}
+				if (isScrolledIntoView($("#icons"))) {
+					$("#icons .col-md-2").each(function () {
+						$(this).fadeTo(1000,1).addClass("iconsCircle");
+					});
+				}
 			});
 		});
 	</script>

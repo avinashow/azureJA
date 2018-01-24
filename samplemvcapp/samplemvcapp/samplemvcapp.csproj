@@ -170,6 +170,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CaseDetailsController.cs" />
+    <Compile Include="Controllers\CitizenHelpController.cs" />
+    <Compile Include="Controllers\CommonServiceController.cs" />
     <Compile Include="Controllers\CourtFeesController.cs" />
     <Compile Include="Controllers\EFilingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -181,7 +183,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CaseDetailsModel.cs" />
-    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\CaseTypeModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Shared\Alt.Master.cs">
       <DependentUpon>Alt.Master</DependentUpon>
@@ -208,6 +211,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bounce.css" />
     <Content Include="Content\circle.css" />
     <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
@@ -329,6 +333,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\CaseList.js" />
     <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\CommonService.js" />
     <Content Include="Scripts\dashboard2.js" />
     <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\demo.js" />
@@ -374,6 +379,7 @@
     <Content Include="Views\CaseDetails\Create.aspx" />
     <Content Include="Views\CaseDetails\Index.aspx" />
     <Content Include="Views\CaseDetails\Timeline.aspx" />
+    <Content Include="Views\CitizenHelp\Index.aspx" />
     <Content Include="Views\CourtFees\Index.aspx" />
     <Content Include="Views\EFiling\Index.aspx" />
     <Content Include="Views\EFiling\Resources.aspx" />

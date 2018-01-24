@@ -15,7 +15,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../../Content/font-awesome.min.css" />
 	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="../../Content/bounce.css" />
 	<link href="../../Content/full-slider.css" rel="stylesheet">
+	  <link href="../../Content/AdminLTE.min.css" rel="stylesheet">
 	<style>
 		@media (min-width:768px) and (max-width:1024px) {
 		}
@@ -91,13 +93,13 @@
 	<asp:ContentPlaceHolder ID="FeaturedContent" runat="server"/> 
 	
 	<!-- Page Content -->
-	<div class="container" style="padding:20px;">
+	<!--<div class="container" style="padding:20px;">-->
 		<asp:ContentPlaceHolder ID="MainContent" runat="server"/> 
-	</div>
+	<!--</div>-->
 	<!-- footer -->
 	<footer>
 	  <div class="container">
-		<p>Put together in less than five minutes by <a href="http://www.martinbean.co.uk/" rel="author">Martin Bean</a>. Uses <a href="http://twitter.github.com/bootstrap/" rel="external">Twitter Bootstrap</a> and <a href="http://ryanfait.com/sticky-footer/" rel="external">Ryan Fait&rsquo;s Sticky Footer</a>.</p>
+		<!--<p>Put together in less than five minutes by <a href="http://www.martinbean.co.uk/" rel="author">Martin Bean</a>. Uses <a href="http://twitter.github.com/bootstrap/" rel="external">Twitter Bootstrap</a> and <a href="http://ryanfait.com/sticky-footer/" rel="external">Ryan Fait&rsquo;s Sticky Footer</a>.</p>-->
 	  </div>
 	</footer>
 
