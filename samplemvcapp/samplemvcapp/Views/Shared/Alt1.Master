@@ -21,6 +21,9 @@
 	
 	<link href="../../Content/full-slider.css" rel="stylesheet">
 	<link href="../../Content/AdminLTE.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../Scripts/pdfjs/web/text_layer_builder.css" />
+	<!--<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>-->
+	
 	<style>
 		@media (min-width:768px) and (max-width:1024px) {
 		}
@@ -62,7 +65,9 @@
 
 
 	<script src="../../Scripts/jquery-1.9.1.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<script src="http://vivin.net/pub/pdfjs/pdf.js"></script>
+	<script src="http://vivin.net/pub/pdfjs/textlayerbuilder.js"></script> 
 	<script>
 	</script>
 	<asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  

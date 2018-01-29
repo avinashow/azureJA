@@ -1,143 +1,177 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt1.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Previous/Next example</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/font-awesome.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  <link rel="stylesheet" href="../../Scripts/pdfjs/web/text_layer_builder.css" />
+  <!--<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>-->
+	<script src="http://vivin.net/pub/pdfjs/pdf.js"></script>
+	<script src="http://vivin.net/pub/pdfjs/textlayerbuilder.js"></script>
 
-<asp:Content ID="contactTitle" ContentPlaceHolderID="TitleContent" runat="server">
-	Contact - My ASP.NET MVC Application
-</asp:Content>
+</head>
+<body>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="FeaturedContent" runat="server">
+<h1>PDF.js Previous/Next example</h1>
+
+<div class="container">
 	<div class="row">
-		<div class="col">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class='breadcrumb-item'><a href='/Home/altindex'>Home</a></li>
-					<li class='breadcrumb-item'><a href='/Home/About'>E-filing</a></li>
-					<li class='breadcrumb-item active'>E-filing Resources</li>
-				</ol>
-			</nav>			
-		</div>
+	  <div class="col-md-8 col-md-offset-2" style="display:flex;justify-content:center;">
+		  <span class="glyphicon glyphicon-chevron-left" id="prev"></span>
+		  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+		  <span class="glyphicon glyphicon-chevron-right" id="next"></span>
+	  </div>
 	</div>
-</asp:Content>
 
-<asp:Content ID="contactContent" ContentPlaceHolderID="MainContent" runat="server">
-<h1>E-Filing Resources</h1>
-<div class="panel-group" id="accordion">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel1"><i class="glyphicon glyphicon-minus"></i>&nbsp;Civil Division</a>
-			</h4>
-
-		</div>
-		<div id="panel1" class="panel-collapse collapse in">
-			<div class="panel-body">
-				<div class="container">
-					<a href="../../Content/files/2016CivilPresentation.pptx"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Civil e-Filing Guide</a><br/>
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Process Server Guide</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Civil Forms</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Civil e-Filing Guidelines</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Filing a Safe at Home Address Petition</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Instruction Manual for Filing a Public Records Access Dispute</a><br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel2"><i class="glyphicon glyphicon-plus"></i>&nbsp;Criminal Division</a>
-			</h4>
-
-		</div>
-		<div id="panel2" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div class="container">
-					<a href="javascript;void(0)"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Criminal e-Filing Guide</a><br/>
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Criminal Forms</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Criminal E-Filing Guidelines</a><br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel3"><i class="glyphicon glyphicon-plus"></i>&nbsp;Domestics Relation Division</a>
-			</h4>
-
-		</div>
-		<div id="panel3" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div class="container">
-					<a href="javascript;void(0)"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Domestic e-Filing Guide</a><br/>
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Uniquer Behaviors in Domestic/Juvenile e-Filing</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Domestic Forms</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Domestic e-Filing Guidelines</a><br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel4"><i class="glyphicon glyphicon-plus"></i>&nbsp;Juvenile Division</a>
-			</h4>
-
-		</div>
-		<div id="panel4" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div class="container">
-					<a href="javascript;void(0)"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Juvenile e-Filing Guide</a><br/>
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Uniquer Behaviors in Domestic/Juvenile e-Filing</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Process Server Guide</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Juvenile Forms</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Juvenile e-Filing Guidelines</a><br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel5"><i class="glyphicon glyphicon-plus"></i>&nbsp;Appeals Division</a>
-			</h4>
-
-		</div>
-		<div id="panel5" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div class="container">
-					<a href="javascript;void(0)"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Appeals e-Filing Guide</a><br/>
-					<a href="javascript:void(0)"><i class="fa fa-chain"></i>&nbsp;Appeal Forms</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Local Rule for 10th District Court of Appeals</a><br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			 <h4 class="panel-title">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel6"><i class="glyphicon glyphicon-plus"></i>&nbsp;Additional Resources</a>
-			</h4>
-
-		</div>
-		<div id="panel6" class="panel-collapse collapse">
-			<div class="panel-body">
-				<div class="container">
-					<a href="javascript:void(0)"><i class="fa fa-external-link"></i>&nbsp;Introduction to e-Filing Video Series</a><br />
-					<a href="javascript:void(0)"><i class="fa fa-file-pdf-o"></i>&nbsp;Media e-Filing Instructions</a><br />
-				</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<canvas id="the-canvas"></canvas>
+			<div class="textLayer" id="text-layer">
 			</div>
 		</div>
 	</div>
 </div>
-</asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ScriptsSection" runat="server">
-	<script>
-		var selectIds = $('#panel1,#panel2,#panel3,#panel4,#panel5,#panel6');
-		$(function ($) {
-			selectIds.on('show.bs.collapse hidden.bs.collapse', function () {
-				$(this).prev().find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
-			})
+
+
+
+<script>
+	// If absolute URL from the remote server is provided, configure the CORS
+	// header on that server.
+	var url = '../../Content/files/filing.pdf';
+
+	// The workerSrc property shall be specified.
+	PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+	var pdfDoc = null,
+		pageNum = 1,
+		pageRendering = false,
+		pageNumPending = null,
+		scale = 0.8,
+		canvas = document.getElementById('the-canvas'),
+		ctx = canvas.getContext('2d');
+
+	/**
+	 * Get page info from document, resize canvas accordingly, and render page.
+	 * @param num Page number.
+	 */
+	function renderPage(num) {
+		pageRendering = true;
+
+		// Using promise to fetch the page
+		pdfDoc.getPage(num).then(function (page) {
+			var viewport = page.getViewport(scale);
+			canvas.height = viewport.height;
+			canvas.width = viewport.width;
+
+			//rendering the TextLayer
+			
+			var canvasOffset = $('#the-canvas').offset();
+			console.log(canvasOffset);
+			var $textLayerDiv = $('#text-layer').css({
+				height: viewport.height + 'px',
+				width: viewport.width + 'px',
+				top: '0px',
+				left: '15px'
+			});
+			var outputScale = getOutputScale();
+			if (outputScale.scaled) {
+			    var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
+					(1 / outputScale.sy) + ')';
+			    CustomStyle.setProp('transform', canvas, cssScale);
+			    CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+
+			    if ($textLayerDiv.get(0)) {
+			        CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
+			        CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
+			    }
+			}
+			ctx._scaleX = outputScale.sx;
+			ctx._scaleY = outputScale.sy;
+			if (outputScale.scaled) {
+			    ctx.scale(outputScale.sx, outputScale.sy);
+			}
+			var textLayer = new TextLayerBuilder($textLayerDiv.get(0), 0);
+			page.getTextContent().then(function(textContent) {
+				textLayer.setTextContent(textContent);
+			});
+
+			// Render PDF page into canvas context
+			var renderContext = {
+				canvasContext: ctx,
+				viewport: viewport,
+				textLayer:textLayer
+			};
+			var renderTask = page.render(renderContext);
+			pageRendering = false;
+			// Wait for rendering to finish
+			/*renderTask.promise.then(function () {
+				pageRendering = false;
+				if (pageNumPending !== null) {
+					// New page rendering is pending
+					renderPage(pageNumPending);
+					pageNumPending = null;
+				}
+			});*/
 		});
-	</script>
-</asp:Content>
+
+		// Update page counters
+		document.getElementById('page_num').textContent = num;
+	}
+
+	/**
+	 * If another page rendering in progress, waits until the rendering is
+	 * finised. Otherwise, executes rendering immediately.
+	 */
+	function queueRenderPage(num) {
+		console.log(pageRendering);
+		if (pageRendering) {
+			pageNumPending = num;
+		} else {
+			renderPage(num);
+		}
+	}
+
+	/**
+	 * Displays previous page.
+	 */
+	function onPrevPage() {
+		if (pageNum <= 1) {
+			return;
+		}
+		pageNum--;
+		queueRenderPage(pageNum);
+	}
+	document.getElementById('prev').addEventListener('click', onPrevPage);
+
+	/**
+	 * Displays next page.
+	 */
+	function onNextPage() {        
+		console.log(pdfDoc.numPages);
+		if (pageNum >= pdfDoc.numPages) {
+			return;
+		}
+		pageNum++;
+		queueRenderPage(pageNum);
+	}
+	document.getElementById('next').addEventListener('click', onNextPage);
+
+	/**
+	 * Asynchronously downloads PDF.
+	 */
+	PDFJS.getDocument(url).then(function (pdfDoc_) {
+		pdfDoc = pdfDoc_;
+		document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+		// Initial/first page rendering
+		renderPage(pageNum);
+	});
+
+</script>
+
+</body>
+</html>

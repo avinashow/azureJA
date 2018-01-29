@@ -25,7 +25,23 @@
   <link rel="stylesheet" href="../../Content/timeline/timeline.css" />
   <!-- jvectormap -->
   <link rel="stylesheet" href="../../Content/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../../Scripts/pdfjs/web/text_layer_builder.css" />
   <style>     
+	div.polaroid {
+		width: 250px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		text-align: center;
+		float:left;
+		margin:10px;
+		background-color: #006b96;
+		color: white;
+	}
+	div.polaroid:hover {
+		cursor:pointer;
+	}
+	div.cont {
+		padding: 10px;
+	}
 	.box-primary {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		z-index:2;
@@ -316,6 +332,8 @@
 <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
 <script src="../../Scripts/jquery.canvasjs.min.js"></script>
 <script src="../../Scripts/dashboard2.js"></script>
+<script src="http://vivin.net/pub/pdfjs/pdf.js"></script>
+<script src="http://vivin.net/pub/pdfjs/textlayerbuilder.js"></script> 
 <script>
 </script>
 <asp:ContentPlaceHolder ID="ScriptsSection" runat="server">  

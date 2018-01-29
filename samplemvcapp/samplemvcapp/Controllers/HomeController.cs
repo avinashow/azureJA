@@ -46,5 +46,10 @@ namespace samplemvcapp.Controllers
 
             return View();
         }
+
+        public ActionResult adminIndex()
+        {
+            return View();
+        }
     }
 }

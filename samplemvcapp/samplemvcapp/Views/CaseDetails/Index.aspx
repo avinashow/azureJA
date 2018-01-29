@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Alt.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<samplemvcapp.Models.CaseDetailsModel>>" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-	
-	Home Page - My ASP.NET MVC Application
+	List of Cases
 </asp:Content>
 
 <asp:Content ID="content3" ContentPlaceHolderID="FeaturedContent" runat="server">
@@ -42,6 +41,7 @@
 										<li><a class="dropdown-item" href="#">Reschedule</a></li>
 										<li><a class="dropdown-item" href="#">Pending</a></li>
 										<li><a class="dropdown-item" href="#">HighPriority</a></li>
+										<li><a class="dropdown-item" href="#">Clear</a></li>
 									</ul>
 								</div>
 							</div>
@@ -89,7 +89,7 @@
 			<li id="${$value.caseid}" class="list-group-item clearfix" >
 				<div class="row">
 					<div class="col-sm-2">
-						<span class="glyphicon glyphicon-folder-open" style="font-size:70px;"></span>
+						<span class="glyphicon glyphicon-folder-open" style="font-size:50px;"></span>
 					</div>
 					<div class="col-sm-10" style="text-align:left">
 						<div class="row pull-right" style="width: 30%;padding-top: 10px;">
@@ -102,6 +102,7 @@
 									<li><a class="dropdown-item" href="">Reschedule</a></li>
 									<li><a class="dropdown-item" href="">Pending</a></li>
 									<li><a class="dropdown-item" href="">HighPriority</a></li>
+									<li><a class="dropdown-item" href="">clear</a></li>
 								</ul>
 							</div>
 						</div>

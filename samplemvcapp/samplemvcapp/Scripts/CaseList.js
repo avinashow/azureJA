@@ -191,8 +191,8 @@ function renderCalendarEvents(allCases) {
 //initialising the tabclick
 function initTabClick() {
 	$("li a[role='tab']").click(function () {
-	    selectedTab = $(this).attr("id");
-	    console.log("welcone");
+		selectedTab = $(this).attr("id");
+		console.log("welcone");
 		var casesByCategory = getCasesByCategory();
 		$("ul.list-group").empty();
 		console.log(casesByCategory);
@@ -200,8 +200,7 @@ function initTabClick() {
 			updateCasesListView(casesByCategory[$(this).attr("id")], "ul.list-group");
 		} else if($(this).attr("id") == "All") {
 			updateCasesListView(allCases, "ul.list-group");
-		}
-				
+		}	
 	});
 }
 
@@ -209,18 +208,15 @@ var selectedIds = [];
 
 function initMultiSelect() {
 	$(".list-group-item").on("click", function () {
-
 		if (selectedIds.indexOf($(this).attr("id")) < 0) {
 			selectedIds.push($(this).attr("id"));
-			//$(this).addClass("selectedList");
 			$(this).find("span#select").addClass("glyphicon-ok");
 		} else {
 			var index = selectedIds.indexOf($(this).attr("id"));
 			selectedIds.splice(index, 1);
 			$(this).find("span#select").removeClass("glyphicon-ok");
-			//$(this).removeClass("selectedList");
 		}
-		consoleLog("Selected Cases" + selectedIds);
+		consoleLog("Selected Cases " + selectedIds);
 		if (selectedIds.length <= 1) {
 			$("#dropdownMenu").hide();
 			$("#dropdownMenuButton").css("display", "none");
@@ -271,6 +267,7 @@ function initDropDownSelect() {
 	allCases = getAllCases();
 	var casesByDate = getCasesByDate();
 	var casesByCategory = getCasesByCategory();
+	console.log(casesByCategory);
 	initCalendar(getCasesByDate());
 	updateCasesListView(allCases, "ul.list-group");
 	renderCalendarEvents(allCases);

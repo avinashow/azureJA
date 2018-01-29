@@ -24,5 +24,11 @@ namespace samplemvcapp.Controllers
             return Json(new { Response = CategoryModel.getAll() }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public JsonResult getContacts(String caseid)
+        {
+            return Json(new { Contacts = ContactModel.getContacts(caseid) }, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

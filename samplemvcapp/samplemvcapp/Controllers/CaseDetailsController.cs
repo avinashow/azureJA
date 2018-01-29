@@ -96,6 +96,11 @@ namespace samplemvcapp.Controllers
             return View();
         }
 
+        public JsonResult getContacts(String caseid)
+        {
+            return Json(ContactModel.getContacts(caseid));
+        }
+
         [HttpPost]
         public ActionResult Create(CaseDetailsModel casedetail)
         {

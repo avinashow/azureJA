@@ -16,20 +16,30 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="modal fade" tabindex="-1" id="modal-default" role="dialog">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h2 class="modal-title" style="text-align:center">Order Sheet</h2>
 				</div>
 				<div class="modal-body">
-					<iframe src="https://docs.google.com/viewer?url=http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf&embedded=true" style="width:100%;height:500px;" frameborder="0"></iframe>
-					<form>
-						<div class="form-group">
-							<label for="comment">Comments:</label>
-							<textarea class="form-control" rows="5" id="comment"></textarea>
+					<div class="row" style="display:flex;justify-content:center">
+					  <div class="col" >
+						  <span class="glyphicon glyphicon-chevron-left" id="prev"></span>
+						  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+						  <span class="glyphicon glyphicon-chevron-right" id="next"></span>
+						  <!--<span class="glyphicon glyphicon-zoom-in" id="zoominbutton"></span>
+						  <span class="glyphicon glyphicon-zoom-out" id="zoomoutbutton"></span>-->
+					  </div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<canvas id="the-canvas"></canvas>
+							<div class="textLayer" id="text-layer">
+							</div>
 						</div>
-					</form>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -140,112 +150,7 @@
 									<div class="box-header with-border">
 										<h2 ><strong>Contacts</strong></h2>
 									</div>
-									<div class="box-body">
-											<div class="row">
-												<div class="col-md-2">
-													<img src="../../Images/Defendant.png" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
-												</div>
-												<div class="col-md-10">
-													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>Name:</dt>
-																<dd>Martin Hall</dd>
-																<dt>Party Type:</dt>
-																<dd>Respondent</dd>
-																<dt>Gender:</dt>
-																<dd>Male</dd>
-															</dl>
-														</div>
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>ID#:</dt>
-																<dd>998-95-5491</dd>
-																<dt>Status:</dt>
-																<dd>Verified</dd>
-																<dt>Number Of Cases:</dt>
-																<dd>05</dd>
-															</dl>
-														</div>
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>Nationality:</dt>
-																<dd>USA</dd>
-															</dl>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-2">
-													<img src="../../Images/07nlook4.jpg" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
-												</div>
-												<div class="col-md-10">
-													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
-														<div class="col-md-4 col-sm-6">
-															<dl class="dl-horizontal">
-																<dt>Name:</dt>
-																<dd>Lewis Smith</dd>
-																<dt>Party Type:</dt>
-																<dd>Petitioner Attorney</dd>
-																<dt>Gender:</dt>
-																<dd>Male</dd>
-															</dl>
-														</div>
-														<div class="col-md-4 col-sm-6">
-															<dl class="dl-horizontal">
-																<dt>ID#:</dt>
-																<dd>998-43-6666</dd>
-																<dt>Status:</dt>
-																<dd>Verified</dd>
-																<dt>Number Of Cases:</dt>
-																<dd>16</dd>
-															</dl>
-														</div>
-														<div class="col-md-4 col-sm-6">
-															<dl class="dl-horizontal">
-																<dt>Nationality:</dt>
-																<dd>USA</dd>
-															</dl>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-2">
-													<img src="../../Images/stephanie.png" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
-												</div>
-												<div class="col-md-10">
-													<div class="row" style="display:flex;margin-top:10px;justify-content:center">
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>Name:</dt>
-																<dd>Stephanie Anderson</dd>
-																<dt>Party Type:</dt>
-																<dd>Petitioner</dd>
-																<dt>Gender:</dt>
-																<dd>Female</dd>
-															</dl>
-														</div>
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>ID#:</dt>
-																<dd>998-95-4624</dd>
-																<dt>Status:</dt>
-																<dd>Verified</dd>
-																<dt>Number Of Cases:</dt>
-																<dd>01</dd>
-															</dl>
-														</div>
-														<div class="col-md-4">
-															<dl class="dl-horizontal">
-																<dt>Nationality:</dt>
-																<dd>USA</dd>
-															</dl>
-														</div>
-													</div>
-												</div>
-											</div>
+									<div class="box-body" id="contacts">
 									</div>
 								</div>
 							</div>
@@ -260,22 +165,32 @@
 									</div>
 									<div class="box-body">
 										<div class="row">
-										  <div class="col-xs-6 col-md-3">
-											<div href="#" type="button" id="mymodal" class="thumbnail btn btn-default btn-lg" data-toggle="modal" data-target="#modal-default">
-											  <img src="../../Images/ordersheet.png" alt="ordersheet">
-											  <div class="caption">
+										  <div class="polaroid">
+											  <img src="../../Images/ordersheet.png" alt="OrderSheet" style="width:100%;height:250px">
+											  <div class="cont">
 												<h3>Order Sheet</h3>
 											  </div>
 											</div>
-										  </div>
-										  <div class="col-xs-6 col-md-3">
-											<div href="#" type="button" id="Div1" class="thumbnail btn btn-default btn-lg">
-											  <img src="../../Images/ordersheet.png" alt="notice">
-											  <div class="caption">
-												<h3>Notice</h3>
+											<div class="polaroid" >
+											  <img src="https://image.slidesharecdn.com/7c6c3f14-a58f-49cf-93b2-2dae9d9ee2aa-150225230919-conversion-gate01/95/sample-fictionalized-asset-and-encumbrance-investigation-report-1-638.jpg?cb=1424905881" alt="Filing" style="width:100%;height:250px;">
+											  <div class="cont">
+												<h3>Case e-Filing</h3>
 											  </div>
 											</div>
-										  </div>
+											<div class="polaroid" >
+											  <img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Crime-Report-Example.jpg" alt="PoliceReport" style="width:100%;height:250px;">
+											  <div class="cont">
+												<h3>Police Report</h3>
+											  </div>
+											</div>
+											<div class="polaroid" >
+											  <img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Evidence-Report-in-PDF.jpg" alt="PoliceEvidenceReport" style="width:100%;height:250px;">
+											  <div class="cont">
+												<h3>Evidence Report</h3>
+											  </div>
+											</div>
+
+											
 										</div>
 									</div>
 								</div>									
@@ -290,7 +205,55 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="../../Scripts/pdfjshtml.js"></script>
+	<script type="text/x-jquery-tmpl" id="caseContacts">
+		{{each Contacts}}
+			 <div class="row">
+				<div class="col-md-2">
+					<img src="${$value.imgurl}" style="border:1px double #3c8dbc; border-radius:50%;" width="80px" height="80px" />
+				</div>
+				<div class="col-md-10">
+					<div class="row" style="display:flex;margin-top:10px;justify-content:center">
+						<div class="col-md-6">
+							<dl class="dl-horizontal">
+								<dt>Name:</dt>
+								<dd>${$value.name}</dd>
+								<dt>Party Type:</dt>
+								<dd>${$value.partytype}</dd>
+								<dt>Gender:</dt>
+								<dd>${$value.gender}</dd>
+							</dl>
+						</div>
+						<div class="col-md-6">
+							<dl class="dl-horizontal">
+								<dt>ID#:</dt>
+								<dd>${$value.cid}</dd>
+								<dt>Nationality:</dt>
+								<dd>${$value.nationality}</dd>
+								<dt>Number Of Cases:</dt>
+								<dd>05</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</script>
+
+	<script type="text/x-jquery-tmpl" id="attachmentsModalContent">
+		{{each attachments}}
+			<iframe src="${$value}" style="width:100%;height:500px;" frameborder="0"></iframe>
+			<form>
+				<div class="form-group">
+					<label for="comment">Comments:</label>
+					<textarea class="form-control" rows="5" id="Textarea1"></textarea>
+				</div>
+			</form>
+		{{/each}}
+	</script>
 	<script>
+
+
 		$("ol.breadcrumb").html("<%= ViewBag.breadCrumb %>");
 		$(".bg-image").css("height", "100%");
 		$(".product-img").click(function () { $(this).next().toggle(); });
@@ -299,11 +262,24 @@
 			placement: 'bottom',
 		});
 
-		$(document).on("click", "#save", function (event) {
-		    $("#modal-default").modal("hide");
-		    alert("Changes Approved");
-		    
-		    
+		$(document).on("click", ".polaroid", function (event) {
+			var pdf = $(this).children("img").attr("alt");
+			var psdfdict = { "Filing": "http://justicealign.azurewebsites.net/Content/files/filing.pdf", "PoliceEvidenceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceEvidenceReport.pdf", "OrderSheet": "http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf", "PoliceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceReport.pdf" };
+			var result = {};
+			result["attachments"] = { "url": psdfdict[pdf] };
+			$(".modal-title").text(pdf);
+			displayPDF(psdfdict[pdf]);
+			$("#modal-default").modal("show");
+			//alert("Changes Approved");
+		});
+
+		$.ajax({
+			url: "/CommonService/getContacts",
+			type:"GET",
+			data: { caseid: "<%:Model.caseid %>" },
+			success: function (response) {
+				$("#caseContacts").tmpl(response).appendTo("#contacts");
+			}
 		});
 
 		$(".icon-button").on("click", function () {
