@@ -234,6 +234,12 @@
 			  font-size:1.1em;
 		  }
 	  }
+
+	  .ui-draggable, .ui-droppable {
+			-ms-touch-action: none;
+			touch-action: none;
+		}
+
 	  .jvectormap-label {
 		position: absolute;
 		display: none;
@@ -247,6 +253,11 @@
 		font-size: smaller;
 		padding: 3px;
 	}
+	  .widthDec {
+		  width:10%;
+		  height:10%;
+		  overflow:hidden;
+	  }
 	  body
 	  {
 		  padding-top:90px;
@@ -311,7 +322,10 @@
 		<asp:ContentPlaceHolder ID="MainContent" runat="server"/>  
 	</div> 
 <!-- jQuery 3 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery.ui.mouse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
 <script src="../../Scripts/fullcalendar.js"></script>

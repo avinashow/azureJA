@@ -52,7 +52,7 @@ function updateCasesListView(cases, parent) {
 			$("span#" + categoryId).text(casesByCategory[category].length);
 		}
 	}
-	$("ul.list-group").empty();
+	$(parent).empty();
 	var casesJson = {};
 	casesJson["cases"] = cases;
 	$("li a[role='tab']").each(function () {
@@ -192,15 +192,73 @@ function renderCalendarEvents(allCases) {
 function initTabClick() {
 	$("li a[role='tab']").click(function () {
 		selectedTab = $(this).attr("id");
-		console.log("welcone");
+		var tabContentIDS = {"All":"content","Pending" : "pendingcontent","Reschedule":"reschedulecontent","HighPriority":"highprioritycontent"};
 		var casesByCategory = getCasesByCategory();
-		$("ul.list-group").empty();
-		console.log(casesByCategory);
-		if (casesByCategory.hasOwnProperty($(this).attr("id"))) {
-			updateCasesListView(casesByCategory[$(this).attr("id")], "ul.list-group");
-		} else if($(this).attr("id") == "All") {
-			updateCasesListView(allCases, "ul.list-group");
-		}	
+		console.log(tabContentIDS[selectedTab]);
+		$("#" + tabContentIDS[selectedTab] + "ul.list-group").empty();
+		if (selectedTab == "none") {
+		    updateCasesListView(casesByCategory["All"], "#content ul.list-group");
+		} else {
+		    if (casesByCategory.hasOwnProperty(selectedTab)) {
+		        updateCasesListView(casesByCategory[selectedTab], "#" + tabContentIDS[selectedTab] + " ul.list-group");
+		    }
+		}
+	});
+}
+
+
+function initDraggable() {
+	$tabs = $(".info");
+	
+	/*$('.nav-tabs a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	})*/
+
+
+	$(".list-cust")
+		.sortable({
+			connectWith: ".list-cust",
+			items: "> li",
+			appendTo: $tabs,
+			helper: "clone",
+			zIndex: 999990,
+			start: function (ui,e) {
+			    console.log($(ui.draggable));
+			    //$(this).addClass('widthDec');
+				$tabs.addClass("dragging")
+			},
+			stop: function (ui,e) {
+			    //$(this).removeClass('widthDec');
+			    $tabs.removeClass("dragging")
+			},
+			update: function (ui, e) {
+				console.log(ui);
+				console.log("dropped new ui");
+			}
+		}).disableSelection()
+	;
+
+	var $tab_items = $(".nav-pills > li", $tabs).droppable({
+		accept: ".list-cust li",
+		hoverClass: "ui-state-hover",
+		over: function (event, ui) {
+			var $item = $(this);
+			$item.find("a").tab("show");
+		},
+		drop: function (event, ui) {
+			var $item = $(this);
+			var $list = $($item.find("a").attr("href")).find(".list-cust");
+			ui.draggable.show().hide("fast", function () {
+				//$(this).appendTo($list).show("fast");	
+				selectedIds.push($(ui.draggable).attr("id"));
+				console.log(selectedIds);
+				selectedTab = $item.find("a").attr("id");
+				//console.log($item.find("a").attr("id"));
+				postData($item.find("a").attr("id"));
+			});
+			
+		}
 	});
 }
 
@@ -269,13 +327,14 @@ function initDropDownSelect() {
 	var casesByCategory = getCasesByCategory();
 	console.log(casesByCategory);
 	initCalendar(getCasesByDate());
-	updateCasesListView(allCases, "ul.list-group");
+	updateCasesListView(allCases, "#content ul.list-group");
 	renderCalendarEvents(allCases);
 	initSearch();
 	intiClearSelectionDate();
 	initTabClick();
 	initDropDownSelect();
 	updateTabCounts();
+	initDraggable();
 })();
 
 function updateTabCounts() {
