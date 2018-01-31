@@ -117,8 +117,8 @@
 				<div class="box-body no-padding">
 					<ul class="users-list clearfix">
 						<li><div class="icon-button active" data-toggle="tooltip" title="summary" data-target="#quote-carousel" data-slide-to="0"><i class="fa fa-list-alt" style="font-size:48px"></i></div></li>
-						<li><div class="icon-button" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="1"><i class="material-icons" style="font-size:48px">people</i></div></li>
-						<li><div class="icon-button" data-toggle="tooltip" title="attachments" data-target="#quote-carousel" data-slide-to="2"><i class="material-icons" style="font-size:48px">folder</i></div></li>
+						<li><div class="icon-button" data-toggle="tooltip" title="contacts" data-target="#quote-carousel" data-slide-to="1"><i class="fa fa-user" style="font-size:44px"></i></div></li>
+						<li><div class="icon-button" data-toggle="tooltip" title="attachments" data-target="#quote-carousel" data-slide-to="2"><i class="fa fa-folder" style="font-size:48px"></i></div></li>
 						<li><div class="icon-button" data-toggle="tooltip" title="timeline" onclick="window.location.replace('/CaseDetails/Timeline/<%: ViewBag.caseid %>')"><img class="img-responsive" width="50px" height="50px" src="../../Images/timeline.png" /></div></li>
 					</ul>
 				</div>
@@ -270,7 +270,6 @@
 			$(".modal-title").text(pdf);
 			displayPDF(psdfdict[pdf]);
 			$("#modal-default").modal("show");
-			//alert("Changes Approved");
 		});
 
 		$.ajax({
@@ -285,14 +284,35 @@
 		$(".icon-button").on("click", function () {
 			var arr = { 1: "people", 2: "folder" };
 			var sarr = { 1: "people_outline", 2: "folder_open" };
-			var that = $(this);
+			var that = $(this).find("i");
 			$(".icons-buttons").find(".icon-button").each(function () {
-				$(this).find("i").text(arr[$(this).attr("data-slide-to")]);
-				$(this).removeClass("active");
+			    if ($(this).find("i").hasClass("fa-user-o")) {
+			        $(this).find("i").removeClass("fa-user-o");
+			        $(this).find("i").addClass("fa-user");
+			    }
+			    if ($(this).find("i").hasClass("fa-folder-o")) {
+			        $(this).find("i").removeClass("fa-folder-o");
+			        $(this).find("i").addClass("fa-folder");
+			    }
+			    $(this).find("i").removeClass("active");
 			});
-			$(this).addClass("active");
 
-			$(this).find("i").text(sarr[$(this).attr("data-slide-to")]);
+			if (that.hasClass("fa-user")) {
+				that.removeClass("fa-user");
+				that.addClass("fa-user-o");
+			} else if (that.hasClass("fa-user-o")) {
+				that.addClass("fa-user");
+				that.removeClass("fa-user-o");
+			} else if (that.hasClass("fa-folder")) {
+				that.removeClass("fa-folder");
+				that.addClass("fa-folder-o");
+			} else if(that.hasClass("fa-folder-o")) {
+				that.addClass("fa-folder");
+				that.removeClass("fa-folder-o");
+			} 
+			that.addClass("active");
+
+			//that.find("i").text(sarr[$(this).attr("data-slide-to")]);
 		});
 	</script>
 </asp:Content>

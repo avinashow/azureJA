@@ -46,7 +46,7 @@
 								</div>
 							</div>
 							<br /><br />
-							<ul class="nav nav-pills nav-fill" role="tablist" style="margin-top:20px">
+							<ul class="nav nav-pills nav-fill" role="tablist" style="margin:20px">
 								<li role="presentation" class="active">
 									<a href="#content" id="none" aria-controls="all" role="tab" data-toggle="tab">All</a>     
 								</li>

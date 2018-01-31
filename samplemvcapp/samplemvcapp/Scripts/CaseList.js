@@ -61,6 +61,7 @@ function updateCasesListView(cases, parent) {
 	$("#caseListTemplate").tmpl(casesJson).appendTo(parent);
 	initMultiSelect();
 	initDropDownSelect();
+	initDraggable();
 }
 
 //Fetching the cases by date data
@@ -197,11 +198,11 @@ function initTabClick() {
 		console.log(tabContentIDS[selectedTab]);
 		$("#" + tabContentIDS[selectedTab] + "ul.list-group").empty();
 		if (selectedTab == "none") {
-		    updateCasesListView(casesByCategory["All"], "#content ul.list-group");
+			updateCasesListView(casesByCategory["All"], "#content ul.list-group");
 		} else {
-		    if (casesByCategory.hasOwnProperty(selectedTab)) {
-		        updateCasesListView(casesByCategory[selectedTab], "#" + tabContentIDS[selectedTab] + " ul.list-group");
-		    }
+			if (casesByCategory.hasOwnProperty(selectedTab)) {
+				updateCasesListView(casesByCategory[selectedTab], "#" + tabContentIDS[selectedTab] + " ul.list-group");
+			}
 		}
 	});
 }
@@ -209,35 +210,25 @@ function initTabClick() {
 
 function initDraggable() {
 	$tabs = $(".info");
-	
-	/*$('.nav-tabs a').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	})*/
 
-
-	$(".list-cust")
-		.sortable({
-			connectWith: ".list-cust",
+	$(".list-group").sortable({
+			connectWith: ".list-group",
 			items: "> li",
 			appendTo: $tabs,
-			helper: "clone",
+			//helper: "clone",
+			tolerance: "pointer",
+			cursor:"move",
 			zIndex: 999990,
-			start: function (ui,e) {
-			    console.log($(ui.draggable));
-			    //$(this).addClass('widthDec');
+			start: function(event,ui) {
+				$(ui.item).width("100px");
+				$(ui.item).height("80px");
+				$(ui.item).css("overflow","hidden");
 				$tabs.addClass("dragging")
 			},
-			stop: function (ui,e) {
-			    //$(this).removeClass('widthDec');
-			    $tabs.removeClass("dragging")
-			},
-			update: function (ui, e) {
-				console.log(ui);
-				console.log("dropped new ui");
+			stop: function(event,ui) {
+				$tabs.removeClass("dragging")
 			}
-		}).disableSelection()
-	;
+		}).disableSelection();
 
 	var $tab_items = $(".nav-pills > li", $tabs).droppable({
 		accept: ".list-cust li",
