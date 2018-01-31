@@ -45,47 +45,44 @@
 									</ul>
 								</div>
 							</div>
-							<br /><br />
-							<ul class="nav nav-pills nav-fill" role="tablist" style="margin:20px">
-								<li role="presentation" class="active">
-									<a href="#content" id="none" aria-controls="all" role="tab" data-toggle="tab">All</a>     
-								</li>
-								<li role="presentation">
-									<a href="#pendingcontent" id="Pending" aria-controls="pending" role="tab" data-toggle="tab">Pending <span id="pending" class="badge"></span></a>
-								</li>
-								<li role="presentation">
-									<a href="#reschedulecontent" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge"></span></a>     
-								</li>
-								<li role="presentation">
-									<a href="#highprioritycontent" id="HighPriority" aria-controls="highpriority" role="tab" data-toggle="tab">HighPriority <span id="highpriority" class="badge"></span></a>     
-								</li>
-							</ul>
-							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active" id="content">
-									<ul class="list-group list-cust" id="alllist" style="margin:20px;overflow:auto;">  
-									
-									</ul>
-								</div>
-								<div role="tabpanel" class="tab-pane" id="pendingcontent">
-									<ul class="list-group list-cust" id="pendinglist" style="margin:20px;overflow:auto;">  
-									
-									</ul>
-								</div>
-								<div role="tabpanel" class="tab-pane" id="reschedulecontent">
-									<ul class="list-group list-cust" id="reschedulelist" style="margin:20px;overflow:auto;">  
-									
-									</ul>
-								</div>
-								<div role="tabpanel" class="tab-pane" id="highprioritycontent">
-									<ul class="list-group list-cust" id="highprioritylist" style="margin:20px;overflow:auto;">  
-									
-									</ul>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="nav-tabs-custom">
+										<ul class="nav nav-tabs">
+										  <li class="active"><a href="#content" id="none" aria-controls="all" role="tab" data-toggle="tab">All</a></li>
+										  <li class=""><a href="#pendingcontent" id="Pending" aria-controls="pending" role="tab" data-toggle="tab">Pending <span id="pending" class="badge"></span></a></li>
+										  <li class=""><a href="#reschedulecontent" id="Reschedule" aria-controls="reschedule" role="tab" data-toggle="tab">Reschedule <span id="reschedule" class="badge"></span></a></li>
+										  <li class=""><a href="#highprioritycontent" id="HighPriority" aria-controls="highpriority" role="tab" data-toggle="tab">HighPriority <span id="highpriority" class="badge"></span></a> </li>
+										</ul>
+										<div class="tab-content">
+										  <div role="tabpanel" class="tab-pane active" id="content">
+											<ul class="list-group list-cust" id="alllist" style="margin:20px;overflow:auto;">  
+
+											</ul>
+										</div>
+										<div role="tabpanel" class="tab-pane" id="pendingcontent">
+											<ul class="list-group list-cust" id="pendinglist" style="margin:20px;overflow:auto;">  
+
+											</ul>
+										</div>
+										<div role="tabpanel" class="tab-pane" id="reschedulecontent">
+											<ul class="list-group list-cust" id="reschedulelist" style="margin:20px;overflow:auto;">  
+
+											</ul>
+										</div>
+										<div role="tabpanel" class="tab-pane" id="highprioritycontent">
+											<ul class="list-group list-cust" id="highprioritylist" style="margin:20px;overflow:auto;">  
+
+											</ul>
+										</div>
+										  <!-- /.tab-pane -->
+										</div>
+										<!-- /.tab-content -->
+									  </div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="space">
-					</div>					
+					</div>				
 			</div>
 		</div>
 	</div>
@@ -117,7 +114,7 @@
 									<li><a class="dropdown-item" href="">Reschedule</a></li>
 									<li><a class="dropdown-item" href="">Pending</a></li>
 									<li><a class="dropdown-item" href="">HighPriority</a></li>
-									<li><a class="dropdown-item" href="">clear</a></li>
+									<li><a class="dropdown-item" href="">Clear</a></li>
 								</ul>
 							</div>
 						</div>
@@ -186,6 +183,7 @@
 			$("#dropdownMenuButton").hide();
 			$("#dropdownMenu").hide();
 			var casesByCategory = getCasesByCategory();
+			console.log(casesByCategory);
 			updateCasesListView(casesByCategory[selectedTab], "ul.list-group");
 		}
 	</script>

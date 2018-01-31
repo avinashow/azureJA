@@ -22,13 +22,14 @@ function initSearch() {
 		
 function redisplay(id) {
 			
-	var parent = "ul.list-group";
+	var parent = "#content ul.list-group";
+	
+	//$("a#none").trigger('click');
 	var casesByDate = getCasesByDate();
-	console.log(casesByDate);
 	if (casesByDate.hasOwnProperty(id)) {
 		updateCasesListView(casesByDate[id], parent);
 	} else {
-		$("ul.list-group").html("<li class='list-group-item' style='text-align:center'><h3>No Cases</h3></li>");
+		$("#content ul.list-group").html("<li class='list-group-item' style='text-align:center'><h3>No Cases</h3></li>");
 		$("span#pending").text("");
 		$("span#reschedule").text("");
 		$("span#highpriority").text("");
@@ -193,15 +194,31 @@ function renderCalendarEvents(allCases) {
 function initTabClick() {
 	$("li a[role='tab']").click(function () {
 		selectedTab = $(this).attr("id");
+
+		//Adding colors to the active tab when clicked
+		$(".nav-tabs li").each(function () {
+			$(this).find('a').css({ "border-right-color": "transparent" ,"border-left-color":"transparent"});
+			$(this).css({ "border-top-color": "transparent", "background-color":"transparent" });
+			$(".nav-tabs").css({"border-bottom-color":"transparent"});
+		});
+		var tabColors = { "none": "#3c8dbc", "Pending": "#f39c12 !important", "Reschedule": "#00a65a !important", "HighPriority": "#dd4b39 !important" };
+		$(this).css({ "border-right-color": tabColors[selectedTab], "border-left-color": tabColors[selectedTab] });
+		$(this).parent("li").css({ "border-top-color": tabColors[selectedTab],"background-color":tabColors[selectedTab] });
+		$(".nav-tabs").css({ "border-bottom-color": tabColors[selectedTab] });
+		//
+
 		var tabContentIDS = {"All":"content","Pending" : "pendingcontent","Reschedule":"reschedulecontent","HighPriority":"highprioritycontent"};
 		var casesByCategory = getCasesByCategory();
 		console.log(tabContentIDS[selectedTab]);
+		console.log(casesByCategory);
 		$("#" + tabContentIDS[selectedTab] + "ul.list-group").empty();
 		if (selectedTab == "none") {
 			updateCasesListView(casesByCategory["All"], "#content ul.list-group");
 		} else {
 			if (casesByCategory.hasOwnProperty(selectedTab)) {
 				updateCasesListView(casesByCategory[selectedTab], "#" + tabContentIDS[selectedTab] + " ul.list-group");
+			} else {
+				$("#" + tabContentIDS[selectedTab] + " ul.list-group").empty();
 			}
 		}
 	});
@@ -209,8 +226,8 @@ function initTabClick() {
 
 
 function initDraggable() {
-	$tabs = $(".info");
-
+	//$tabs = $(".info");
+	$tabs = $(".nav-tabs-custom");
 	$(".list-group").sortable({
 			connectWith: ".list-group",
 			items: "> li",
@@ -223,14 +240,15 @@ function initDraggable() {
 				$(ui.item).width("100px");
 				$(ui.item).height("80px");
 				$(ui.item).css("overflow","hidden");
-				$tabs.addClass("dragging")
+				$tabs.addClass("dragging");
+				$(ui.item).css("z-index","99999");
 			},
 			stop: function(event,ui) {
 				$tabs.removeClass("dragging")
 			}
 		}).disableSelection();
 
-	var $tab_items = $(".nav-pills > li", $tabs).droppable({
+	var $tab_items = $(".nav-tabs > li", $tabs).droppable({
 		accept: ".list-cust li",
 		hoverClass: "ui-state-hover",
 		over: function (event, ui) {
@@ -243,9 +261,7 @@ function initDraggable() {
 			ui.draggable.show().hide("fast", function () {
 				//$(this).appendTo($list).show("fast");	
 				selectedIds.push($(ui.draggable).attr("id"));
-				console.log(selectedIds);
 				selectedTab = $item.find("a").attr("id");
-				//console.log($item.find("a").attr("id"));
 				postData($item.find("a").attr("id"));
 			});
 			

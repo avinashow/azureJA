@@ -165,32 +165,71 @@
 									</div>
 									<div class="box-body">
 										<div class="row">
-										  <div class="polaroid">
-											  <img src="../../Images/ordersheet.png" alt="OrderSheet" style="width:100%;height:250px">
-											  <div class="cont">
-												<h3>Order Sheet</h3>
-											  </div>
-											</div>
-											<div class="polaroid" >
-											  <img src="https://image.slidesharecdn.com/7c6c3f14-a58f-49cf-93b2-2dae9d9ee2aa-150225230919-conversion-gate01/95/sample-fictionalized-asset-and-encumbrance-investigation-report-1-638.jpg?cb=1424905881" alt="Filing" style="width:100%;height:250px;">
-											  <div class="cont">
-												<h3>Case e-Filing</h3>
-											  </div>
-											</div>
-											<div class="polaroid" >
-											  <img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Crime-Report-Example.jpg" alt="PoliceReport" style="width:100%;height:250px;">
-											  <div class="cont">
-												<h3>Police Report</h3>
-											  </div>
-											</div>
-											<div class="polaroid" >
-											  <img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Evidence-Report-in-PDF.jpg" alt="PoliceEvidenceReport" style="width:100%;height:250px;">
-											  <div class="cont">
-												<h3>Evidence Report</h3>
-											  </div>
-											</div>
+											<div class="col-md-12">
+												<div class="panel col-md-6">
+													<div class="box-header with-border" style="text-align:left;">
+														<h3 class="box-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+																Order Sheet <span class="glyphicon glyphicon-chevron-down" style="top:4px"></span>
+															</a>                                                        
+														</h3>
+													</div>
+													<div id="collapseOne" class="panel-collapse collapse in">
+														<div class="box-body">
+															<div class="polaroid">
+																<img src="../../Images/ordersheet.png" alt="OrderSheet" style="width:100%;height:200px">
+															</div>
+														</div>
+													</div>
+												</div>
 
-											
+												<div class="panel col-md-6">
+													<div class="box-header with-border" style="text-align:left;">
+														<h3 class="box-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+																E-Filing Report <span class="glyphicon glyphicon-chevron-down" style="top:4px"></span>
+															</a>                                                        
+														</h3>
+													</div>
+													<div id="collapseTwo" class="panel-collapse collapse in">
+														<div class="box-body">
+															<div class="polaroid" >
+																<img src="https://image.slidesharecdn.com/7c6c3f14-a58f-49cf-93b2-2dae9d9ee2aa-150225230919-conversion-gate01/95/sample-fictionalized-asset-and-encumbrance-investigation-report-1-638.jpg?cb=1424905881" alt="Filing" style="width:100%;height:200px;">
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="panel col-md-6">
+													<div class="box-header with-border" style="text-align:left;">
+														<h3 class="box-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+																Police Report <span class="glyphicon glyphicon-chevron-down" style="top:4px"></span>
+															</a>                                                        
+														</h3>
+													</div>
+													<div id="collapseThree" class="panel-collapse collapse in">
+														<div class="polaroid" >
+															<img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Crime-Report-Example.jpg" alt="PoliceReport" style="width:100%;height:200px;"/>
+														</div>
+													</div>
+												</div>
+
+												<div class="panel col-md-6">
+													<div class="box-header with-border" style="text-align:left;">
+														<h3 class="box-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+																Police Evidence Report <span class="glyphicon glyphicon-chevron-down" style="top:4px"></span>
+															</a>                                                        
+														</h3>
+													</div>
+													<div id="collapseFour" class="panel-collapse collapse in">
+														<div class="polaroid" >
+															<img src="https://images.examples.com/wp-content/uploads/2017/04/Police-Evidence-Report-in-PDF.jpg" alt="PoliceEvidenceReport" style="width:100%;height:200px;">
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>									
@@ -286,15 +325,15 @@
 			var sarr = { 1: "people_outline", 2: "folder_open" };
 			var that = $(this).find("i");
 			$(".icons-buttons").find(".icon-button").each(function () {
-			    if ($(this).find("i").hasClass("fa-user-o")) {
-			        $(this).find("i").removeClass("fa-user-o");
-			        $(this).find("i").addClass("fa-user");
-			    }
-			    if ($(this).find("i").hasClass("fa-folder-o")) {
-			        $(this).find("i").removeClass("fa-folder-o");
-			        $(this).find("i").addClass("fa-folder");
-			    }
-			    $(this).find("i").removeClass("active");
+				if ($(this).find("i").hasClass("fa-user-o")) {
+					$(this).find("i").removeClass("fa-user-o");
+					$(this).find("i").addClass("fa-user");
+				}
+				if ($(this).find("i").hasClass("fa-folder-o")) {
+					$(this).find("i").removeClass("fa-folder-o");
+					$(this).find("i").addClass("fa-folder");
+				}
+				$(this).find("i").removeClass("active");
 			});
 
 			if (that.hasClass("fa-user")) {
