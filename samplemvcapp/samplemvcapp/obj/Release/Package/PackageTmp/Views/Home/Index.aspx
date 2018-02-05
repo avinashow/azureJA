@@ -110,9 +110,9 @@
 			  <h3 class="box-title">Cases Filed Based on Territory</h3>
 
 			  <div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				<!--<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 				</button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
 			  </div>
 			</div>
 			<!-- /.box-header -->
@@ -139,7 +139,7 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 					  <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-					  <img src="../../Images/latestKPI.png" width="100%" height="100%" />
+					  <div id="chartContainer" style="width:100%;height:365px"></div>
 					</div>
 					<!-- /.box-body -->
 				  </div>
@@ -150,6 +150,79 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<script>
+		var chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled: true,
+			title: {
+				text: "Weekly Schedule"
+			},
+			axisY: {
+				title: "Medals"
+			},
+			legend: {
+				cursor: "pointer",
+				itemclick: toggleDataSeries
+			},
+			toolTip: {
+				shared: true,
+				content: toolTipFormatter
+			},
+			data: [{
+				type: "bar",
+				showInLegend: true,
+				name: "Max Work Load",
+				color: "#00A3EA",
+				dataPoints: [
+					{ y: 243, label: "Monday", indexLabelFontSize: 40 },
+					{ y: 236, label: "Tuesday", indexLabelFontSize: 26 },
+					{ y: 243, label: "Wednesday", indexLabelFontSize: 26 },
+					{ y: 273, label: "Thursday", indexLabelFontSize: 26 },
+					{ y: 269, label: "Friday", indexLabelFontSize: 26 },
+					{ y: 196, label: "Saturday", indexLabelFontSize: 26 },
+					{ y: 1118, label: "Sunday", indexLabelFontSize: 26 }
+				]
+			},
+			{
+				type: "bar",
+				showInLegend: true,
+				name: "Work Load Assigned",
+				color: "#FF5473",
+				dataPoints: [
+					{ y: 212, label: "Monday" },
+					{ y: 186, label: "Tuesday" },
+					{ y: 272, label: "Wednesday" },
+					{ y: 299, label: "Thursday" },
+					{ y: 270, label: "Friday" },
+					{ y: 165, label: "Saturday" },
+					{ y: 896, label: "Sunday" }
+				]
+			}]
+		});
+		chart.render();
+
+		function toolTipFormatter(e) {
+			var str = "";
+			var total = 0;
+			var str3;
+			var str2;
+			for (var i = 0; i < e.entries.length; i++) {
+				var str1 = "<span style= \"color:" + e.entries[i].dataSeries.color + "\">" + e.entries[i].dataSeries.name + "</span>: <strong>" + e.entries[i].dataPoint.y + "</strong> <br/>";
+				total = e.entries[i].dataPoint.y + total;
+				str = str.concat(str1);
+			}
+			str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+			str3 = "<span style = \"color:Tomato\">Total: </span><strong>" + total + "</strong><br/>";
+			return (str2.concat(str)).concat(str3);
+		}
+
+		function toggleDataSeries(e) {
+			if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			}
+			else {
+				e.dataSeries.visible = true;
+			}
+			chart.render();
+		}
 
 		
 	</script>
