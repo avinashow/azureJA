@@ -19,31 +19,28 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
+					<div id="snoAlertBox" class="alert alert-success" data-alert="alert">Approved!</div>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h2 class="modal-title" style="text-align:center">Order Sheet</h2>
 				</div>
 				<div class="modal-body">
-					<div class="row" style="display:flex;justify-content:center">
-					  <div class="col" >
-						  <span class="glyphicon glyphicon-chevron-left" id="prev"></span>
-						  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-						  <span class="glyphicon glyphicon-chevron-right" id="next"></span>
-						  <!--<span class="glyphicon glyphicon-zoom-in" id="zoominbutton"></span>
-						  <span class="glyphicon glyphicon-zoom-out" id="zoomoutbutton"></span>-->
-					  </div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<canvas id="the-canvas"></canvas>
-							<div class="textLayer" id="text-layer">
-							</div>
+					<div class="row" style="height:78vh;">
+						<div class="col-md-10" style="height:100%">
+								<div id="viewer" style="height:100%;margin-left:40px"></div>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+							  <label for="comment">Comment:</label>
+							  <textarea class="form-control" rows="5" id="comment"></textarea>
+							</div>
+						</div>						
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="save">Approve</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="save">Approve</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -244,6 +241,8 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="../../lib/WebViewer.js"></script>   
+	<script src="../../lib/html5/ControlUtils.js"></script>
 	<script src="../../Scripts/pdfjshtml.js"></script>
 	<script type="text/x-jquery-tmpl" id="caseContacts">
 		{{each Contacts}}
@@ -301,13 +300,33 @@
 			placement: 'bottom',
 		});
 
+		function renderPDF(url) {
+			var queryParams = window.ControlUtils.getQueryStringMap(false);
+			var docType = queryParams.getString('doctype', 'xod');
+			var getDocId = function (filePath) {
+				return filePath.replace(/^.*[\\\/]/, '');
+			};
+			var initialDoc = url;
+			var viewerElement = document.getElementById("viewer");
+			var myWebViewer = new PDFTron.WebViewer({
+				path: "../../lib",
+				type: "html5",
+				documentType: "pdf",
+				l: "demo:avinashow.gre@gmail.com:73be2a3d01fe5d332554bd93dfb8b27a6ba7fe5a826bb21d7d",
+				initialDoc: url,
+				documentId: getDocId(initialDoc)
+			}, viewerElement);
+		}
+
 		$(document).on("click", ".polaroid", function (event) {
 			var pdf = $(this).children("img").attr("alt");
 			var psdfdict = { "Filing": "http://justicealign.azurewebsites.net/Content/files/filing.pdf", "PoliceEvidenceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceEvidenceReport.pdf", "OrderSheet": "http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf", "PoliceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceReport.pdf" };
 			var result = {};
 			result["attachments"] = { "url": psdfdict[pdf] };
 			$(".modal-title").text(pdf);
-			displayPDF(psdfdict[pdf]);
+			$("#viewer").empty();
+			renderPDF(psdfdict[pdf]);
+			//displayPDF(psdfdict[pdf]);
 			$("#modal-default").modal("show");
 		});
 
@@ -319,6 +338,18 @@
 				$("#caseContacts").tmpl(response).appendTo("#contacts");
 			}
 		});
+
+		$("#save").click(function () {
+			$("#snoAlertBox").fadeIn();
+			closeSnoAlertBox();
+		});
+
+
+		function closeSnoAlertBox() {
+			window.setTimeout(function () {
+				$("#snoAlertBox").fadeOut(300)
+			}, 3000);
+		}
 
 		$(".icon-button").on("click", function () {
 			var arr = { 1: "people", 2: "folder" };

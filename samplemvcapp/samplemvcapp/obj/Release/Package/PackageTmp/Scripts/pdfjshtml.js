@@ -5,13 +5,13 @@
 
 
 
-var pdfDoc = null,
+/*var pdfDoc = null,
 	pageNum = 1,
 	pageRendering = false,
 	pageNumPending = null,
 	scale = 1.3,
 	canvas = document.getElementById('the-canvas'),
-	ctx = canvas.getContext('2d');
+	ctx = canvas.getContext('2d');*/
 
 /**
  * Get page info from document, resize canvas accordingly, and render page.

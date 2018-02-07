@@ -155,9 +155,6 @@
 			title: {
 				text: "Weekly Schedule"
 			},
-			axisY: {
-				title: "Medals"
-			},
 			legend: {
 				cursor: "pointer",
 				itemclick: toggleDataSeries
@@ -172,13 +169,13 @@
 				name: "Max Work Load",
 				color: "#00A3EA",
 				dataPoints: [
-					{ y: 243, label: "Monday", indexLabelFontSize: 40 },
-					{ y: 236, label: "Tuesday", indexLabelFontSize: 26 },
-					{ y: 243, label: "Wednesday", indexLabelFontSize: 26 },
-					{ y: 273, label: "Thursday", indexLabelFontSize: 26 },
+					{ y: 0, label: "Sunday", indexLabelFontSize: 26 },
+					{ y: 0, label: "Saturday", indexLabelFontSize: 26 },
 					{ y: 269, label: "Friday", indexLabelFontSize: 26 },
-					{ y: 196, label: "Saturday", indexLabelFontSize: 26 },
-					{ y: 1118, label: "Sunday", indexLabelFontSize: 26 }
+					{ y: 273, label: "Thursday", indexLabelFontSize: 26 },
+					{ y: 243, label: "Wednesday", indexLabelFontSize: 26 },
+					{ y: 236, label: "Tuesday", indexLabelFontSize: 26 },
+					{ y: 243, label: "Monday", indexLabelFontSize: 40 }	
 				]
 			},
 			{
@@ -187,13 +184,13 @@
 				name: "Work Load Assigned",
 				color: "#FF5473",
 				dataPoints: [
-					{ y: 212, label: "Monday" },
-					{ y: 186, label: "Tuesday" },
-					{ y: 272, label: "Wednesday" },
-					{ y: 299, label: "Thursday" },
+					{ y: 0, label: "Sunday" },
+					{ y: 0, label: "Saturday" },
 					{ y: 270, label: "Friday" },
-					{ y: 165, label: "Saturday" },
-					{ y: 896, label: "Sunday" }
+					{ y: 299, label: "Thursday" },
+					{ y: 272, label: "Wednesday" },
+					{ y: 186, label: "Tuesday" },
+					{ y: 212, label: "Monday" }
 				]
 			}]
 		});
@@ -206,12 +203,17 @@
 			var str2;
 			for (var i = 0; i < e.entries.length; i++) {
 				var str1 = "<span style= \"color:" + e.entries[i].dataSeries.color + "\">" + e.entries[i].dataSeries.name + "</span>: <strong>" + e.entries[i].dataPoint.y + "</strong> <br/>";
-				total = e.entries[i].dataPoint.y + total;
+				total = e.entries[i].dataPoint.y - total;
 				str = str.concat(str1);
 			}
 			str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
-			str3 = "<span style = \"color:Tomato\">Total: </span><strong>" + total + "</strong><br/>";
-			return (str2.concat(str)).concat(str3);
+
+			str3 = "<span style = \"color:Tomato\">Diff: </span><strong>" + Math.abs(total) + "</strong>";
+			str4 = "<i class='fa fa-caret-up' style='font-size:24px;color:green'></i><br/>";
+			if (total < 0) {
+			    str4 = "<i class='fa fa-caret-down' style='font-size:24px;color:red'></i><br/>";
+			}
+			return (str2.concat(str)).concat(str3).concat(str4);
 		}
 
 		function toggleDataSeries(e) {
