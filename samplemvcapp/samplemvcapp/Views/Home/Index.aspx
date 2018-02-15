@@ -13,8 +13,9 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="box box-primary">
 				<div class="box-body">
-					<div id="OrderSheetsContainer" style="width:100%;height:300px"></div>
-					<div id="orderSheets" style="position:absolute;left:-10px;top:0px;height:100%;width:100%;line-height:360px;text-align:center;font-size:30px;">300</div>
+					<!--<div id="OrderSheetsContainer" style="width:100%;height:300px"></div>
+					<div id="orderSheets" style="position:absolute;left:-10px;top:0px;height:100%;width:100%;line-height:360px;text-align:center;font-size:30px;">300</div>-->
+					<canvas id="orderSheetChart" width="300" height="300"></canvas>
 				</div>
 			</div>
 			 
@@ -25,8 +26,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="box box-primary">
 				<div class="box-body">
-					<div id="totalCases" style="width:100%;height:300px"></div>
-					<div id="totalCasesValue" style="position:absolute;left:-10px;top:0px;height:100%;width:100%;line-height:360px;text-align:center;font-size:30px;">300</div>
+					<canvas id="totalCasesChart" width="300" height="300"></canvas>
 				</div>
 			</div>
 			 
@@ -38,7 +38,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="box box-primary">
 				<div class="box-body">
-					<div id="caseDisposal" style="width:100%;height:300px"></div>
+					<canvas id="disposalRatioChart" width="300" height="300"></canvas>
 				</div>
 			</div>
 			
@@ -50,8 +50,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 		  <div class="box box-primary">
 			 <div class="box-body">
-				 <div id="pendingCases" style="width:100%;height:300px"></div>
-				 <div id="totalPendingCasesValue" style="position:absolute;left:-20px;top:0px;height:100%;width:100%;line-height:320px;text-align:center;font-size:30px;">300</div>
+				 <canvas id="pendingChart" width="300" height="300"></canvas>
 			 </div>
 			<!-- /.info-box-content -->
 		  </div>
@@ -63,9 +62,6 @@
 	  <div class="row">
 			<div class="col-md-8">
 			<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Time to Resolve the Cases vs Target</h3>
-			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 				<div class="row">
@@ -75,7 +71,7 @@
 
 					<div class="chart">
 					<!-- Sales Chart Canvas -->
-					<canvas id="salesChart" style="width:100%;height: 259px;"></canvas>
+					<canvas id="salesChart"></canvas>
 					</div>
 					<!-- /.chart-responsive -->
 				</div>
@@ -90,11 +86,9 @@
 
 			<div class="col-md-4">
 				<div class="box box-danger">
-					<div class="box-header with-border">
-					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-							<div id="pendingCasesChart" style="width:100%;height:300px"></div>
+							<canvas id="pendingCasesChart" width="200" height="200"></canvas>
 					</div>
 				</div>
 				<!-- /.col -->
@@ -106,8 +100,8 @@
 		   <div class="col-md-8">
 		  <!-- MAP & BOX PANE -->
 		  <div class="box box-primary">
-			<div class="box-header with-border">
-			  <h3 class="box-title">Cases Filed Based on Territory</h3>
+			<div class="box-header with-border" style="text-align:center">
+			  <h2 style="color:#666666;font-family:Verdana">Cases Filed Based on Territory</h2>
 
 			  <div class="box-tools pull-right">
 				<!--<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -211,7 +205,7 @@
 			str3 = "<span style = \"color:Tomato\">Diff: </span><strong>" + Math.abs(total) + "</strong>";
 			str4 = "<i class='fa fa-caret-up' style='font-size:24px;color:green'></i><br/>";
 			if (total < 0) {
-			    str4 = "<i class='fa fa-caret-down' style='font-size:24px;color:red'></i><br/>";
+				str4 = "<i class='fa fa-caret-down' style='font-size:24px;color:red'></i><br/>";
 			}
 			return (str2.concat(str)).concat(str3).concat(str4);
 		}

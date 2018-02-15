@@ -13,76 +13,72 @@ $(function () {
 
   // Get context with jQuery - using jQuery's .get() method.
   var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
-  // This will get the first returned node in the jQuery collection.
-  var salesChart       = new Chart(salesChartCanvas);
+    // This will get the first returned node in the jQuery collection.
 
-  var salesChartData = {
-    labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label               : 'Electronics',
-        fillColor           : 'rgb(210, 214, 222)',
-        strokeColor         : 'rgb(210, 214, 222)',
-        pointColor          : 'rgb(210, 214, 222)',
-        pointStrokeColor    : '#c1c7d1',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgb(220,220,220)',
-        data                : [65, 59, 80, 81, 56, 55, 40]
+
+  var chartColors = {
+      red: 'rgba(0, 0, 0, 0.4)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgba(54, 162, 235,0.4)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(231,233,237)'
+  };
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  Chart.defaults.global.legend.position = 'bottom';
+  var config = {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+              label: "Actual",
+              backgroundColor: chartColors.red,
+              borderColor: chartColors.red,
+              data: [65, 59, 80, 81, 56, 55, 40],
+              fill: true,
+          }, {
+              label: "Target",
+              fill: true,
+              backgroundColor: chartColors.blue,
+              borderColor: chartColors.blue,
+              data: [28, 48, 40, 19, 86, 27, 90],
+          }]
       },
-      {
-        label               : 'Digital Goods',
-        fillColor           : 'rgba(60,141,188,0.9)',
-        strokeColor         : 'rgba(60,141,188,0.8)',
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90]
+      options: {
+          responsive: true,
+          title: {
+              display: true,
+              text: 'Time to Resolve the Cases vs Target',
+              fontSize: 25
+          },
+          tooltips: {
+              mode: 'label',
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Month'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Value'
+                  }
+              }]
+          }
       }
-    ]
   };
+  var salesChart = new Chart(salesChartCanvas, config);
 
-  var salesChartOptions = {
-    // Boolean - If we should show the scale at all
-    showScale               : true,
-    // Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines      : false,
-    // String - Colour of the grid lines
-    scaleGridLineColor      : 'rgba(0,0,0,.05)',
-    // Number - Width of the grid lines
-    scaleGridLineWidth      : 1,
-    // Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
-    // Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines  : true,
-    // Boolean - Whether the line is curved between points
-    bezierCurve             : true,
-    // Number - Tension of the bezier curve between points
-    bezierCurveTension      : 0.3,
-    // Boolean - Whether to show a dot for each point
-    pointDot                : false,
-    // Number - Radius of each point dot in pixels
-    pointDotRadius          : 4,
-    // Number - Pixel width of point dot stroke
-    pointDotStrokeWidth     : 1,
-    // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-    pointHitDetectionRadius : 20,
-    // Boolean - Whether to show a stroke for datasets
-    datasetStroke           : true,
-    // Number - Pixel width of dataset stroke
-    datasetStrokeWidth      : 2,
-    // Boolean - Whether to fill the dataset with a color
-    datasetFill             : true,
-    // String - A legend template
-    legendTemplate          : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>',
-    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-    maintainAspectRatio     : true,
-    // Boolean - whether to make the chart responsive to window resizing
-    responsive              : true
-  };
-
-  // Create the line chart
-  salesChart.Line(salesChartData, salesChartOptions);
 
   // ---------------------------
   // - END MONTHLY SALES CHART -
@@ -154,169 +150,217 @@ $(function () {
   // -----------------
 // KNOB values
 //START
-    // rendering the pending cases
-  var pieChartValues = [{
-      y: 486,
-      exploded: true,
-      indexLabel: "Received",
-      legendText: "Received",
-      color: "#3c8dbc"
-  }, {
-      y: 351,
-      indexLabel: "Approved",
-      legendText: "Approved",
-      exploded: true,
-      color: "black"
-  }];
-  renderPieChart(pieChartValues, "Order Sheets", "orderSheets", "OrderSheetsContainer");
+   
+
+    //rendering the doughtnut chart using chart js library//
+      var orderSheetData = {
+          labels: [
+            "Approved",
+            "Received"
+          ],
+          datasets: [
+            {
+                data: [486, 351],
+                backgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ],
+                hoverBackgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ]
+            }]
+      };
+      var ord = getTotal(orderSheetData);
+      displayChart(orderSheetData, "orderSheetChart", "Order Sheet", ord);
 
     //rendering the total cases
-    var caseChartValues = [{
-        y: 641,
-        exploded: true,
-        indexLabel: "Assigned",
-        legendText: "Assigned",
-        color: "#3c8dbc"
-    }, {
-        y: 213,
-        indexLabel: "Completed",
-        legendText: "Completed",
-        exploded: true,
-        color: "black"
-    }];
-    renderPieChart(caseChartValues, "Total Cases","totalCasesValue", "totalCases");
+      var caseChartValues = {
+          labels: [
+            "Assigned",
+            "Completed"
+          ],
+          datasets: [
+            {
+                data: [641, 213],
+                backgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ],
+                hoverBackgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ]
+            }]
+      };
+      var tot = getTotal(caseChartValues);
+      displayChart(caseChartValues, "totalCasesChart", "Total Cases", tot);
 
     //rendering the case pending cases
-    var pendingChartValues = [{
-        y: 42,
-        exploded: true,
-        indexLabel: "This month",
-        legendText: "This month",
-        color: "#3c8dbc"
-    }, {
-        y: 1520,
-        indexLabel: "Other months",
-        legendText: "Other months",
-        exploded: true,
-        color: "black"
-    }];
-    renderPieChart(pendingChartValues, "Pending Cases", "totaPendingCasesValue", "pendingCases");
+      var pendingChartValues = {
+          labels: [
+            "This month",
+            "Other months"
+          ],
+          datasets: [
+            {
+                data: [42, 1520],
+                backgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ],
+                hoverBackgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ]
+            }]
+      };
+      var pend = getTotal(pendingChartValues);
+      displayChart(pendingChartValues, "pendingChart", "Pending Cases", pend);
 
     //rendering the disposal ratio
-    var disposalChartValues = [{
-        y: 184,
-        exploded: true,
-        indexLabel: "Time Taken",
-        legendText: "Time Taken",
-        color: "#3c8dbc"
-    }, {
-        y: 260,
-        indexLabel: "Target SLA",
-        legendText: "Target SLA",
-        exploded: true,
-        color: "black"
-    }];
-    renderPieChart(disposalChartValues, "Disposal Ratio", "", "caseDisposal");
-
-  function renderPieChart(values, text, id, divid) {
-      var chart = new CanvasJS.Chart(divid, {
-          backgroundColor: "white",
-          colorSet: "colorSet2",
-          title: {
-              text: text,
-              fontFamily: "Verdana",
-              fontSize: 25,
-              fontWeight: "normal",
-          },
-          animationEnabled: true,
-          data: [{
-              indexLabelFontSize: 15,
-              indexLabelFontFamily: "Monospace",
-              indexLabelFontColor: "darkgrey",
-              indexLabelLineColor: "darkgrey",
-              indexLabelPlacement: "outside",
-              type: "doughnut",
-              showInLegend: true,
-              toolTipContent: "<strong>#percent%</strong>",
-              dataPoints: values
-          }]
-      });
-      chart.render();
-      if (id.length > 0) {
-          $("#" + id).text(getTotal(chart));
-      }
-  }
+      var disposalChartValues = {
+          labels: [
+            "Time Taken",
+            "Target SLA"
+          ],
+          datasets: [
+            {
+                data: [184, 260],
+                backgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ],
+                hoverBackgroundColor: [
+                  "#000000",
+                  "#3C8DBC"
+                ]
+            }]
+      };
+      var disp = getTotal(disposalChartValues);
+      displayChart(disposalChartValues, "disposalRatioChart", "Disposal Ratio", "");
 
     //rendering the Pending Cases
-    var pendingCasesChartValues = [{
-    	y: 700,
-    	exploded: true,
-    	indexLabel: "Cancelled",
-    	legendText: "Cancelled",
-    	color: "#3c8dbc"
-    }, {
-    	y: 500,
-    	indexLabel: "Completed",
-    	legendText: "Completed",
-    	exploded: true,
-    	color: "black"
-    }, {
-        y: 400,
-        indexLabel: "Backlogged",
-        legendText: "Backlogged",
-        exploded: true,
-        color: "orange"
-    }, {
-        y: 100,
-        indexLabel: "Deferred",
-        legendText: "Deferred",
-        exploded: true,
-        color: "gray"
-    }];
-
-    renderDonutChart(pendingCasesChartValues);
-
-    function renderDonutChart(values) {
-        console.log("rendering pending cases");
-        var chart = new CanvasJS.Chart("pendingCasesChart", {
-            backgroundColor: "white",
-            colorSet: "colorSet2",
-            title: {
-                text: "Pending Cases Status",
-                fontFamily: "Verdana",
-                fontSize: 25,
-                fontWeight: "normal",
-            },
-            animationEnabled: true,
-            data: [{
-                indexLabelFontSize: 15,
-                indexLabelFontFamily: "Monospace",
-                indexLabelFontColor: "darkgrey",
-                indexLabelLineColor: "darkgrey",
-                indexLabelPlacement: "outside",
-                type: "doughnut",
-                showInLegend: true,
-                toolTipContent: "<strong>#percent%</strong>",
-                dataPoints: values
+      var pendingCasesChartValues = {
+          labels: [
+            "Cancelled",
+            "Completed",
+            "Backlogged",
+            "Deferred"
+          ],
+          datasets: [
+            {
+                data: [700, 500, 400, 100],
+                backgroundColor: [
+                  "#3c8dbc",
+                  "#000000",
+                  "orange",
+                  "gray"
+                ],
+                hoverBackgroundColor: [
+                  "#3c8dbc",
+                  "#000000",
+                  "orange",
+                  "gray"
+                ]
             }]
-        });
-        chart.render();
-    }
+      };
+      displayChart(pendingCasesChartValues, "pendingCasesChart", "Pending Cases Category", "");
 
+      function displayChart(data, id, title, textVal) {
+          Chart.defaults.global.legend.position = 'bottom';
+          var promisedDeliveryChart = new Chart(document.getElementById(id), {
+              type: 'doughnut',
+              data: data,
+              options: {
+                  animation: {
+                      animateScale: true
+                  },
+                  cutoutPercentage: 70,
+                  responsive: true,
+                  title: {
+                      fontSize: 25,
+                      display: true,
+                      text: title,
+                      padding: 20
+                  },
+                  elements: {
+                      center: {
+                          text: textVal,
+                          color: '#000000', // Default is #000000
+                          fontStyle: 'Times New Roman', // Default is Arial
+                          sidePadding: 20 // Defualt is 20 (as a percentage)
+                      }
+                  },
+                  legend: {
+                      labels: {
+                          padding: 10
+                      },
+                      display: true
+                  }
+              }
+          });
 
+          Chart.pluginService.register({
+              beforeDraw: function (chart) {
+                  if (chart.config.options.elements.center) {
+                      //Get ctx from string
+                      var ctx = chart.chart.ctx;
 
-    //get Total values
-  function getTotal(chart) {
-      var dps = chart.options.data[0].dataPoints;
-      var sum = 0;
+                      //Get options from the center object in options
+                      var centerConfig = chart.config.options.elements.center;
+                      var fontStyle = centerConfig.fontStyle || 'Arial';
+                      var txt = centerConfig.text;
+                      var color = centerConfig.color || '#000';
+                      var sidePadding = centerConfig.sidePadding || 20;
+                      var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                      //Start with a base font of 30px
+                      ctx.font = "40px " + fontStyle;
 
-      for (var i = 0; i < dps.length; i++) {
+                      //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                      var stringWidth = ctx.measureText(txt).width;
+                      var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
 
-          sum += dps[i].y;
+                      // Find out how much the font can grow in width.
+                      var widthRatio = elementWidth / stringWidth;
+                      var newFontSize = Math.floor(30 * widthRatio);
+                      var elementHeight = (chart.innerRadius * 2);
 
+                      // Pick a new font size so it will not be larger than the height of label.
+                      var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+                      //Set font settings to draw it correctly.
+                      ctx.textAlign = 'center';
+                      ctx.textBaseline = 'middle';
+                      var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                      var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                      ctx.font = fontSizeToUse + "px " + fontStyle;
+                      ctx.fillStyle = color;
+
+                      //Draw text in center
+                      ctx.fillText(txt, centerX, centerY);
+                  }
+              }
+          });
       }
-      return sum;
-  }
+    //get Total values
+      function getTotal(chart) {
+          
+          var dps = chart.datasets[0].data;          var sum = 0;
+
+          for (var i = 0; i < dps.length; i++) {
+
+              sum += dps[i];
+
+          }
+          return sum;
+      }
+
+    //-----------------------------------------------//
+
+
+
+  
 //END 
   /* jVector Maps
    * ------------

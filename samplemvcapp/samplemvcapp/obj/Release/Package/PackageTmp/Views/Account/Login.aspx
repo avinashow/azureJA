@@ -16,7 +16,7 @@
             <%: Html.ValidationSummary(true) %>
             <div class="form-group has-feedback">
                 <%: Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @PlaceHolder="UserName" })%>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 <%: Html.ValidationMessageFor(m => m.UserName) %>                
             </div>
             <div class="form-group has-feedback">

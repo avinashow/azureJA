@@ -350,7 +350,8 @@
 <script src="../../Scripts/jquery-jvectormap-1.2.2.min.js"></script>
 	<script src="../../Scripts/jquery-jvectormap-africa-mill.js"></script>
 <!-- initializing map -->
-<script src="../../Scripts/Chart.js"></script>
+<!--<script src="../../Scripts/Chart.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
 <!-- Canvas JS --->
 <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
 <script src="../../Scripts/jquery.canvasjs.min.js"></script>

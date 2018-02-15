@@ -12,31 +12,31 @@
          <Members>
           <Member Name="#CreateCase(samplemvcapp.Models.CaseDetailsModel)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseDetailsModel.cs" Line="62">Object 'con' can be disposed more than once in method 'CaseDetailsModel.CreateCase(CaseDetailsModel)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 62</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetCase(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseDetailsModel.cs" Line="141">Object 'con' can be disposed more than once in method 'CaseDetailsModel.GetCase(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 141</Issue>
             </Message>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseDetailsModel.cs" Line="111">The query string passed to 'SqlCommand.SqlCommand(string)' in 'CaseDetailsModel.GetCase(string)' could contain the following variables 'id'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetCases()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseDetailsModel.cs" Line="95">Object 'con' can be disposed more than once in method 'CaseDetailsModel.GetCases()'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 95</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#update(samplemvcapp.Models.CaseDetailsModel)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseDetailsModel.cs" Line="173">Object 'con' can be disposed more than once in method 'CaseDetailsModel.update(CaseDetailsModel)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 173</Issue>
             </Message>
            </Messages>
@@ -47,7 +47,7 @@
          <Members>
           <Member Name="#getAll()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CaseTypeModel.cs" Line="40">Object 'con' can be disposed more than once in method 'CaseTypeModel.getAll()'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 40</Issue>
             </Message>
            </Messages>
@@ -58,7 +58,7 @@
          <Members>
           <Member Name="#getAll()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="CategoryModel.cs" Line="39">Object 'con' can be disposed more than once in method 'CategoryModel.getAll()'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 39</Issue>
             </Message>
            </Messages>
@@ -69,10 +69,10 @@
          <Members>
           <Member Name="#getContacts(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="ContactModel.cs" Line="56">Object 'con' can be disposed more than once in method 'ContactModel.getContacts(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 56</Issue>
             </Message>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-26 21:32:56Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-14 19:46:53Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\avinashow\Documents\GitHub\azureJA\samplemvcapp\samplemvcapp\Models" File="ContactModel.cs" Line="36">The query string passed to 'SqlCommand.SqlCommand(string)' in 'ContactModel.getContacts(string)' could contain the following variables 'caseid'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
