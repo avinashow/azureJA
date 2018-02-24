@@ -355,6 +355,8 @@
     <Content Include="lib\html5\Resources\icons\fonts\glyphicons-regular.woff" />
     <None Include="Properties\PublishProfiles\1457fd8f-0ee0-4-231-b9ee - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\1457fd8f-0ee0-4-231-b9ee - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\dev-justicealign - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\dev-justicealign - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\JusticeAlign - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\JusticeAlign - Web Deploy.pubxml" />
     <Content Include="Images\07nlook4.jpg" />
@@ -774,6 +776,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\JusticeAlign-dev - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\JusticeAlign-dev - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\JusticeAlignDemo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\JusticeAlignDemo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\CaseList.js" />
     <Content Include="Scripts\Chart.js" />

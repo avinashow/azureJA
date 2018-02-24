@@ -25,10 +25,47 @@ namespace samplemvcapp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.currentPage = "about";
-            ViewBag.Message = "Your app description page.";
+            ViewBag.currentPage = "caseList";
+            var cases = CaseDetailsModel.GetCases();
+            if (cases != null)
+            {
+                ViewBag.calendardates = getCalendarDates(cases);
+            }
+            else
+            {
+                ViewBag.calendardates = new Dictionary<String, List<Dictionary<String, String>>>();
+            }
+            return View(cases);
+        }
 
-            return View();
+        public static Dictionary<String, List<Dictionary<String, String>>> getCalendarDates(List<CaseDetailsModel> cases)
+        {
+            Dictionary<String, List<Dictionary<String, String>>> result = new Dictionary<string, List<Dictionary<String, String>>>();
+
+            List<Dictionary<String, String>> list;
+
+            foreach (CaseDetailsModel c in cases)
+            {
+                var ket = c.casereceiveddate.Split('T');
+                list = (result.ContainsKey(ket[0])) ? result[ket[0]] : new List<Dictionary<String, String>>();
+                list.Add(getListJson(c));
+                result[ket[0]] = list;
+            }
+
+            return result;
+        }
+
+        private static Dictionary<String, String> getListJson(CaseDetailsModel c)
+        {
+            Dictionary<String, String> dict = new Dictionary<string, string>();
+            dict["casename"] = c.casename;
+            dict["caseid"] = c.caseid;
+            dict["casereceiveddate"] = c.casereceiveddate;
+            dict["classification"] = c.casetype;
+            dict["category"] = c.category;
+            dict["summary"] = c.summary;
+            dict["subject"] = c.subject;
+            return dict;
         }
 
         public ActionResult Unauthorized()

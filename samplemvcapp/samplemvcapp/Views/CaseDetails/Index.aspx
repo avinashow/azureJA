@@ -162,7 +162,7 @@
 			var data = {};
 			console.log(selectedIds);
 			for (var i = 0; i < allCases.length; i++) {
-				if (selectedIds.indexOf(allCases[i].caseid) >= 0) {
+			    if (selectedIds.indexOf(allCases[i].caseid) >= 0) {
 					allCases[i].category = selectedMenu.trim();
 				}
 			}

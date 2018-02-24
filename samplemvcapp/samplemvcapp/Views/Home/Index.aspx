@@ -15,7 +15,7 @@
 				<div class="box-body">
 					<!--<div id="OrderSheetsContainer" style="width:100%;height:300px"></div>
 					<div id="orderSheets" style="position:absolute;left:-10px;top:0px;height:100%;width:100%;line-height:360px;text-align:center;font-size:30px;">300</div>-->
-					<canvas id="orderSheetChart" width="300" height="300"></canvas>
+					<canvas id="orderSheetChart" width="200" height="200" style="width:200px;height:200px"></canvas>
 				</div>
 			</div>
 			 

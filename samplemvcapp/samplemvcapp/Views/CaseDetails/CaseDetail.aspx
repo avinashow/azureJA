@@ -320,7 +320,7 @@
 
 		$(document).on("click", ".polaroid", function (event) {
 			var pdf = $(this).children("img").attr("alt");
-			var psdfdict = { "Filing": "http://justicealign.azurewebsites.net/Content/files/filing.pdf", "PoliceEvidenceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceEvidenceReport.pdf", "OrderSheet": "http://justicealign.azurewebsites.net/Content/files/OrderSheet.pdf", "PoliceReport": "http://justicealign.azurewebsites.net/Content/files/PoliceReport.pdf" };
+			var psdfdict = { "Filing": "../../Content/files/filing.pdf", "PoliceEvidenceReport": "../../Content/files/PoliceEvidenceReport.pdf", "OrderSheet": "../../Content/files/OrderSheet.pdf", "PoliceReport": "../../Content/files/PoliceReport.pdf" };
 			var result = {};
 			result["attachments"] = { "url": psdfdict[pdf] };
 			$(".modal-title").text(pdf);

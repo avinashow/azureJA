@@ -147,7 +147,7 @@
 	.users-list li:hover {
 		cursor:pointer;
 	}
-
+	 
 	.box > .icon { 
 	text-align: center; position: relative;
 	}
